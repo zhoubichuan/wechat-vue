@@ -1,87 +1,95 @@
 <template>
 	<div class="get">
-   <div class="nav">
-    <ul>
-     <li><a href="/">&lt;微信(1)</a></li>
-     <li>前端小宝宝们</li>
-     <li>&middot;&middot;&middot;</li>
-    </ul>
-   </div>
    <div>
-    <ul class="information">
-     <li><i class="photo"></i>
-      <div class="content">
-       <p class="name">腾讯员工</p>
-       <p>嘿嘿我来了</p>
-      </div></li>
-     <li><i class="photo"></i>
-      <div class="content">
-       <p class="name">百度员工</p>
-       <p>匿名人士</p>
-      </div></li>
-     <li><i class="photo"></i>
-      <div class="content">
-       <p class="name">华为老大哥</p>
-       <p>你过来</p>
-      </div></li>
-     <li><i class="photo"></i>
-      <div class="content">
-       <p class="name">阿里巴巴2</p>
-       <div class="red-bag" @click="openRedBag">
-        <div class="bag">
-         <span class="ico"></span>
-         <div class="text">
-          <p>恭喜发财，大吉大利</p>
-          <p>领取红包</p>
-         </div>
+    <ul class="information" >
+     <li v-for="(val,index) in information" :key="index">
+        <img class="photo" :src="val.pho"/>
+        <div class="content">
+          <p class="name">{{val.name}}</p>
+          <p v-show="!val.redBag">{{val.message}}</p>
+          <div v-show="val.redBag" class="red-bag" @click="openRedBag">
+            <div class="bag">
+            <span class="ico"></span>
+            <div class="text">
+              <p>恭喜发财，大吉大利</p>
+              <p>领取红包</p>
+            </div>
+            </div>
+            <p class="instruction">微信红包</p>
+          </div>
         </div>
-        <p class="instruction">微信红包</p>
-       </div>
-      </div></li>
+      </li>
     </ul>
     <PopFloor @bridgeShowPop="functionShowPop" :showPopBridge="showPop" :bagBridge="bag"></PopFloor>
    </div>
   </div>
 </template>
+
 <script type="text/javascript">
-import PopFloor from '@/components/get-page/PopFloor'
-	export default {
-		name:'GetPage',
-		data(){
-			return{
-				bag:this.$router.bag,
-				showPop:false
-			}
-		},
-    components:{
-      PopFloor
+import PopFloor from "@/components/get-page/PopFloor";
+export default {
+  name: "GetPage",
+  data() {
+    return {
+      information: [
+        {
+          pho: "http://www.cdhdky.com/images/ttt.jpg",
+          name: "王大锤",
+          message: "嘿嘿我来了",
+          redBag: ""
+        },
+        {
+          pho: "http://www.cdhdky.com/images/ttt.jpg",
+          name: "王大锤",
+          message: "嘿嘿我来了",
+          redBag: ""
+        },
+        {
+          pho: "http://www.cdhdky.com/images/ttt.jpg",
+          name: "王大锤",
+          message: "嘿嘿我来了",
+          redBag: ""
+        },
+        {
+          pho: "http://www.cdhdky.com/images/ttt.jpg",
+          name: "王大锤",
+          message: "嘿嘿我来了",
+          redBag: "20"
+        }
+      ],
+      bag: this.$router.bag,
+      showPop: false
+    };
+  },
+  components: {
+    PopFloor
+  },
+  methods: {
+    openRedBag() {
+      this.showPop = true;
     },
-		methods:{
-			openRedBag(){
-				this.showPop=true
-			},
-      functionShowPop(val){
-        this.showPop=val;
-      }
-			
-		}
-	}
+    functionShowPop(val) {
+      this.showPop = val;
+    }
+  }
+};
 </script>
 
 <style type="text/css">
-	.get {
+.get {
   background-color: aliceblue;
   height: 100vh;
 }
-.get .nav {
+.header {
   padding: 0 15px;
 }
-.get .nav ul {
+.header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
-.get .nav ul li {
+.header span,
+.header h1 {
   padding: 10px 0;
 }
 .information {
@@ -198,5 +206,4 @@ import PopFloor from '@/components/get-page/PopFloor'
 .pop-floor .get-bag .detail-information .tips {
   margin: 20px 0;
 }
-
 </style>

@@ -8,14 +8,9 @@ Vue.prototype.bus = Bus;
 
 Vue.config.productionTip = false;
 new Vue({
-  //数据
   data: {},
-  //视图
   el: "#app",
-  //路由
   router,
-
   components: { App },
-  //模板
   template: "<App/>"
 });

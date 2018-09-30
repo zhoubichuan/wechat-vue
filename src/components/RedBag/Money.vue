@@ -3,7 +3,7 @@
             <div class="sum">
              <i>{{isLuckyBag ? "拼" : "普"}}</i>
              <span>总金额</span>
-             <input type="tel" placeholder="0.00"  @change="fn" v-model="money"/>
+             <input type="tel" placeholder="0.00"  @change="toFather" v-model="money"/>
              <span>元</span>
             </div>
             <div class="tips">
@@ -15,10 +15,11 @@
 
 <script type="text/javascript">
 export default {
+  //父传子
   props: ["m"],
   data() {
     return {
-      money: this.$props.m,
+      money: "",
       isLuckyBag: true
     };
   },
@@ -27,7 +28,7 @@ export default {
     /* 子级数据传给父级
     这里相当于一个发布订阅模式，这里发布这个事件，触发父级上的订阅的方法
      */
-    fn() {
+    toFather() {
       this.$emit("update:m", this.money);
     },
     bagType() {

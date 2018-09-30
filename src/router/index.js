@@ -1,21 +1,23 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import SendPage from '@/components/SendPage'
-import GetPage from '@/components/GetPage'
+import Vue from "vue";
+import Router from "vue-router";
+import RedBagPage from "@/components/RedBag/RedBagPage";
+import InformationPage from "@/components/InformationPage";
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
   routes: [
     {
-      path: '/',
-      name: 'SendPage',
-      component: SendPage
+      path: "/",
+      component: RedBagPage
     },
     {
-    	path:'/get',
-    	name:'GetPage',
-    	component:GetPage
+      path: "/RedBagPage",
+      component: RedBagPage
+    },
+    {
+      path: "/InformationPage",
+      component: InformationPage
     }
   ]
-})
+});

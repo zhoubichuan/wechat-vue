@@ -1,8 +1,6 @@
 <template>
-   <div class="app">
-   <Head></Head>
    <section class="main">
-    <div></div>
+    <div>{{tips}}</div>
     <ul class="message">
      <Money :m="money" @update:m="val=>money=val"></Money>
      <People :p="people" @update:p="val=>people=val"></People>
@@ -13,16 +11,11 @@
      <a href="#" @click="getPage">塞钱进红包</a>
     </div>
    </section>
-   <footer class="footer">
-    <p>未领取的红包，将于24小时后发起退款</p>
-   </footer>
-  </div>
 </template>
 
 <script type="text/javascript">
-import Head from "@/components/send-page/Head";
-import Money from "@/components/send-page/Money";
-import People from "@/components/send-page/People";
+import Money from "@/components/RedBag/Money";
+import People from "@/components/RedBag/People";
 import Router from "vue-router";
 export default {
   data() {
@@ -31,8 +24,12 @@ export default {
       people: "0"
     };
   },
+  computed: {
+    tips() {
+      return this.money > 20000 ? "单次支付总额不可超过20000元" : "";
+    }
+  },
   components: {
-    Head,
     Money,
     People
   },
@@ -56,7 +53,7 @@ export default {
 </script>
 
 <style type="text/css">
-.app {
+#app {
   height: 100vh;
   width: calc(100% - 30px);
   padding: 0 15px;

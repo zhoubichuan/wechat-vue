@@ -14,10 +14,11 @@
 
 <script type="text/javascript">
 export default {
+  //父传子
   props: ["p"],
   data() {
     return {
-      people: this.$props.p,
+      people: "",
       peopleNum: "8"
     };
   },
@@ -26,15 +27,6 @@ export default {
       this.$emit("update:p", this.people);
     }
   },
-  // watch: {
-  //   people(val) {
-  //     if (Number(this.people) <= Number(this.peopleNum)) {
-  //       this.people = val;
-  //     } else {
-  //       alert("超过限定人数");
-  //     }
-  //   }
-  // },
   computed: {
     tips() {
       if (Number(this.people) <= Number(this.peopleNum)) {
