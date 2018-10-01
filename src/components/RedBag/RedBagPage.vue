@@ -1,5 +1,10 @@
 <template>
    <section class="main">
+     <header class="top">
+        <span class="cancle" @click="parent" >取消</span>
+        <h1 class="title">发红包</h1>
+        <span class="more">...</span>
+    </header>
     <div>{{tips}}</div>
     <ul class="message">
      <Money :m="money" @update:m="val=>money=val"></Money>
@@ -47,6 +52,9 @@ export default {
         this.$router.bag = bag;
         location.href = "#/get";
       }
+    },
+    parent() {
+      this.$emit("update:r", false);
     }
   }
 };
@@ -54,27 +62,31 @@ export default {
 
 <style type="text/css">
 #app {
-  height: 100vh;
-  width: calc(100% - 30px);
-  padding: 0 15px;
   background-color: rgb(245, 242, 237);
 }
-.header {
+.top {
   padding-top: 20px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   height: 40px;
 }
-.header .cancel {
+.top .cancel {
 }
-.header .title {
+.top .title {
   font-size: 18px;
 }
-.header .more {
+.top .more {
 }
 .main {
-  height: calc(100vh - 90px);
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  z-index: 1000;
+  background-color: #f5f2ed;
+  overflow: hidden;
+  padding: 0 15px;
+  box-sizing: border-box;
 }
 .main .message {
 }
@@ -150,11 +162,5 @@ export default {
   width: 200px;
   background-color: red;
   color: white;
-}
-
-.footer {
-  height: 30px;
-  text-align: center;
-  color: gray;
 }
 </style>

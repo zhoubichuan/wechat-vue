@@ -9,7 +9,7 @@
       <div class="tips">
        <span>本群共{{peopleNum}}人</span>
       </div>
-      </li>
+    </li>
 </template>
 
 <script type="text/javascript">

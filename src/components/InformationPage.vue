@@ -7,7 +7,7 @@
         <div class="content">
           <p class="name">{{val.name}}</p>
           <p v-show="!val.redBag">{{val.message}}</p>
-          <div v-show="val.redBag" class="red-bag" @click="openRedBag">
+          <div v-show="val.redBag" class="red-bag" @click="isShow = true,message=val">
             <div class="bag">
             <span class="ico"></span>
             <div class="text">
@@ -20,13 +20,13 @@
         </div>
       </li>
     </ul>
-    <PopFloor @bridgeShowPop="functionShowPop" :showPopBridge="showPop" :bagBridge="bag"></PopFloor>
+    <modal :show="isShow" @close="fn" :message="message"></modal>
    </div>
   </div>
 </template>
 
 <script type="text/javascript">
-import PopFloor from "@/components/get-page/PopFloor";
+import modal from "@/components/get-page/modal";
 export default {
   name: "GetPage",
   data() {
@@ -34,42 +34,63 @@ export default {
       information: [
         {
           pho: "http://www.cdhdky.com/images/ttt.jpg",
-          name: "王大锤",
+          name: "唐僧",
+          message: "打雷了，下雨了，该收衣服了。",
+          redBag: ""
+        },
+        {
+          pho: "http://www.cdhdky.com/images/ttt.jpg",
+          name: "孙悟空",
+          message: "嘿嘿我来了",
+          redBag: "20"
+        },
+        {
+          pho: "http://www.cdhdky.com/images/ttt.jpg",
+          name: "猪八戒",
           message: "嘿嘿我来了",
           redBag: ""
         },
         {
           pho: "http://www.cdhdky.com/images/ttt.jpg",
-          name: "王大锤",
+          name: "沙和尚",
+          message: "大师兄师傅父被妖怪抓走了",
+          redBag: "20"
+        },
+        {
+          pho: "http://www.cdhdky.com/images/ttt.jpg",
+          name: "唐僧",
+          message: "打雷了，下雨了，该收衣服了。",
+          redBag: ""
+        },
+        {
+          pho: "http://www.cdhdky.com/images/ttt.jpg",
+          name: "孙悟空",
+          message: "嘿嘿我来了",
+          redBag: "20"
+        },
+        {
+          pho: "http://www.cdhdky.com/images/ttt.jpg",
+          name: "猪八戒",
           message: "嘿嘿我来了",
           redBag: ""
         },
         {
           pho: "http://www.cdhdky.com/images/ttt.jpg",
-          name: "王大锤",
-          message: "嘿嘿我来了",
-          redBag: ""
-        },
-        {
-          pho: "http://www.cdhdky.com/images/ttt.jpg",
-          name: "王大锤",
-          message: "嘿嘿我来了",
+          name: "沙和尚",
+          message: "大师兄师傅父被妖怪抓走了",
           redBag: "20"
         }
       ],
-      bag: this.$router.bag,
-      showPop: false
+      message: "",
+      isShow: false
     };
   },
   components: {
-    PopFloor
+    modal
   },
   methods: {
-    openRedBag() {
-      this.showPop = true;
-    },
-    functionShowPop(val) {
-      this.showPop = val;
+    fn() {
+      this.isShow = false;
     }
   }
 };
@@ -78,19 +99,8 @@ export default {
 <style type="text/css">
 .get {
   background-color: aliceblue;
-  height: 100vh;
-}
-.header {
-  padding: 0 15px;
-}
-.header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.header span,
-.header h1 {
-  padding: 10px 0;
+  min-height: 100vh;
+  padding-bottom: 50px;
 }
 .information {
   width: calc(100% - 30px);
@@ -149,13 +159,7 @@ export default {
 }
 
 /* 弹出层 */
-.pop-floor {
-  display: none;
-}
-.pop-floor.show {
-  display: block;
-}
-.pop-floor .mask {
+#modal .mask {
   height: 100vh;
   width: 100%;
   background-color: black;
@@ -163,7 +167,7 @@ export default {
   position: absolute;
   top: 0;
 }
-.pop-floor .get-bag {
+#modal .get-bag {
   width: 80%;
   background-color: red;
   z-index: 100;
@@ -173,37 +177,37 @@ export default {
   top: 50%;
   transform: translate(-50%, -50%);
 }
-.pop-floor .get-bag .delete {
+#modal .get-bag .delete {
   margin-left: 10px;
   margin-top: 10px;
   font-size: 20px;
 }
-.pop-floor .get-bag .person-information {
+#modal .get-bag .person-information {
   margin: 0 auto;
   text-align: center;
 }
-.pop-floor .get-bag .person-information .photo {
+#modal .get-bag .person-information .photo {
   height: 30px;
   width: 30px;
   background-color: blue;
   display: block;
   margin: 0 auto;
 }
-.pop-floor .get-bag .detail-information {
+#modal .get-bag .detail-information {
   width: calc(100% - 30px);
   margin: 0 auto;
 }
-.pop-floor .get-bag .detail-information ul {
+#modal .get-bag .detail-information ul {
   margin-top: 10px;
   max-height: 95px;
   overflow-y: scroll;
 }
-.pop-floor .get-bag .detail-information ul li {
+#modal .get-bag .detail-information ul li {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
-.pop-floor .get-bag .detail-information .tips {
+#modal .get-bag .detail-information .tips {
   margin: 20px 0;
 }
 </style>
