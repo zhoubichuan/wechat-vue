@@ -1,22 +1,22 @@
 <template>
-  <div id="app">
-    <redBag v-show="redBagShow" @update:r="val=>redBagShow=val"/>
-    <header class="header">
+  <div id="app" :class="stopScroll ? 'stop-scroll':''" >
+    <redBagSend v-show="redBagShow" @update:r="val=>redBagShow=val" @update:s="val=>stopScroll=val"/>
+    <header class="nav-header">
         <span class="cancle" >&lt;微信(5)</span>
         <h1 class="title">五包辣条(5)</h1>
         <span class="more">...</span>
     </header>
-    <router-view/>
+    <router-view @update:s="val=>stopScroll=val"/>
     <footer class="footer">
         <div class="send">
             <i class="voiceInformation"></i>
-            <input type="text">
+            <input type="text" @keyup.13="sendMessage" v-model="sendDate">
             <i class="emjoy"></i>
             <i class="moreBtn" @click="isShow=!isShow"></i>
         </div>
         <div class="function" v-show="isShow">
           <ul>
-            <li v-for="(val,index) in moreFunction" :key="index" @click="redBagShow=(val.com == 5 ? true:false),isShow=false">
+            <li  v-for="(val,index) in moreFunction" :key="index" @click="redBagShow=(val.com == 5 ? true:false),isShow=false,stopScroll=true">
               <img :src="val.img" alt="val.title">
               <span>{{val.title}}</span>
             </li>
@@ -28,13 +28,16 @@
 </template>
 
 <script>
-import redBag from "@/components/RedBag/RedBagPage";
+import redBagSend from "@/components/red-bag/redBagSend";
+import Bus from "@/common/Bus.js";
 export default {
   name: "App",
   data() {
     return {
+      sendDate: "",
       isShow: false,
       redBagShow: false,
+      stopScroll: false,
       moreFunction: [
         {
           img: "http://www.cdhdky.com/images/ttt.jpg",
@@ -79,20 +82,33 @@ export default {
       ]
     };
   },
+  created() {
+    Bus.$on("scroll", val => {
+      this.stopScroll = val;
+    });
+  },
   components: {
-    redBag
+    redBagSend
   },
   methods: {
     fn(val) {
       if (val == 5) {
       }
+    },
+    sendMessage() {
+      Bus.$emit("sendMessage", this.sendDate);
+      this.sendDate = "";
     }
   }
 };
 </script>
 
 <style>
-.header {
+.stop-scroll {
+  max-height: 100vh;
+  overflow: hidden;
+}
+.nav-header {
   position: fixed;
   width: 100%;
   color: white;

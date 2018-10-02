@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Router from "vue-router";
-import InformationPage from "@/components/InformationPage";
+import message from "@/components/message-list/message";
 
 Vue.use(Router);
 
@@ -8,11 +8,11 @@ export default new Router({
   routes: [
     {
       path: "/",
-      component: InformationPage
+      component: message
     },
     {
-      path: "/InformationPage",
-      component: InformationPage
+      path: "/message",
+      component: message
     }
   ]
 });

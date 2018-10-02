@@ -38,3 +38,20 @@ export default {
   }
 };
 </script>
+
+<style>
+.people {
+  margin-top: 20px;
+}
+.people .sum {
+  height: 40px;
+  line-height: 40px;
+  background-color: white;
+  border-radius: 5px;
+}
+.people .sum input {
+  border: none;
+  width: calc(100% - 70px);
+  text-align: right;
+}
+</style>

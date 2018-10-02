@@ -2,12 +2,12 @@
 	<div class="get">
    <div>
     <ul class="information" >
-     <li v-for="(val,index) in information" :key="index">
+     <li :class="val.self ? 'right':''" v-for="(val,index) in information" :key="index">
         <img class="photo" :src="val.pho"/>
         <div class="content">
           <p class="name">{{val.name}}</p>
           <p v-show="!val.redBag">{{val.message}}</p>
-          <div v-show="val.redBag" class="red-bag" @click="isShow = true,message=val">
+          <div v-show="val.redBag" class="red-bag" @click="stopScroll(val)">
             <div class="bag">
             <span class="ico"></span>
             <div class="text">
@@ -20,15 +20,15 @@
         </div>
       </li>
     </ul>
-    <modal :show="isShow" @close="fn" :message="message"></modal>
+    <RedBagGet :show="isShow" @close="fn" :message="message"></RedBagGet>
    </div>
   </div>
 </template>
 
 <script type="text/javascript">
-import modal from "@/components/get-page/modal";
+import RedBagGet from "@/components/red-bag/RedBagGet";
+import Bus from "@/common/Bus.js";
 export default {
-  name: "GetPage",
   data() {
     return {
       information: [
@@ -36,61 +36,127 @@ export default {
           pho: "http://www.cdhdky.com/images/ttt.jpg",
           name: "唐僧",
           message: "打雷了，下雨了，该收衣服了。",
-          redBag: ""
+          redBag: "",
+          self: false
         },
         {
           pho: "http://www.cdhdky.com/images/ttt.jpg",
           name: "孙悟空",
           message: "嘿嘿我来了",
-          redBag: "20"
+          money: "0.75",
+          redBag: [
+            { name: "小明", money: "1", total: "30" },
+            { name: "小k", money: "2", total: "30" },
+            { name: "小红", money: "4", total: "30" },
+            { name: "小红", money: "4", total: "30" },
+            { name: "小红", money: "4", total: "30" }
+          ],
+          self: false
         },
         {
           pho: "http://www.cdhdky.com/images/ttt.jpg",
           name: "猪八戒",
           message: "嘿嘿我来了",
-          redBag: ""
+          redBag: "",
+          self: false
         },
         {
           pho: "http://www.cdhdky.com/images/ttt.jpg",
           name: "沙和尚",
           message: "大师兄师傅父被妖怪抓走了",
-          redBag: "20"
+          money: "0.75",
+          redBag: [
+            { name: "小明", money: "1", total: "30" },
+            { name: "小k", money: "2", total: "30" },
+            { name: "小红", money: "4", total: "30" },
+            { name: "小红", money: "4", total: "30" },
+            { name: "小红", money: "4", total: "30" }
+          ],
+          self: false
         },
         {
           pho: "http://www.cdhdky.com/images/ttt.jpg",
           name: "唐僧",
           message: "打雷了，下雨了，该收衣服了。",
-          redBag: ""
+          redBag: "",
+          self: false
         },
         {
           pho: "http://www.cdhdky.com/images/ttt.jpg",
           name: "孙悟空",
           message: "嘿嘿我来了",
-          redBag: "20"
+          money: "0.75",
+          redBag: [
+            { name: "小明", money: "1", total: "30" },
+            { name: "小k", money: "2", total: "30" },
+            { name: "小红", money: "4", total: "30" },
+            { name: "小红", money: "4", total: "30" },
+            { name: "小红", money: "4", total: "30" }
+          ],
+          self: false
         },
         {
           pho: "http://www.cdhdky.com/images/ttt.jpg",
           name: "猪八戒",
           message: "嘿嘿我来了",
-          redBag: ""
+          redBag: "",
+          self: false
         },
         {
           pho: "http://www.cdhdky.com/images/ttt.jpg",
           name: "沙和尚",
           message: "大师兄师傅父被妖怪抓走了",
-          redBag: "20"
+          money: "0.75",
+          redBag: [
+            { name: "小明", money: "1", total: "30" },
+            { name: "小k", money: "2", total: "30" },
+            { name: "小红", money: "4", total: "30" },
+            { name: "小红", money: "4", total: "30" },
+            { name: "小红", money: "4", total: "30" }
+          ],
+          self: false
         }
       ],
       message: "",
-      isShow: false
+      isShow: false,
+      redBagDate: ""
     };
   },
+
   components: {
-    modal
+    RedBagGet
+  },
+  created() {
+    Bus.$on("hide", val => {
+      this.isShow = !val;
+    });
+    Bus.$on("redBagDate", val => {
+      this.information.push({
+        pho: "http://www.cdhdky.com/images/ttt.jpg",
+        name: "我自己",
+        message: "",
+        redBag: val,
+        self: true
+      });
+    });
+    Bus.$on("sendMessage", val => {
+      this.information.push({
+        pho: "http://www.cdhdky.com/images/ttt.jpg",
+        name: "我自己",
+        message: val,
+        redBag: "",
+        self: true
+      });
+    });
   },
   methods: {
     fn() {
       this.isShow = false;
+    },
+    stopScroll(val) {
+      this.isShow = true;
+      this.message = val;
+      Bus.$emit("scroll", true);
     }
   }
 };
@@ -111,6 +177,10 @@ export default {
   flex-direction: row;
   justify-content: start;
 }
+.information li.right {
+  display: flex;
+  flex-direction: row-reverse;
+}
 .information li:nth-child(n + 2) {
   margin-top: 10px;
 }
@@ -120,12 +190,17 @@ export default {
   background-color: blue;
   display: block;
 }
-.information li .content {
+.information li.right .content {
+  margin-right: 10px;
 }
 .information li .content .name {
   display: inline;
   font-size: 12px;
   color: gray;
+}
+.information li.right .content .name {
+  display: block;
+  text-align: right;
 }
 .content {
   margin-left: 10px;
@@ -166,6 +241,7 @@ export default {
   opacity: 0.8;
   position: absolute;
   top: 0;
+  z-index: 100;
 }
 #modal .get-bag {
   width: 80%;
@@ -196,18 +272,5 @@ export default {
 #modal .get-bag .detail-information {
   width: calc(100% - 30px);
   margin: 0 auto;
-}
-#modal .get-bag .detail-information ul {
-  margin-top: 10px;
-  max-height: 95px;
-  overflow-y: scroll;
-}
-#modal .get-bag .detail-information ul li {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-#modal .get-bag .detail-information .tips {
-  margin: 20px 0;
 }
 </style>

@@ -19,8 +19,9 @@
 </template>
 
 <script type="text/javascript">
-import Money from "@/components/RedBag/Money";
-import People from "@/components/RedBag/People";
+import Money from "@/components/red-bag/Money";
+import People from "@/components/red-bag/People";
+import Bus from "@/common/Bus.js";
 import Router from "vue-router";
 export default {
   data() {
@@ -49,18 +50,19 @@ export default {
             money: avg
           });
         }
-        this.$router.bag = bag;
-        location.href = "#/get";
+        Bus.$emit("redBagDate", bag);
+        this.parent();
       }
     },
     parent() {
       this.$emit("update:r", false);
+      this.$emit("update:s", false);
     }
   }
 };
 </script>
 
-<style type="text/css">
+<style type="text/css" scoped>
 #app {
   background-color: rgb(245, 242, 237);
 }
@@ -90,46 +92,8 @@ export default {
 }
 .main .message {
 }
-.main .message .money {
-  background-color: rgb(245, 242, 237);
-}
-.main .message .money .sum {
-  height: 40px;
-  line-height: 40px;
-  background-color: white;
-  border-radius: 5px;
-}
-.main .message .money .sum i {
-  width: 20px;
-  height: 20px;
-  background-color: #c7c768;
-  color: white;
-}
-.main .message .money .sum input {
-  border: none;
-  width: calc(100% - 75px);
-  text-align: right;
-}
-.main .message .money .tips {
-  margin-top: 5px;
-}
-.main .message .money .tips a {
-  color: blue;
-}
-.main .message .people {
-  margin-top: 20px;
-}
-.main .message .people .sum {
-  height: 40px;
-  line-height: 40px;
-  background-color: white;
-  border-radius: 5px;
-}
-.main .message .people .sum input {
-  border: none;
-  width: calc(100% - 70px);
-  text-align: right;
-}
+
+
 .main .message li.tips {
   height: 40px;
   background-color: white;
