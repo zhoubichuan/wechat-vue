@@ -20,7 +20,9 @@
         </div>
       </li>
     </ul>
-    <RedBagGet :show="isShow" @close="fn" :message="message"></RedBagGet>
+    <RedBagGet :show="isShow" @close="fn" :message="message">
+      <p slot="r-money" class="r-money" v-if="message.money">{{message.money}}</p>
+    </RedBagGet>
    </div>
   </div>
 </template>
@@ -43,7 +45,7 @@ export default {
           pho: "http://www.cdhdky.com/images/ttt.jpg",
           name: "孙悟空",
           message: "嘿嘿我来了",
-          money: "0.75",
+          money: "",
           redBag: [
             { name: "小明", money: "1", total: "30" },
             { name: "小k", money: "2", total: "30" },
@@ -245,13 +247,14 @@ export default {
 }
 #modal .get-bag {
   width: 80%;
-  background-color: red;
+  background-color: #d8593f;
   z-index: 100;
   position: absolute;
   border-radius: 10px;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  height: calc(100vh - 180px);
 }
 #modal .get-bag .delete {
   margin-left: 10px;

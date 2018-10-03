@@ -5,7 +5,7 @@
           <h1 class="title">微信红包</h1>
           <span class="more">红包记录</span>
        </header>
-       <section >
+       <section class="d-main">
          <div class="top">
           <img class="photo" :src="message.pho"/>
           <p>{{message.name}}</p>
@@ -74,7 +74,7 @@ export default {
 }
 #modal .detail .top img {
   width: 40px;
-  padding-top: 100px;
+  padding-top: 50px;
   margin: 0 auto;
   display: block;
 }
@@ -92,6 +92,16 @@ export default {
 }
 #modal .detail .tips {
   margin: 20px 0;
+}
+.d-main {
+  padding: 0 15px;
+  height: 100%;
+}
+.d-main ul {
+  background-color: white;
+}
+.d-main .top p {
+  text-align: center;
 }
 </style>
 

@@ -11,11 +11,11 @@
           <p>给你发一个红包</p>
         </header>
         <section class="detail-information">
-          <slot >
-            <p>{{message.money}}元</p>
+          <slot name="r-money">
+            <p class="r-money">该红包已超过24小时。如已领取，可在“我的红包”中查看</p>
           </slot>
           <slot>
-            <p name="tips" class="tips" @click="detail=true">查看领取详情></p>
+            <p name="tips" class="r-tips" @click="detail=true">查看领取详情></p>
           </slot>
         </section>
         </div>
@@ -53,3 +53,11 @@ export default {
   }
 };
 </script>
+<style>
+.detail-information .r-money {
+  text-align: center;
+}
+.detail-information .r-tips {
+  text-align: center;
+}
+</style>
