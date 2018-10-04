@@ -5,11 +5,13 @@
         <h1 class="title">发红包</h1>
         <span class="more">...</span>
     </header>
-    <div>{{tips}}</div>
+    <div>{{moneyTips}}</div>
     <ul class="message">
      <Money :m="money" @update:m="val=>money=val"></Money>
      <People :p="people" @update:p="val=>people=val"></People>
-     <li class="tips"><input type="text" placeholder="恭喜发财，大吉大利" value="" /></li>
+     <li class="tips">
+       <input type="text" placeholder="恭喜发财，大吉大利" v-model="tips"/>
+     </li>
     </ul>
     <div class="submit">
      <p>￥{{money || "0"}}.00</p>
@@ -27,11 +29,13 @@ export default {
   data() {
     return {
       money: "0",
-      people: "0"
+      people: "0",
+      tips: "",
+      type: ""
     };
   },
   computed: {
-    tips() {
+    moneyTips() {
       return this.money > 20000 ? "单次支付总额不可超过20000元" : "";
     }
   },
@@ -47,9 +51,15 @@ export default {
         for (let i = 0; i < +this.people; i++) {
           bag.push({
             name: "123",
-            money: avg
+            money: avg,
+            rest: ""
           });
         }
+        bag = {
+          bag,
+          tips: this.tips.length ? this.tips : "恭喜发财，大吉大利",
+          type: type
+        };
         Bus.$emit("redBagDate", bag);
         this.parent();
       }
@@ -92,7 +102,6 @@ export default {
 }
 .main .message {
 }
-
 
 .main .message li.tips {
   height: 40px;

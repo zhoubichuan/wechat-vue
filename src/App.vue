@@ -17,7 +17,7 @@
         <div class="function" v-show="isShow">
           <ul>
             <li  v-for="(val,index) in moreFunction" :key="index" @click="redBagShow=(val.com == 5 ? true:false),isShow=false,stopScroll=true">
-              <img :src="val.img" alt="val.title">
+              <i :class="'ico'+val.com"></i>
               <span>{{val.title}}</span>
             </li>
           </ul>
@@ -40,42 +40,34 @@ export default {
       stopScroll: false,
       moreFunction: [
         {
-          img: "http://www.cdhdky.com/images/ttt.jpg",
           title: "照片",
           com: "1"
         },
         {
-          img: "http://www.cdhdky.com/images/ttt.jpg",
           title: "拍摄",
           com: "2"
         },
         {
-          img: "http://www.cdhdky.com/images/ttt.jpg",
           title: "语音通话",
           com: "3"
         },
         {
-          img: "http://www.cdhdky.com/images/ttt.jpg",
           title: "位置",
           com: "4"
         },
         {
-          img: "http://www.cdhdky.com/images/ttt.jpg",
           title: "红包",
           com: "5"
         },
         {
-          img: "http://www.cdhdky.com/images/ttt.jpg",
           title: "语音输入",
           com: "6"
         },
         {
-          img: "http://www.cdhdky.com/images/ttt.jpg",
           title: "收藏",
           com: "7"
         },
         {
-          img: "http://www.cdhdky.com/images/ttt.jpg",
           title: "个人名片",
           com: "8"
         }
@@ -123,34 +115,43 @@ export default {
 .footer {
   position: fixed;
   width: 100%;
-  background-color: white;
+  background-color: #e9e9e9;
   bottom: 0;
 }
 .footer .send {
   width: 100%;
   display: flex;
   flex-direction: row;
-  height: 30px;
-  justify-content: space-around;
+  height: 40px;
   align-items: center;
+  padding: 0 15px;
+  box-sizing: border-box;
+  border-bottom: 1px solid gainsboro;
 }
 .footer .send .voiceInformation {
-  width: 20px;
-  height: 20px;
-  background-color: red;
+  width: 24px;
+  height: 24px;
+  background: url(../static/ico.png) -7px -8px;
 }
 .footer .send input {
+  width: calc(100% - 102px);
+  margin-left: 10px;
+  height: 20px;
+  border: 1px solid #f1f1f1;
+  border-radius: 5px;
 }
 .footer .send .emjoy {
-  width: 20px;
-  height: 20px;
-  background-color: rebeccapurple;
+  width: 24px;
+  height: 24px;
+  background: url(../static/ico.png) -263px -8px;
+  margin-left: 10px;
 }
 
 .footer .send .moreBtn {
-  width: 20px;
-  height: 20px;
-  background-color: rgb(51, 153, 122);
+  width: 24px;
+  height: 24px;
+  background: url(../static/ico.png) -290px -8px;
+  margin-left: 10px;
 }
 .footer .function {
 }
@@ -162,12 +163,39 @@ export default {
 .footer .function ul li {
   width: 25%;
 }
-.footer .function ul li img {
-  width: 40px;
+.footer .function ul li i {
+  width: 56px;
+  height: 56px;
   margin: 0 auto;
   display: block;
-  padding-top: 10px;
+  margin-top: 10px;
+  background: url(/static/img/ico.366aed5.png) -32px -64px;
 }
+.footer .function ul li i.ico1 {
+  background-position-x: -32px;
+}
+.footer .function ul li i.ico2 {
+  background-position-x: -118px;
+}
+.footer .function ul li i.ico3 {
+  background-position-x: -203px;
+}
+.footer .function ul li i.ico4 {
+  background-position-x: -288px;
+}
+.footer .function ul li i.ico5 {
+  background-position: -32px -156px;
+}
+.footer .function ul li i.ico6 {
+  background-position: -118px -156px;
+}
+.footer .function ul li i.ico7 {
+  background-position: -203px -156px;
+}
+.footer .function ul li i.ico8 {
+  background-position: -288px -156px;
+}
+
 .footer .function ul li span {
   display: block;
   text-align: center;

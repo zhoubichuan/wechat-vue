@@ -56,6 +56,9 @@ export default {
 <style>
 .detail-information .r-money {
   text-align: center;
+  font-size: 14px;
+  padding: 20px 0;
+  line-height: 20px;
 }
 .detail-information .r-tips {
   text-align: center;

@@ -11,8 +11,12 @@
             <div class="bag">
             <span class="ico"></span>
             <div class="text">
-              <p>恭喜发财，大吉大利</p>
-              <p>领取红包</p>
+              <p>{{val.redBag.tips}}</p>
+              <p>{{Number(
+          (val.redBag.sendTime- new Date().getTime()) / 100 / 60 / 60
+        ) -
+          24 >
+        0 ? "红包已过期":"查看红包"}}</p>
             </div>
             </div>
             <p class="instruction">微信红包</p>
@@ -46,13 +50,18 @@ export default {
           name: "孙悟空",
           message: "嘿嘿我来了",
           money: "",
-          redBag: [
-            { name: "小明", money: "1", total: "30" },
-            { name: "小k", money: "2", total: "30" },
-            { name: "小红", money: "4", total: "30" },
-            { name: "小红", money: "4", total: "30" },
-            { name: "小红", money: "4", total: "30" }
-          ],
+          redBag: {
+            tips: "恭喜发财1",
+            total: "30",
+            sendTime: "1508614531210",
+            redBag: [
+              { name: "小明", money: "1", rest: "30" },
+              { name: "小k", money: "2", rest: "30" },
+              { name: "小红", money: "4", rest: "30" },
+              { name: "小红", money: "4", rest: "30" },
+              { name: "小红", money: "4", rest: "30" }
+            ]
+          },
           self: false
         },
         {
@@ -67,13 +76,18 @@ export default {
           name: "沙和尚",
           message: "大师兄师傅父被妖怪抓走了",
           money: "0.75",
-          redBag: [
-            { name: "小明", money: "1", total: "30" },
-            { name: "小k", money: "2", total: "30" },
-            { name: "小红", money: "4", total: "30" },
-            { name: "小红", money: "4", total: "30" },
-            { name: "小红", money: "4", total: "30" }
-          ],
+          redBag: {
+            tips: "恭喜发财",
+            total: "30",
+            sendTime: "1538614531210",
+            redBag: [
+              { name: "小明", money: "1", rest: "30" },
+              { name: "小k", money: "2", rest: "30" },
+              { name: "小红", money: "4", rest: "30" },
+              { name: "小红", money: "4", rest: "30" },
+              { name: "小红", money: "4", rest: "30" }
+            ]
+          },
           self: false
         },
         {
@@ -88,13 +102,18 @@ export default {
           name: "孙悟空",
           message: "嘿嘿我来了",
           money: "0.75",
-          redBag: [
-            { name: "小明", money: "1", total: "30" },
-            { name: "小k", money: "2", total: "30" },
-            { name: "小红", money: "4", total: "30" },
-            { name: "小红", money: "4", total: "30" },
-            { name: "小红", money: "4", total: "30" }
-          ],
+          redBag: {
+            tips: "恭喜发财，大吉大利",
+            total: "30",
+            sendTime: "1538614531210",
+            redBag: [
+              { name: "小明", money: "1", rest: "30" },
+              { name: "小k", money: "2", rest: "30" },
+              { name: "小红", money: "4", rest: "30" },
+              { name: "小红", money: "4", rest: "30" },
+              { name: "小红", money: "4", rest: "30" }
+            ]
+          },
           self: false
         },
         {
@@ -109,25 +128,32 @@ export default {
           name: "沙和尚",
           message: "大师兄师傅父被妖怪抓走了",
           money: "0.75",
-          redBag: [
-            { name: "小明", money: "1", total: "30" },
-            { name: "小k", money: "2", total: "30" },
-            { name: "小红", money: "4", total: "30" },
-            { name: "小红", money: "4", total: "30" },
-            { name: "小红", money: "4", total: "30" }
-          ],
+          redBag: {
+            tips: "大吉大利",
+            total: "30",
+            sendTime: "1538614531210",
+            redBag: [
+              { name: "小明", money: "1", rest: "30" },
+              { name: "小k", money: "2", rest: "30" },
+              { name: "小红", money: "4", rest: "30" },
+              { name: "小红", money: "4", rest: "30" },
+              { name: "小红", money: "4", rest: "30" }
+            ]
+          },
           self: false
         }
       ],
       message: "",
       isShow: false,
-      redBagDate: ""
+      redBagDate: "",
+      redBagTipsMessageDate: ""
     };
   },
 
   components: {
     RedBagGet
   },
+
   created() {
     Bus.$on("hide", val => {
       this.isShow = !val;
@@ -214,7 +240,7 @@ export default {
   display: inline;
 }
 .red-bag .bag {
-  background-color: yellow;
+  background-color: #f4c795;
   border-radius: 5px 5px 0 0;
   display: flex;
   flex-direction: row;
@@ -233,6 +259,9 @@ export default {
 }
 .red-bag .bag .text {
   display: inline;
+}
+.red-bag .bag .text p {
+  color: white;
 }
 
 /* 弹出层 */

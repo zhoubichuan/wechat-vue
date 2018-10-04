@@ -12,6 +12,7 @@
           <p>给你发一个红包</p>
         </div>
         <slot >
+          <p>{{message.redBag.length}}个红包</p>
           <ul>
             <li v-for="(item,index) in message.redBag" :key="index">
               <span>姓名：{{item.name}}</span>
@@ -35,6 +36,7 @@ export default {
         name: "沙和尚",
         message: "大师兄师傅父被妖怪抓走了",
         money: "0.75",
+        sendTime: new Date().getTime(),
         redBag: [
           { name: "小明", money: "1", total: "30" },
           { name: "小k", money: "2", total: "30" },
@@ -66,7 +68,7 @@ export default {
   position: fixed;
   top: 0;
   z-index: 1000;
-  background-color: red;
+  background-color: #d8593f;
   width: 100%;
   height: 100vh;
 }
@@ -98,7 +100,7 @@ export default {
   height: 100%;
 }
 .d-main ul {
-  background-color: white;
+  background-color: #f1f1f1;
 }
 .d-main .top p {
   text-align: center;
