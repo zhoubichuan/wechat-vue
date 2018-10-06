@@ -2,21 +2,23 @@
 	<div class="get">
    <div>
     <ul class="information" >
-     <li :class="val.self ? 'right':''" v-for="(val,index) in information" :key="index">
+     <li :class="val.redBag.self ? 'right':''" v-for="(val,index) in information" :key="index">
         <img class="photo" :src="val.pho"/>
         <div class="content">
           <p class="name">{{val.name}}</p>
-          <p v-show="!val.redBag">{{val.message}}</p>
-          <div v-show="val.redBag" class="red-bag" @click="stopScroll(val)">
+          <p v-show="!val.redBag.redBag">{{val.message}}</p>
+          <div v-show="val.redBag.redBag" class="red-bag" @click="stopScroll(val)">
             <div class="bag">
             <span class="ico"></span>
             <div class="text">
               <p>{{val.redBag.tips}}</p>
-              <p>{{Number(
-          (val.redBag.sendTime- new Date().getTime()) / 100 / 60 / 60
+              <p>{{Number(-
+          (val.redBag.sendTime - new Date().getTime()) / 100 / 60 / 60
         ) -
           24 >
-        0 ? "红包已过期":"查看红包"}}</p>
+          0
+          ? "红包已过期"
+          : "查看红包"}}</p>
             </div>
             </div>
             <p class="instruction">微信红包</p>
@@ -25,7 +27,7 @@
       </li>
     </ul>
     <RedBagGet :show="isShow" @close="fn" :message="message">
-      <p slot="r-money" class="r-money" v-if="message.money">{{message.money}}</p>
+      <p slot="r-money" class="r-money" v-if="message.money">{{message.redBag.receiveRedBag}}元</p>
     </RedBagGet>
    </div>
   </div>
@@ -42,15 +44,17 @@ export default {
           pho: "http://www.cdhdky.com/images/ttt.jpg",
           name: "唐僧",
           message: "打雷了，下雨了，该收衣服了。",
-          redBag: "",
-          self: false
+          redBag: {
+            self: false
+          }
         },
         {
           pho: "http://www.cdhdky.com/images/ttt.jpg",
           name: "孙悟空",
           message: "嘿嘿我来了",
-          money: "",
           redBag: {
+            receiveRedBag: "",
+            self: false,
             tips: "恭喜发财1",
             total: "30",
             sendTime: "1508614531210",
@@ -61,22 +65,21 @@ export default {
               { name: "小红", money: "4", rest: "30" },
               { name: "小红", money: "4", rest: "30" }
             ]
-          },
-          self: false
+          }
         },
         {
           pho: "http://www.cdhdky.com/images/ttt.jpg",
           name: "猪八戒",
           message: "嘿嘿我来了",
-          redBag: "",
-          self: false
+          redBag: { self: false }
         },
         {
           pho: "http://www.cdhdky.com/images/ttt.jpg",
           name: "沙和尚",
           message: "大师兄师傅父被妖怪抓走了",
-          money: "0.75",
           redBag: {
+            receiveRedBag: "1",
+            self: false,
             tips: "恭喜发财",
             total: "30",
             sendTime: "1538614531210",
@@ -87,22 +90,21 @@ export default {
               { name: "小红", money: "4", rest: "30" },
               { name: "小红", money: "4", rest: "30" }
             ]
-          },
-          self: false
+          }
         },
         {
           pho: "http://www.cdhdky.com/images/ttt.jpg",
           name: "唐僧",
           message: "打雷了，下雨了，该收衣服了。",
-          redBag: "",
-          self: false
+          redBag: { self: false }
         },
         {
           pho: "http://www.cdhdky.com/images/ttt.jpg",
           name: "孙悟空",
           message: "嘿嘿我来了",
-          money: "0.75",
           redBag: {
+            receiveRedBag: "1",
+            self: false,
             tips: "恭喜发财，大吉大利",
             total: "30",
             sendTime: "1538614531210",
@@ -113,22 +115,21 @@ export default {
               { name: "小红", money: "4", rest: "30" },
               { name: "小红", money: "4", rest: "30" }
             ]
-          },
-          self: false
+          }
         },
         {
           pho: "http://www.cdhdky.com/images/ttt.jpg",
           name: "猪八戒",
           message: "嘿嘿我来了",
-          redBag: "",
-          self: false
+          redBag: { self: false }
         },
         {
           pho: "http://www.cdhdky.com/images/ttt.jpg",
           name: "沙和尚",
           message: "大师兄师傅父被妖怪抓走了",
-          money: "0.75",
           redBag: {
+            receiveRedBag: "2",
+            self: false,
             tips: "大吉大利",
             total: "30",
             sendTime: "1538614531210",
@@ -139,8 +140,7 @@ export default {
               { name: "小红", money: "4", rest: "30" },
               { name: "小红", money: "4", rest: "30" }
             ]
-          },
-          self: false
+          }
         }
       ],
       message: "",
@@ -153,7 +153,7 @@ export default {
   components: {
     RedBagGet
   },
-
+  computed: {},
   created() {
     Bus.$on("hide", val => {
       this.isShow = !val;
@@ -161,19 +161,19 @@ export default {
     Bus.$on("redBagDate", val => {
       this.information.push({
         pho: "http://www.cdhdky.com/images/ttt.jpg",
-        name: "我自己",
+        name: "我自己1",
         message: "",
-        redBag: val,
-        self: true
+        money: "0.75",
+        redBag: val
       });
     });
     Bus.$on("sendMessage", val => {
       this.information.push({
         pho: "http://www.cdhdky.com/images/ttt.jpg",
-        name: "我自己",
+        name: "我自己2",
         message: val,
-        redBag: "",
-        self: true
+        money: "0.75",
+        redBag: { self: true }
       });
     });
   },
@@ -184,7 +184,7 @@ export default {
     stopScroll(val) {
       this.isShow = true;
       this.message = val;
-      Bus.$emit("scroll", true);
+      this.$store.state.pageStopScroll = true;
     }
   }
 };
@@ -196,6 +196,7 @@ export default {
   min-height: 100vh;
   padding-bottom: 50px;
 }
+
 .information {
   width: calc(100% - 30px);
   margin: 0 auto;

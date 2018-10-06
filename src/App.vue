@@ -1,78 +1,24 @@
 <template>
-  <div id="app" :class="stopScroll ? 'stop-scroll':''" >
-    <redBagSend v-show="redBagShow" @update:r="val=>redBagShow=val" @update:s="val=>stopScroll=val"/>
+  <div id="app" :class="this.$store.state.pageStopScroll ? 'stop-scroll':''" >
+    <redBagSend v-show="this.$store.state.pageShow" >
+    </redBagSend>
     <header class="nav-header">
         <span class="cancle" >&lt;微信(5)</span>
         <h1 class="title">五包辣条(5)</h1>
         <span class="more">...</span>
     </header>
     <router-view @update:s="val=>stopScroll=val"/>
-    <footer class="footer">
-        <div class="send">
-            <i class="voiceInformation"></i>
-            <input type="text" @keyup.13="sendMessage" v-model="sendDate">
-            <i class="emjoy"></i>
-            <i class="moreBtn" @click="isShow=!isShow"></i>
-        </div>
-        <div class="function" v-show="isShow">
-          <ul>
-            <li  v-for="(val,index) in moreFunction" :key="index" @click="redBagShow=(val.com == 5 ? true:false),isShow=false,stopScroll=true">
-              <i :class="'ico'+val.com"></i>
-              <span>{{val.title}}</span>
-            </li>
-          </ul>
-        </div>
-   </footer>
-   
+    <appliance/>
   </div>
 </template>
 
 <script>
 import redBagSend from "@/components/red-bag/redBagSend";
 import Bus from "@/common/Bus.js";
+import appliance from "@/components/appliance/appliance.vue";
 export default {
-  name: "App",
   data() {
-    return {
-      sendDate: "",
-      isShow: false,
-      redBagShow: false,
-      stopScroll: false,
-      moreFunction: [
-        {
-          title: "照片",
-          com: "1"
-        },
-        {
-          title: "拍摄",
-          com: "2"
-        },
-        {
-          title: "语音通话",
-          com: "3"
-        },
-        {
-          title: "位置",
-          com: "4"
-        },
-        {
-          title: "红包",
-          com: "5"
-        },
-        {
-          title: "语音输入",
-          com: "6"
-        },
-        {
-          title: "收藏",
-          com: "7"
-        },
-        {
-          title: "个人名片",
-          com: "8"
-        }
-      ]
-    };
+    return {};
   },
   created() {
     Bus.$on("scroll", val => {
@@ -80,18 +26,10 @@ export default {
     });
   },
   components: {
-    redBagSend
+    redBagSend,
+    appliance
   },
-  methods: {
-    fn(val) {
-      if (val == 5) {
-      }
-    },
-    sendMessage() {
-      Bus.$emit("sendMessage", this.sendDate);
-      this.sendDate = "";
-    }
-  }
+  methods: {}
 };
 </script>
 

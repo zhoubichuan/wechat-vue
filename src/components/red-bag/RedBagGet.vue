@@ -48,7 +48,7 @@ export default {
   methods: {
     close() {
       this.$emit("close");
-      Bus.$emit("scroll", false);
+      this.$store.state.pageStopScroll = false;
     }
   }
 };
