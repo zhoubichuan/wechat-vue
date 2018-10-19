@@ -12,4 +12,4 @@ new Vue({
   components: { App },
   template: "<App/>",
   store
-});
+});    

@@ -2,13 +2,11 @@
   <div id="app" :class="this.$store.state.pageStopScroll ? 'stop-scroll':''" >
     <redBagSend v-show="this.$store.state.pageShow" >
     </redBagSend>
-    <header class="nav-header">
-        <span class="cancle" >&lt;微信(5)</span>
-        <h1 class="title">五包辣条(5)</h1>
-        <span class="more">...</span>
-    </header>
-    <router-view @update:s="val=>stopScroll=val"/>
-    <appliance/>
+    <vheader/>
+    <vmain/>
+    <vfooter/>
+    
+    <!-- <appliance/> -->
   </div>
 </template>
 
@@ -16,6 +14,9 @@
 import redBagSend from "@/components/red-bag/redBagSend";
 import Bus from "@/common/Bus.js";
 import appliance from "@/components/appliance/appliance.vue";
+import vheader from "@/components/base-page/v-header.vue";
+import vfooter from "@/components/base-page/v-footer.vue";
+import vmain from "@/components/base-page/v-main.vue";
 export default {
   data() {
     return {};
@@ -27,7 +28,10 @@ export default {
   },
   components: {
     redBagSend,
-    appliance
+    appliance,
+    vheader,
+    vfooter,
+    vmain
   },
   methods: {}
 };
@@ -92,6 +96,7 @@ export default {
   margin-left: 10px;
 }
 .footer .function {
+  height: inherit;
 }
 .footer .function ul {
   display: flex;

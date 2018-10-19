@@ -8,7 +8,7 @@
         </div>
         <div class="function" v-show="this.$store.state.applianceShow">
           <ul>
-            <li  v-for="(val,index) in moreFunction" :key="index" @click="appShow(val)">
+            <li  v-for="(val,index) in application" :key="index" @click="appShow(val)">
               <i :class="'ico'+val.com"></i>
               <span>{{val.title}}</span>
             </li>
@@ -19,50 +19,23 @@
 <script>
 import redBagSend from "@/components/red-bag/redBagSend";
 import Bus from "@/common/Bus.js";
+import axios from "axios";
 export default {
   data() {
     return {
       sendDate: "",
       redBagShow: false,
-      moreFunction: [
-        {
-          title: "照片",
-          com: "1"
-        },
-        {
-          title: "拍摄",
-          com: "2"
-        },
-        {
-          title: "语音通话",
-          com: "3"
-        },
-        {
-          title: "位置",
-          com: "4"
-        },
-        {
-          title: "红包",
-          com: "5"
-        },
-        {
-          title: "语音输入",
-          com: "6"
-        },
-        {
-          title: "收藏",
-          com: "7"
-        },
-        {
-          title: "个人名片",
-          com: "8"
-        }
-      ]
+      application: []
     };
   },
   created() {
     Bus.$on("scroll", val => {
       this.stopScroll = val;
+    });
+    axios.get("http://localhost:3000/api/application").then(res => {
+      if (res.data.code == 200) {
+        this.application = res.data.data;
+      }
     });
   },
   components: {

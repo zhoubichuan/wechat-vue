@@ -53,14 +53,58 @@ export default {
   }
 };
 </script>
-<style>
-.detail-information .r-money {
-  text-align: center;
-  font-size: 14px;
-  padding: 20px 0;
-  line-height: 20px;
-}
-.detail-information .r-tips {
-  text-align: center;
+<style lang="less">
+/* 弹出层 */
+#modal {
+  .mask {
+    height: 100vh;
+    width: 100%;
+    background-color: black;
+    opacity: 0.8;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+  }
+  .get-bag {
+    width: 80%;
+    background-color: #d8593f;
+    z-index: 100;
+    position: absolute;
+    border-radius: 10px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: calc(100vh - 180px);
+    .delete {
+      margin-left: 10px;
+      margin-top: 10px;
+      font-size: 20px;
+    }
+    .person-information {
+      margin: 0 auto;
+      text-align: center;
+      .photo {
+        height: 30px;
+        width: 30px;
+        background-color: blue;
+        display: block;
+        margin: 0 auto;
+      }
+    }
+    .detail-information {
+      width: calc(100% - 30px);
+      margin: 0 auto;
+      .r-money {
+        text-align: center;
+        font-size: 14px;
+        padding: 20px 0;
+        line-height: 20px;
+      }
+      .r-tips {
+        text-align: center;
+      }
+    }
+  }
 }
 </style>
