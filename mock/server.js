@@ -83,6 +83,14 @@ http
           break;
       }
     }
+    if (pathname === "/api/information") {
+      switch (req.method) {
+        case "GET":
+          readDate("./information.json", function(information) {
+            res.end(JSON.stringify(information));
+          });
+      }
+    }
     if (pathname === "/api/message") {
       switch (req.method) {
         case "GET":
@@ -91,5 +99,15 @@ http
           });
       }
     }
+    if (pathname === "/api/record") {
+      switch (req.method) {
+        case "GET":
+          readDate("./record.json", function(record) {
+            res.end(JSON.stringify(record));
+          });
+      }
+    }
   })
-  .listen(3000);
+  .listen(3000, function() {
+    console.log("已经连接3000接口");
+  });

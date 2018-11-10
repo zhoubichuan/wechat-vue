@@ -1,22 +1,15 @@
 <template>
   <div id="app" :class="this.$store.state.pageStopScroll ? 'stop-scroll':''" >
-    <redBagSend v-show="this.$store.state.pageShow" >
-    </redBagSend>
-    <vheader/>
-    <vmain/>
+    <div class="content">
+      <router-view @update:s="val=>stopScroll=val"/>
+    </div>
     <vfooter/>
-    
-    <!-- <appliance/> -->
   </div>
 </template>
 
 <script>
-import redBagSend from "@/components/red-bag/redBagSend";
 import Bus from "@/common/Bus.js";
-import appliance from "@/components/appliance/appliance.vue";
-import vheader from "@/components/base-page/v-header.vue";
 import vfooter from "@/components/base-page/v-footer.vue";
-import vmain from "@/components/base-page/v-main.vue";
 export default {
   data() {
     return {};
@@ -27,121 +20,201 @@ export default {
     });
   },
   components: {
-    redBagSend,
-    appliance,
-    vheader,
-    vfooter,
-    vmain
+    vfooter
   },
   methods: {}
 };
 </script>
 
-<style>
+<style lang="less">
 .stop-scroll {
   max-height: 100vh;
   overflow: hidden;
 }
-.nav-header {
-  position: fixed;
-  width: 100%;
-  color: white;
-  background-color: black;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  line-height: 40px;
-  padding: 0 15px;
+.content {
+  height: 100vh;
+  padding-bottom: 40px;
   box-sizing: border-box;
+  overflow: hidden;
+  background-color: #cccccc;
 }
-.footer {
-  position: fixed;
-  width: 100%;
-  background-color: #e9e9e9;
-  bottom: 0;
+html::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
-.footer .send {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  height: 40px;
-  align-items: center;
-  padding: 0 15px;
-  box-sizing: border-box;
-  border-bottom: 1px solid gainsboro;
+body::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
-.footer .send .voiceInformation {
-  width: 24px;
-  height: 24px;
-  background: url(../static/ico.png) -7px -8px;
+body {
+  position: relative;
+  display: block;
 }
-.footer .send input {
-  width: calc(100% - 102px);
-  margin-left: 10px;
-  height: 20px;
-  border: 1px solid #f1f1f1;
-  border-radius: 5px;
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video,
+p {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
-.footer .send .emjoy {
-  width: 24px;
-  height: 24px;
-  background: url(../static/ico.png) -263px -8px;
-  margin-left: 10px;
-}
-
-.footer .send .moreBtn {
-  width: 24px;
-  height: 24px;
-  background: url(../static/ico.png) -290px -8px;
-  margin-left: 10px;
-}
-.footer .function {
-  height: inherit;
-}
-.footer .function ul {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-.footer .function ul li {
-  width: 25%;
-}
-.footer .function ul li i {
-  width: 56px;
-  height: 56px;
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+menu,
+nav,
+body {
+  font-size: 12px;
+  line-height: 1.5em;
+  font-family: "FrutigerNextLT-Regular", "Microsoft YaHei", Verdana, Arial,
+    Helvetica, sans-serif;
   margin: 0 auto;
+  color: #000;
+  overflow-x: hidden;
+}
+ol,
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: #000;
+}
+img {
+  border: 0;
+  vertical-align: middle;
+}
+em {
+  font-style: normal;
+}
+input,
+button,
+select,
+textarea {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+}
+.clear {
+  clear: both;
+  width: 0;
+  height: 0;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  font-size: 0;
+  line-height: 0;
+}
+.clearfix {
+  zoom: 1;
+}
+.clearfix:after {
+  content: ".";
   display: block;
-  margin-top: 10px;
-  background: url(/static/img/ico.366aed5.png) -32px -64px;
+  height: 0;
+  clear: both;
+  visibility: hidden;
 }
-.footer .function ul li i.ico1 {
-  background-position-x: -32px;
+input::-webkit-input-placeholder {
+  color: #999;
+  font-size: 12px;
 }
-.footer .function ul li i.ico2 {
-  background-position-x: -118px;
+input:-moz-placeholder {
+  color: #999;
+  font-size: 12px;
 }
-.footer .function ul li i.ico3 {
-  background-position-x: -203px;
+input::-moz-placeholder {
+  color: #999;
+  font-size: 12px;
 }
-.footer .function ul li i.ico4 {
-  background-position-x: -288px;
+input:-ms-input-placeholder {
+  color: #999;
+  font-size: 12px;
 }
-.footer .function ul li i.ico5 {
-  background-position: -32px -156px;
-}
-.footer .function ul li i.ico6 {
-  background-position: -118px -156px;
-}
-.footer .function ul li i.ico7 {
-  background-position: -203px -156px;
-}
-.footer .function ul li i.ico8 {
-  background-position: -288px -156px;
-}
-
-.footer .function ul li span {
-  display: block;
-  text-align: center;
-  padding-top: 10px;
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 </style>

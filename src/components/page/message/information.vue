@@ -1,43 +1,62 @@
 <template>
-	<div class="get">
-   <div>
-    <ul class="information" >
-     <li :class="val.redBag.self ? 'right':''" v-for="(val,index) in information" :key="index">
-        <img class="photo" :src="val.pho"/>
-        <div class="content">
-          <p class="name">{{val.name}}</p>
-          <p v-show="!val.redBag.redBag">{{val.message}}</p>
-          <div v-show="val.redBag.redBag" class="red-bag" @click="stopScroll(val)">
-            <div class="bag">
-            <span class="ico"></span>
-            <div class="text">
-              <p>{{val.redBag.tips}}</p>
-              <p>{{Number(-
-          (val.redBag.sendTime - new Date().getTime()) / 100 / 60 / 60
-        ) -
-          24 >
-          0
-          ? "红包已过期"
-          : "查看红包"}}</p>
-            </div>
-            </div>
-            <p class="instruction">微信红包</p>
-          </div>
-        </div>
-      </li>
-    </ul>
-    <RedBagGet :show="isShow" @close="fn" :message="message">
-      <p slot="r-money" class="r-money" v-if="message.money">{{message.redBag.receiveRedBag}}元</p>
-    </RedBagGet>
-   </div>
+
+	<div class="information-component">
+    <redBagSend v-show="this.$store.state.pageShow" ></redBagSend>
+    <vheader>
+      <p slot="cancel" @click="goBack">返回</p>
+      <p slot="title">{{title}}</p>
+      <p slot="more">设置</p>
+    </vheader>
+    
+    <div class="get">
+      <RedBagGet :show="isShow" @close="fn" :message="message">
+          <p slot="r-money" class="r-money" v-if="message.money">{{message.redBag.receiveRedBag}}元</p>
+      </RedBagGet>
+      
+      <div>
+        <ul class="information" >
+          <li :class="item.redBag.self ? 'right':''" v-for="(item,index) in information" :key="index">
+              <img class="photo" :src="item.pho"/>
+              <div class="i-content">
+                <p class="name">{{item.name}}</p>
+                <p v-show="!item.redBag.redBag">{{item.message}}</p>
+                <div v-show="item.redBag.redBag" class="red-bag" @click="stopScroll(item)">
+                  <div class="bag">
+                  <span class="ico"></span>
+                  <div class="text">
+                    <p>{{item.redBag.tips}}</p>
+                    <p>{{Number(-
+                (item.redBag.sendTime - new Date().getTime()) / 100 / 60 / 60
+              ) -
+                24 >
+                0
+                ? "红包已过期"
+                : "查看红包"}}</p>
+                  </div>
+                  </div>
+                  <p class="instruction">微信红包</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+      </div>
+    </div>
+    <appliance/>
   </div>
 </template>
 
 <script type="text/javascript">
-import RedBagGet from "@/components/red-bag/RedBagGet";
+import vheader from "@/components/base-page/v-header";
+import RedBagGet from "./appliance/red-bag/RedBagGet";
+import RedBagSend from "./appliance/red-bag/RedBagSend";
 import Bus from "@/common/Bus.js";
 import axios from "axios";
+import appliance from "./appliance/appliance.vue";
+
 export default {
+  props: {
+    title: String
+  },
   data() {
     return {
       information: [],
@@ -49,11 +68,14 @@ export default {
   },
 
   components: {
-    RedBagGet
+    vheader,
+    RedBagGet,
+    RedBagSend,
+    appliance
   },
   computed: {},
   created() {
-    axios.get("http://localhost:3000/api/message").then(res => {
+    axios.get("http://localhost:3000/api/information").then(res => {
       this.information = res.data.message;
     });
     Bus.$on("hide", val => {
@@ -79,6 +101,9 @@ export default {
     });
   },
   methods: {
+    goBack() {
+      this.$router.history.go(0);
+    },
     fn() {
       this.isShow = false;
     },
@@ -95,7 +120,7 @@ export default {
 .get {
   background-color: #cccccc;
   min-height: 100vh;
-  padding-bottom: 50px;
+  padding: 0 10px;
   .information {
     width: 100%;
     margin: 0 auto;
@@ -109,7 +134,8 @@ export default {
         background-color: blue;
         display: block;
       }
-      .content {
+      .i-content {
+        margin-left: 10px;
         .name {
           display: inline;
           font-size: 12px;
@@ -120,8 +146,7 @@ export default {
     li.right {
       display: flex;
       flex-direction: row-reverse;
-      .content {
-        margin-left: 10px;
+      .i-content {
         .name {
           display: block;
           text-align: right;

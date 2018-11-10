@@ -1,78 +1,113 @@
 <template>
-  <div class="message">
-    <information v-show="informationIsShow"/>
-    <div v-show="!informationIsShow">
-      <div class="search">
-        <input type="text" placeholder="搜索">
-      </div>
-      <div class="device">
-        <img src="" alt="">
-        <p>微信已登录</p>
-      </div>
-      <div class="notice">
-        <ul>
-          <li @click="informationIsShow=!informationIsShow">
-            <div class="left">
-              <img src="http://www.cdhdky.com/images/ttt.jpg" alt="">
-              <div>
-                <p>中国银行深圳分行</p>
-                <p>全棉时代5折沟</p>
+  <div class="message-component">
+    <vheader>
+      <p slot="title">微信（4）</p>
+      <p slot="more">+</p>
+    </vheader>
+    <div class="information">
+      <information v-show="informationIsShow" :title="titleData"/>
+      <div v-show="!informationIsShow">
+        <div class="search">
+          <input type="text" placeholder="搜索">
+        </div>
+        <div class="device">
+          <img src="http://www.cdhdky.com/images/ttt.jpg" alt="">
+          <p>微信已登录</p>
+        </div>
+        <div class="notice">
+          <ul >
+            <li @click="handleClick" v-for="(item,key) in messageData" :key="key">
+              <div class="left">
+                <img :src="item.photo" alt="">
+                <div>
+                  <p class="title">{{item.title}}</p>
+                  <p>{{item.tips}}</p>
+                </div>
               </div>
-            </div>
-            <div class="time">
-              下午5:44
-            </div>
-          </li>
-          <li>
-            <div class="left">
-              <img src="http://www.cdhdky.com/images/ttt.jpg" alt="">
-              <div>
-                <p>五包辣条</p>
-                <p>全棉时代5折沟</p>
+              <div class="time">
+                {{item.time}}
               </div>
-            </div>
-            <div class="time">
-              下午5:44
-            </div>
-          </li>
-        </ul>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import vheader from "@/components/base-page/v-header.vue";
 import information from "./information.vue";
+import axios from "axios";
 export default {
   data() {
     return {
-      informationIsShow: false
+      titleData: "",
+      informationIsShow: false,
+      messageData: ""
     };
   },
+  created() {
+    axios.get("http://localhost:3000/api/message").then(res => {
+      if (res.data.code == 200) {
+        this.messageData = res.data.message;
+      }
+    });
+  },
   components: {
-    information
+    information,
+    vheader
+  },
+  methods: {
+    handleClick(e) {
+      this.informationIsShow = !this.informationIsShow;
+      this.titleData = e.target.innerText;
+    }
   }
 };
 </script>
 
 
-<style lang="less">
-.message {
+<style scoped lang="less">
+.information {
+  padding-top: 40px;
+  overflow-y: scroll;
+
+  height: calc(100vh - 80px);
   .search {
-    width: 100%;
+    padding: 10px 5px;
+    box-sizing: border-box;
     input {
       width: 100%;
+      height: 28px;
+      border-radius: 5px;
+      outline: none;
+      border: none;
+      text-align: center;
     }
   }
   .device {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    img {
+      width: 40px;
+      height: 40px;
+    }
+    p {
+      padding-left: 10px;
+    }
   }
   .notice {
     ul {
+      background-color: white;
+      padding: 0 10px;
       li {
+        padding: 5px 0;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-
+        border-bottom: 1px solid gray;
         .left {
           display: flex;
           flex-direction: rew;
@@ -86,6 +121,9 @@ export default {
         }
         .time {
         }
+      }
+      li:last-child {
+        border: none;
       }
     }
   }

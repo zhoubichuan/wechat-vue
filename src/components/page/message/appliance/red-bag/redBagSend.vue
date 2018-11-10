@@ -1,11 +1,11 @@
 <template>
    <section class="main">
      <slot name="redBag">
-      <header class="top">
-          <span class="cancle" @click="cancelSendRedBag" >取消</span>
-          <h1 class="title">发红包</h1>
-          <span class="more">...</span>
-      </header>
+      <vheader >
+          <p slot="cancel" @click="cancelSendRedBag" >取消</p>
+          <p slot="title">发红包</p>
+          <p slot="more">...</p>
+      </vheader>
       <div class="input-tips">{{redBagNumberTips.length ? redBagNumberTips : redBagAmountTips}}</div>
       <ul class="message">
       <Money/>
@@ -23,10 +23,11 @@
 </template>
 
 <script type="text/javascript">
-import Money from "@/components/red-bag/Money";
-import People from "@/components/red-bag/People";
+import Money from "./Money";
+import People from "./People";
 import Bus from "@/common/Bus.js";
 import Router from "vue-router";
+import vheader from "@/components/base-page/v-header";
 export default {
   data() {
     return {
@@ -54,7 +55,8 @@ export default {
   },
   components: {
     Money,
-    People
+    People,
+    vheader
   },
   methods: {
     sendRedBag(e) {
@@ -118,35 +120,21 @@ export default {
 };
 </script>
 
-<style type="text/css" scoped>
+<style type="text/css" scoped lang="less">
 #app {
   background-color: rgb(245, 242, 237);
 }
-.top {
-  padding-top: 20px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  height: 40px;
-}
 
-.top .cancel {
-}
-.top .title {
-  font-size: 18px;
-}
-.top .more {
-}
 .main {
   height: 100vh;
   width: 100%;
   position: absolute;
-  z-index: 1000;
+  z-index: 10001;
   background-color: #f5f2ed;
   overflow: hidden;
   padding: 0 15px;
   box-sizing: border-box;
-  position: relative;
+  position: fixed;
 }
 .main .input-tips {
   background-color: palegoldenrod;
