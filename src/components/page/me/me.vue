@@ -79,9 +79,9 @@ export default {
 
 <style lang="less">
 .me {
-  background-color: #eeeeec;
-  padding-top: 7px;
-  height: calc(100vh - 100px);
+  background-color: #efeff4;
+  padding-top: 47px;
+  height: calc(100vh - 50px);
   overflow-y: auto;
   .information {
     background-color: #ffffff;
@@ -118,7 +118,7 @@ export default {
     li {
       padding: 5px 15px;
       background-color: #ffffff;
-      border-bottom: 1px solid #d2d3d2;
+      border-bottom: 1px solid #f2f2f2;
       a {
         display: flex;
         flex-direction: row;

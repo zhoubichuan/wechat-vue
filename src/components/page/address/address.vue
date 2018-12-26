@@ -9,23 +9,11 @@
         <div class="search">
           <input type="text"/>
         </div>
-        <div class="">
+        <div class="top">
           <ul>
-            <li>
-              <img src="" alt="">
-              <p>新的朋友</p>
-            </li>
-            <li>
-              <img src="" alt="">
-              <p>群聊</p>
-            </li>
-            <li>
-              <img src="" alt="">
-              <p>标签</p>
-            </li>
-            <li>
-              <img src="" alt="">
-              <p>公众号</p>
+            <li v-for="(item,index) in data " :key="index">
+              <img :src="item.img" alt="">
+              <p>{{item.title}}</p>
             </li>
           </ul>
         </div>
@@ -42,7 +30,16 @@
 import vheader from "@/components/base-page/v-header.vue";
 export default {
   data() {
-    return {};
+    return {
+      data: [
+        { title: "新的朋友", img: "http://www.cdhdky.com/images/ttt.jpg" },
+        { title: "群聊", img: "http://www.cdhdky.com/images/ttt.jpg" },
+        { title: "标签", img: "http://www.cdhdky.com/images/ttt.jpg" },
+        { title: "公众号", img: "http://www.cdhdky.com/images/ttt.jpg" },
+        { title: "新的朋友", img: "http://www.cdhdky.com/images/ttt.jpg" },
+        { title: "新的朋友", img: "http://www.cdhdky.com/images/ttt.jpg" }
+      ]
+    };
   },
   components: {
     vheader
@@ -50,3 +47,26 @@ export default {
 };
 </script>
 
+<style lang="less">
+.address {
+  background-color: #efeff4;
+  margin-top: 20px;
+  height: calc(100vh - 50px);
+  .top {
+    ul {
+      li {
+        padding: 5px 0;
+        img {
+          width: 40px;
+          height: 40px;
+          display: inline-block;
+        }
+        p {
+          display: inline-block;
+          margin-left: 20px;
+        }
+      }
+    }
+  }
+}
+</style>

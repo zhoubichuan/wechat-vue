@@ -70,6 +70,7 @@ export default {
 
 <style scoped lang="less">
 .information {
+  background-color: #efeff4;
   padding-top: 40px;
   overflow-y: scroll;
 
