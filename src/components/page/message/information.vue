@@ -83,7 +83,7 @@ export default {
     });
     Bus.$on("redBagDate", val => {
       this.information.push({
-        pho: "http://www.cdhdky.com/images/ttt.jpg",
+        pho: "../logo.png",
         name: "我自己1",
         message: "",
         money: "0.75",
@@ -92,7 +92,7 @@ export default {
     });
     Bus.$on("sendMessage", val => {
       this.information.push({
-        pho: "http://www.cdhdky.com/images/ttt.jpg",
+        pho: "../logo.png",
         name: "我自己2",
         message: val,
         money: "0.75",

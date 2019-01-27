@@ -28,16 +28,17 @@
 </template>
 <script>
 import vheader from "@/components/base-page/v-header.vue";
+import img from "../logo.png";
 export default {
   data() {
     return {
       data: [
-        { title: "新的朋友", img: "http://www.cdhdky.com/images/ttt.jpg" },
-        { title: "群聊", img: "http://www.cdhdky.com/images/ttt.jpg" },
-        { title: "标签", img: "http://www.cdhdky.com/images/ttt.jpg" },
-        { title: "公众号", img: "http://www.cdhdky.com/images/ttt.jpg" },
-        { title: "新的朋友", img: "http://www.cdhdky.com/images/ttt.jpg" },
-        { title: "新的朋友", img: "http://www.cdhdky.com/images/ttt.jpg" }
+        { title: "新的朋友", img },
+        { title: "群聊", img },
+        { title: "标签", img },
+        { title: "公众号", img },
+        { title: "新的朋友", img },
+        { title: "新的朋友", img }
       ]
     };
   },

@@ -1,12 +1,15 @@
 <template>
-  <div>
-    <vheader></vheader>
+  <div class="me-part">
+    <vheader>
+      <p slot="title">个人信息</p>
+      <p slot="cancel" @click="goAhead">{{"<我"}}</p>
+    </vheader>
     <div class="me-component">
       <div class="me">
         <div class="information">
-          <router-link to="Me/information">
+          <router-link to="/me/information">
             <div class="left">
-            <img src="http://www.cdhdky.com/images/ttt.jpg" alt="">
+            <img :src="ico" alt="">
             <div>
               <p>会跑的鸡腿</p>
               <p>微信号：zbc159x</p>
@@ -17,11 +20,12 @@
             <img src="" alt="">
           </div>
           </router-link>
+          
         </div>
         <div class="me-application">
           <ul>
             <li v-for="(item,index) in application" :key="index">
-              <router-link :to='"/Me/" + item.route'>
+              <router-link :to='"/me/" + item.route'>
                 <img :src="item.ico" alt="" />
                 <p>{{item.title}}</p>
               </router-link>
@@ -30,41 +34,44 @@
         </div>
       </div>
     </div>
+    <router-view></router-view>
   </div>
 </template>
 <script>
 import vheader from "@/components/base-page/v-header.vue";
+import ico from "./photo.png";
 export default {
   data() {
     return {
+      ico,
       application: [
         {
-          ico: "http://www.cdhdky.com/images/ttt.jpg",
+          ico,
           title: "钱包",
           route: "MoneyBag"
         },
         {
-          ico: "http://www.cdhdky.com/images/ttt.jpg",
+          ico,
           title: "收藏",
           route: "Collection"
         },
         {
-          ico: "http://www.cdhdky.com/images/ttt.jpg",
+          ico,
           title: "相册",
           route: "Album"
         },
         {
-          ico: "http://www.cdhdky.com/images/ttt.jpg",
+          ico,
           title: "卡包",
           route: "CardBag"
         },
         {
-          ico: "http://www.cdhdky.com/images/ttt.jpg",
+          ico,
           title: "表情",
           route: "Emoji"
         },
         {
-          ico: "http://www.cdhdky.com/images/ttt.jpg",
+          ico,
           title: "设置",
           route: "Setting"
         }
@@ -73,11 +80,19 @@ export default {
   },
   components: {
     vheader
+  },
+  methods: {
+    goAhead() {
+      history.go(-1);
+    }
   }
 };
 </script>
 
 <style lang="less">
+.me-part {
+  position: relative;
+}
 .me {
   background-color: #efeff4;
   padding-top: 47px;

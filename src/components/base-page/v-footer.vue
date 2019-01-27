@@ -2,7 +2,7 @@
   <div class="footer-component">
       <ul class="footer">
           <li>
-            <router-link to="/message">
+            <router-link to="/">
                 <span>微信</span>
             </router-link>
         </li>

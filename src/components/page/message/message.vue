@@ -11,7 +11,7 @@
           <input type="text" placeholder="搜索">
         </div>
         <div class="device">
-          <img src="http://www.cdhdky.com/images/ttt.jpg" alt="">
+          <img :src="imgData" alt="">
           <p>微信已登录</p>
         </div>
         <div class="notice">
@@ -38,10 +38,12 @@
 <script>
 import vheader from "@/components/base-page/v-header.vue";
 import information from "./information.vue";
+import img from "../logo.png";
 import axios from "axios";
 export default {
   data() {
     return {
+      imgData: img,
       titleData: "",
       informationIsShow: false,
       messageData: ""

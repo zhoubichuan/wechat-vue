@@ -22,7 +22,27 @@ export default {
   components: {
     vfooter
   },
-  methods: {}
+  methods: {},
+  mounted() {
+    // if (!!window.ActiveXObject || "ActiveXObject" in window) {
+    //   window.addEventListener(
+    //     "hashchange",
+    //     () => {
+    //       let currentPath = window.location.hash.slice(1);
+    //       if (this.$route.path !== currentPath) {
+    //         this.$router.push(currentPath);
+    //       }
+    //     },
+    //     false
+    //   );
+    // }
+    // document.querySelector(".clickLink").addEventListener("click", e => {
+    //   e.preventDefault;
+    //   debugger;
+    //   console.log(location.href + this.pathname);
+    //   this.href = location.href + "#" + this.pathname.slice(1);
+    // });
+  }
 };
 </script>
 

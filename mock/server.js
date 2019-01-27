@@ -5,6 +5,7 @@ let fs = require("fs");
 function readDate(route, callback) {
   //用来读取application.json中的数据
   fs.readFile(route, "utf8", function(err, data) {
+    console.log(data);
     if (err || data === "") {
       return callback([]); //如果数据为空 传递空数组
     }
@@ -18,10 +19,12 @@ function writeDate(route, data, callback) {
 
 http
   .createServer(function(req, res) {
+    res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080");
     let { pathname, query } = url.parse(req.url, true);
     let id = parseInt(query.id); //看路径后面是否有id
     // 所有接口都以 /api开头  /api/sliders
     if (pathname === "/api/application") {
+      console.log(req.method);
       switch (req.method) {
         case "GET": //查询一个返回对象 查询所有返回数组
           if (id) {
@@ -30,6 +33,7 @@ http
             });
           } else {
             readDate("./application.json", function(application) {
+              console.log(application);
               res.end(JSON.stringify(application));
             });
           }
