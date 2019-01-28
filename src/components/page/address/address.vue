@@ -29,14 +29,18 @@
 <script>
 import vheader from "@/components/base-page/v-header.vue";
 import img from "../logo.png";
+import groupChat from "./group-chat.png";
+import newFriends from "./new-friends.png";
+import officialAcounts from "./official-acounts.png";
+import tips from "./tips.png";
 export default {
   data() {
     return {
       data: [
-        { title: "新的朋友", img },
-        { title: "群聊", img },
-        { title: "标签", img },
-        { title: "公众号", img },
+        { title: "新的朋友", img: newFriends },
+        { title: "群聊", img: groupChat },
+        { title: "标签", img: tips },
+        { title: "公众号", img: officialAcounts },
         { title: "新的朋友", img },
         { title: "新的朋友", img }
       ]

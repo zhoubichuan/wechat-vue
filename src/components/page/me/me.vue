@@ -7,7 +7,7 @@
     <div class="me-component">
       <div class="me">
         <div class="information">
-          <router-link to="/me/information">
+          <router-link :to="me">
             <div class="left">
             <img :src="ico" alt="">
             <div>
@@ -40,38 +40,46 @@
 <script>
 import vheader from "@/components/base-page/v-header.vue";
 import ico from "./photo.png";
+import moneyBag from "./moneyBag.png";
+import collection from "./collection.png";
+import album from "./album.png";
+import cardBag from "./cardBag.png";
+import emoji from "./emoji.png";
+import setting from "./setting.png";
+
 export default {
   data() {
     return {
+      me: "/me/information",
       ico,
       application: [
         {
-          ico,
+          ico: moneyBag,
           title: "钱包",
           route: "MoneyBag"
         },
         {
-          ico,
+          ico: collection,
           title: "收藏",
           route: "Collection"
         },
         {
-          ico,
+          ico: album,
           title: "相册",
           route: "Album"
         },
         {
-          ico,
+          ico: cardBag,
           title: "卡包",
           route: "CardBag"
         },
         {
-          ico,
+          ico: emoji,
           title: "表情",
           route: "Emoji"
         },
         {
-          ico,
+          ico: setting,
           title: "设置",
           route: "Setting"
         }

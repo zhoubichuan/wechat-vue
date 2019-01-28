@@ -1,5 +1,4 @@
 <template>
-
 	<div class="information-component">
     <redBagSend v-show="this.$store.state.pageShow" ></redBagSend>
     <vheader>
@@ -7,7 +6,6 @@
       <p slot="title">{{title}}</p>
       <p slot="more">设置</p>
     </vheader>
-    
     <div class="get">
       <RedBagGet :show="isShow" @close="fn" :message="message">
           <p slot="r-money" class="r-money" v-if="message.money">{{message.redBag.receiveRedBag}}元</p>

@@ -16,21 +16,27 @@
 </template>
 <script>
 import vheader from "@/components/base-page/v-header.vue";
+import friend from "./friend.png";
+import game from "./game.png";
+import scan from "./scan.png";
+import shake from "./shake.png";
+import shop from "./shop.png";
+
 export default {
   data() {
     return {
       data: [
         {
           title: "朋友圈",
-          img: "http://www.cdhdky.com/images/ttt.jpg"
+          img: friend
         },
         {
           title: "扫一扫",
-          img: "http://www.cdhdky.com/images/ttt.jpg"
+          img: scan
         },
         {
           title: "摇一摇",
-          img: "http://www.cdhdky.com/images/ttt.jpg"
+          img: shake
         },
         {
           title: "搜一搜",
@@ -42,11 +48,11 @@ export default {
         },
         {
           title: "购物",
-          img: "http://www.cdhdky.com/images/ttt.jpg"
+          img: shop
         },
         {
           title: "游戏",
-          img: "http://www.cdhdky.com/images/ttt.jpg"
+          img: game
         },
         {
           title: "小程序",
