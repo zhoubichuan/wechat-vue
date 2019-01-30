@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>cors</title>
+</head>
+<h1>统计</h1>
+<ul></ul>
+<script>
+    const $ = document.querySelector.bind(document)
+    function ajax(callabck) {
+        let xhr = new XMLHttpRequest()
+        xhr.open("get", "http://localhost:3000")
+        xhr.send(null)
+        xhr.onreadystatechange = () => {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                let data = JSON.parse(xhr.response)
+                callabck && callabck(data)
+            }
+        }
+    }
+    ajax(data => {
+        console.log(data)
+        let html = ''
+        let time = []
+        let frontTime
+        let endTime
+        let totalTime = 0
+        for (key in data) {
+            if (data[key].time.length > 1) {
+                for (var i = 0; i < data[key].time.length; i++) {
+                    if (i % 2 == 0) {
+                        frontTime = new Date(data[key].time[i]).getTime()
+                    } else {
+                        endTime = new Date(data[key].time[i]).getTime()
+                        time.push(endTime - frontTime)
+                    }
+                }
+                for (let j = 0; j < time.length; j++) {
+                    totalTime += time[j]
+                }
+            } else {
+                totalTime += 0
+            }
+            html += `<li><span>工号：${key}</span>  <span>时间：${totalTime / 1000 / 60}分钟</span></li>`
+        }
+        $("ul").innerHTML = html
+    })
+
+</script>
+
+<body>
+
+</body>
+
+</html>
