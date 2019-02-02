@@ -27,15 +27,42 @@ export default {
   }
 };
 </script>
-<style>
+<style lang='less'>
 .setting {
   height: 100vh;
   position: absolute;
   top: 40px;
   width: 100%;
   left: 0;
-  background-color: white;
+  background-color: #efeff4;
   z-index: 1000;
+  ul {
+    li {
+      background-color: white;
+      border-bottom: 1px solid #f2f2f2;
+      height: 40px;
+      line-height: 40px;
+      &:nth-of-type(1) {
+        margin-bottom: 8px;
+      }
+      &:nth-of-type(4) {
+        margin-bottom: 8px;
+      }
+      &:nth-of-type(6) {
+        margin-bottom: 8px;
+      }
+      &:nth-of-type(7) {
+        margin-bottom: 8px;
+      }
+      &:nth-of-type(8) {
+        margin-bottom: 8px;
+        text-align: center;
+      }
+      &:nth-of-type(9) {
+        text-align: center;
+      }
+    }
+  }
 }
 </style>
 

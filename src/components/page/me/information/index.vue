@@ -32,8 +32,18 @@ export default {
   top: 40px;
   width: 100%;
   left: 0;
-  background-color: white;
+  background-color: #efeff4;
   z-index: 1000;
+  ul {
+    li {
+      background-color: white;
+      border-bottom: 1px solid #f2f2f2;
+      &:nth-of-type(5) {
+        border-bottom: none;
+        margin-bottom: 10px;
+      }
+    }
+  }
 }
 </style>
 
