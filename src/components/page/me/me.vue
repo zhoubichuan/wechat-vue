@@ -56,32 +56,32 @@ export default {
         {
           ico: moneyBag,
           title: "钱包",
-          route: "MoneyBag"
+          route: "moneyBag"
         },
         {
           ico: collection,
           title: "收藏",
-          route: "Collection"
+          route: "collection"
         },
         {
           ico: album,
           title: "相册",
-          route: "Album"
+          route: "album"
         },
         {
           ico: cardBag,
           title: "卡包",
-          route: "CardBag"
+          route: "cardBag"
         },
         {
           ico: emoji,
           title: "表情",
-          route: "Emoji"
+          route: "emoji"
         },
         {
           ico: setting,
           title: "设置",
-          route: "Setting"
+          route: "setting"
         }
       ]
     };
@@ -134,11 +134,11 @@ export default {
   }
   ul {
     margin-top: 15px;
-    li:first-child {
-      border: none;
-      margin-bottom: 15px;
-    }
     li {
+      &:first-child {
+        border: none;
+        margin-bottom: 15px;
+      }
       padding: 5px 15px;
       background-color: #ffffff;
       border-bottom: 1px solid #f2f2f2;
@@ -158,10 +158,10 @@ export default {
   }
   li:nth-last-child(2) {
     border: none;
-  }
-  li:last-child {
-    border: none;
-    margin-top: 15px;
+    &:last-child {
+      border: none;
+      margin-top: 15px;
+    }
   }
 }
 </style>

@@ -10,7 +10,17 @@ import collection from "@/components/page/me/collection";
 import cardBag from "@/components/page/me/cardBag";
 import emoji from "@/components/page/me/emoji";
 import moneyBag from "@/components/page/me/moneyBag";
+
 import setting from "@/components/page/me/setting";
+import accountSafe from "@/components/page/me/setting/accountSafe";
+import newMessageNote from "@/components/page/me/setting/newMessageNote";
+import privacy from "@/components/page/me/setting/privacy";
+import common from "@/components/page/me/setting/common";
+import helpAndFeedback from "@/components/page/me/setting/helpAndFeedback";
+import aboutWeChate from "@/components/page/me/setting/aboutWeChate";
+import weChatePlugin from "@/components/page/me/setting/weChatePlugin";
+import changeAcount from "@/components/page/me/setting/changeAcount";
+import outLogin from "@/components/page/me/setting/outLogin";
 
 Vue.use(Router);
 
@@ -41,8 +51,22 @@ export default new Router({
         { path: "cardBag", component: cardBag },
         { path: "collection", component: collection },
         { path: "emoji", component: emoji },
-        { path: "setting", component: setting },
-        { path: "moneyBag", component: moneyBag }
+        { path: "moneyBag", component: moneyBag },
+        {
+          path: "setting",
+          component: setting,
+          children: [
+            { path: "accountSafe", component: accountSafe },
+            { path: "newMessageNote", component: newMessageNote },
+            { path: "privacy", component: privacy },
+            { path: "common", component: common },
+            { path: "helpAndFeedback", component: helpAndFeedback },
+            { path: "aboutWeChate", component: aboutWeChate },
+            { path: "weChatePlugin", component: weChatePlugin },
+            { path: "changeAcount", component: changeAcount },
+            { path: "outLogin", component: outLogin }
+          ]
+        }
       ]
     }
   ]
