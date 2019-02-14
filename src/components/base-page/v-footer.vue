@@ -52,7 +52,7 @@
           margin-left: 29px;
         }
       }
-      .router-link-active {
+      .router-link-exact-active {
         &:before {
           background: url("./footer.jpg") -31px -4px;
         }
@@ -69,7 +69,7 @@
           display: block;
         }
       }
-      .router-link-active {
+      .router-link-exact-active {
         &:before {
           background: url("../page/address/address.png") -108px -533px;
         }
@@ -103,13 +103,13 @@
           display: block;
         }
       }
-      .router-link-active {
+      .router-link-exact-active {
         &:before {
           background: url("../page/me/me.png") -270px -533px;
         }
       }
     }
-    .router-link-active {
+    .router-link-exact-active {
       span {
         color: rgba(31, 173, 21, 1);
       }

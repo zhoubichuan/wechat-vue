@@ -140,8 +140,11 @@ export default {
           color: gray;
         }
       }
+      &:nth-child(n + 2) {
+        margin-top: 10px;
+      }
     }
-    li.right {
+    .right {
       display: flex;
       flex-direction: row-reverse;
       .i-content {
@@ -151,39 +154,35 @@ export default {
         }
       }
     }
-    li:nth-child(n + 2) {
-      margin-top: 10px;
-    }
   }
 }
 .red-bag {
   width: 200px;
-}
-.red-bag .instruction {
-  display: inline;
-}
-.red-bag .bag {
-  background-color: #f4c795;
-  border-radius: 5px 5px 0 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: start;
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-
-.red-bag .bag .ico {
-  height: 35px;
-  width: 30px;
-  background-color: red;
-  display: block;
-  margin: 0 10px 0 10px;
-  border-radius: 5px;
-}
-.red-bag .bag .text {
-  display: inline;
-}
-.red-bag .bag .text p {
-  color: white;
+  .instruction {
+    display: inline;
+  }
+  .bag {
+    background-color: #f4c795;
+    border-radius: 5px 5px 0 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    .ico {
+      height: 35px;
+      width: 30px;
+      background-color: red;
+      display: block;
+      margin: 0 10px 0 10px;
+      border-radius: 5px;
+    }
+    .text {
+      display: inline;
+      p {
+        color: white;
+      }
+    }
+  }
 }
 </style>

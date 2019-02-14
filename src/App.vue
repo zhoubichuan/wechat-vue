@@ -56,7 +56,7 @@ export default {
   padding-bottom: 40px;
   box-sizing: border-box;
   overflow: hidden;
-  background-color: #cccccc;
+  background-color: #efeff4;
 }
 html::-webkit-scrollbar {
   width: 0;

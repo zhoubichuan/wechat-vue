@@ -18,7 +18,7 @@
           <ul >
             <li @click="handleClick" v-for="(item,key) in messageData" :key="key">
               <div class="left">
-                <img :src="item.photo" alt="">
+                <img :src="imgData" alt="">
                 <div>
                   <p class="title">{{item.title}}</p>
                   <p>{{item.tips}}</p>
@@ -93,9 +93,11 @@ export default {
     display: flex;
     flex-direction: row;
     align-items: center;
+    padding: 10px 0;
     img {
-      width: 40px;
-      height: 40px;
+      width: 20px;
+      height: 20px;
+      margin-left: 10px;
     }
     p {
       padding-left: 10px;
@@ -110,7 +112,8 @@ export default {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        border-bottom: 1px solid gray;
+        background-color: #ffffff;
+        border-bottom: 1px solid #f2f2f2;
         .left {
           display: flex;
           flex-direction: rew;

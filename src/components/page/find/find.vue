@@ -40,11 +40,11 @@ export default {
         },
         {
           title: "搜一搜",
-          img: "http://www.cdhdky.com/images/ttt.jpg"
+          img: shake
         },
         {
           title: "附近的人",
-          img: "http://www.cdhdky.com/images/ttt.jpg"
+          img: shake
         },
         {
           title: "购物",
@@ -56,7 +56,7 @@ export default {
         },
         {
           title: "小程序",
-          img: "http://www.cdhdky.com/images/ttt.jpg"
+          img: shake
         }
       ]
     };
@@ -72,10 +72,12 @@ export default {
   ul {
     margin-top: 40px;
     li {
-      padding: 5px 0;
+      padding: 10px 10px;
+      background-color: #ffffff;
+      border-bottom: 1px solid #f2f2f2;
       img {
-        width: 40px;
-        height: 40px;
+        width: 20px;
+        height: 20px;
         display: inline-block;
       }
       p {

@@ -11,15 +11,11 @@
         </div>
         <div class="top">
           <ul>
-            <li v-for="(item,index) in data " :key="index">
+            <li v-for="(item,index) in data " :key="index" v-if="item.img">
               <img :src="item.img" alt="">
               <p>{{item.title}}</p>
             </li>
-          </ul>
-        </div>
-        <div class="peopel">
-          <ul>
-            <li><img src="" alt=""><p class="name">aaaa</p></li>
+            <li v-else class="no-people">{{item.title}}</li>
           </ul>
         </div>
       </div>
@@ -41,8 +37,18 @@ export default {
         { title: "群聊", img: groupChat },
         { title: "标签", img: tips },
         { title: "公众号", img: officialAcounts },
-        { title: "新的朋友", img },
-        { title: "新的朋友", img }
+        { title: "A" },
+        { title: "曹操", img },
+        { title: "孙权", img },
+        { title: "周瑜", img },
+        { title: "黄盖", img },
+        { title: "B" },
+        { title: "刘备", img },
+        { title: "诸葛亮", img },
+        { title: "张飞", img },
+        { title: "D" },
+        { title: "关羽", img },
+        { title: "魏延", img }
       ]
     };
   },
@@ -60,10 +66,12 @@ export default {
   .top {
     ul {
       li {
-        padding: 5px 0;
+        padding: 10px 15px;
+        background-color: #ffffff;
+        border-bottom: 1px solid #f2f2f2;
         img {
-          width: 40px;
-          height: 40px;
+          width: 30px;
+          height: 30px;
           display: inline-block;
         }
         p {
