@@ -2,7 +2,9 @@ import Vue from "vue";
 import Router from "vue-router";
 import message from "@/components/page/message/message";
 import address from "@/components/page/address/address";
+
 import find from "@/components/page/find/find";
+
 import me from "@/components/page/me/me";
 import information from "@/components/page/me/information";
 import album from "@/components/page/me/album";

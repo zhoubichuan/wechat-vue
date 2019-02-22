@@ -36,8 +36,14 @@ export default {
   z-index: 1000;
   ul {
     li {
+      padding: 0 15px;
       background-color: white;
       border-bottom: 1px solid #f2f2f2;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      height: 40px;
       &:nth-of-type(5) {
         border-bottom: none;
         margin-bottom: 10px;
