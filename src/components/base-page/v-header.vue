@@ -1,21 +1,27 @@
 <template>
   <div class="header-component">
       <div class="header">
-        <slot name="cancel" >
-            <P class="cancel"></P>
-        </slot>
+        <div  @click="goBack">
+          <slot name="cancel"  >
+              <p class="cancel"></p>
+          </slot>
+        </div>
         <slot name="title">
-            <P class="title">我</P>
+            <p class="title"></p>
         </slot>
         <slot name="more">
-            <P class="more"></P>
+            <p class="more"></p>
         </slot>
     </div>
   </div>
 </template>
 <script>
 export default {
-  methods: {}
+  methods: {
+    goBack() {
+      this.$parent.go();
+    }
+  }
 };
 </script>
 

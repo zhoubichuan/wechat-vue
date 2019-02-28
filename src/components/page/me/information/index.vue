@@ -1,5 +1,10 @@
 <template>
-  <div class="information">
+<div>
+  <vheader>
+      <p slot="cancel" >{{"&lt;"}}</p>
+      <p slot="title">个人信息</p>
+    </vheader>
+     <div class="information">
       <ul>
           <li v-for="(item,index) in data" :key="index">
               <p class="title">{{item.title}}</p>
@@ -7,9 +12,13 @@
           </li>
       </ul>
 </div>
+</div>
+ 
 </template>
 
 <script>
+import vheader from "@/components/base-page/v-header.vue";
+
 export default {
   data() {
     return {

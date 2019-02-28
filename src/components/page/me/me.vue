@@ -1,8 +1,7 @@
 <template>
   <div class="me-part">
     <vheader>
-      <p slot="title">个人信息</p>
-      <p slot="cancel" @click="goAhead">{{"&lt;我"}}</p>
+      <p slot="more">相机</p>
     </vheader>
     <div class="me-component">
       <div class="me">
@@ -91,7 +90,7 @@ export default {
     vheader
   },
   methods: {
-    goAhead() {
+    go() {
       history.go(-1);
     }
   }
