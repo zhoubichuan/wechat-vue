@@ -1,6 +1,6 @@
 <template>
 	<div class="information-component">
-    <redBagSend v-show="this.$store.state.pageShow" ></redBagSend>
+    <!-- <redBagSend v-show="this.$store.state.pageShow" ></redBagSend> -->
     <vheader>
       <p slot="cancel" @click="goBack">返回</p>
       <p slot="title">{{title}}</p>
@@ -46,7 +46,7 @@
 <script type="text/javascript">
 import vheader from "@/components/base-page/v-header";
 import RedBagGet from "./appliance/red-bag/RedBagGet";
-import RedBagSend from "./appliance/red-bag/RedBagSend";
+// import RedBagSend from "./appliance/red-bag/RedBagSend";
 import Bus from "@/common/Bus.js";
 import axios from "axios";
 import appliance from "./appliance/appliance.vue";
@@ -68,7 +68,7 @@ export default {
   components: {
     vheader,
     RedBagGet,
-    RedBagSend,
+    // RedBagSend,
     appliance
   },
   computed: {},
