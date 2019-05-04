@@ -1,11 +1,15 @@
 <template>
-  <div id="app">
-      <router-view />
+  <div id="app" :class="this.$store.state.pageStopScroll ? 'stop-scroll':''" >
+    <div class="content">
+      <router-view @update:s="val=>stopScroll=val"/>
+    </div>
+    <vfooter/>
   </div>
 </template>
 
 <script>
 import Bus from "@/common/Bus.js";
+import vfooter from "@/components/base-page/v-footer.vue";
 export default {
   data() {
     return {};
@@ -16,6 +20,7 @@ export default {
     });
   },
   components: {
+    vfooter
   },
   methods: {},
   mounted() {

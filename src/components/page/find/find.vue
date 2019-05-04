@@ -1,26 +1,18 @@
 <template>
-  <div>
-    <vheader>
-      <p slot="title">发现</p>
-    </vheader>
-    <div class="find-component">
-      <div class="find">
-        <ul >
-          <li v-for="(item,index) in data" :key="index">
-            <router-link :to='"/find/"+item.route'>
-              <img :src="item.img" alt="">
-              <p>{{item.title}}</p>
-              <img src="" alt="">
-            </router-link>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <router-view></router-view>
-  </div>
+<CommonPage :op="opPage">
+  <ul class="content">
+    <li v-for="(item,index) in data" :key="index">
+      <router-link :to='"/find/"+item.route'>
+        <img :src="item.img" alt="">
+        <p>{{item.title}}</p>
+        <img src="" alt="">
+      </router-link>
+    </li>
+  </ul>
+</CommonPage>
 </template>
 <script>
-import vheader from "@/components/base-page/v-header.vue";
+import CommonPage from "@/common/CommonPage";
 import friend from "./friend.png";
 import scan from "./scan.png";
 import shake from "./shake.png";
@@ -33,6 +25,14 @@ import program from "./shop.png";
 export default {
   data() {
     return {
+      opPage: {
+        class: "find",
+        header: true,
+        footer: true,
+        headContent:{
+          middle:'发现'
+        }
+      },
       data: [
         {
           title: "朋友圈",
@@ -78,19 +78,18 @@ export default {
     };
   },
   components: {
-    vheader
+    CommonPage,
   }
 };
 </script>
-<style lang="less">
+<style lang="less" >
 .find {
   background-color: #efeff4;
-  ul {
+  .content {
     margin-top: 40px;
     li {
       padding: 10px 10px;
       background-color: #ffffff;
-      border-bottom: 1px solid #f2f2f2;
       img {
         width: 20px;
         height: 20px;

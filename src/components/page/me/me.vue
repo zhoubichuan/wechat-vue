@@ -1,8 +1,6 @@
 <template>
+<CommonPage :op="opPage">
   <div class="me-part">
-    <vheader>
-      <p slot="more">相机</p>
-    </vheader>
     <div class="me-component">
       <div class="me">
         <div class="me-application">
@@ -32,9 +30,10 @@
     </div>
     <router-view></router-view>
   </div>
+</CommonPage>
 </template>
 <script>
-import vheader from "@/components/base-page/v-header.vue";
+import CommonPage from "@/common/CommonPage";
 import photo from "./photo.png";
 import moneyBag from "./moneyBag.png";
 import collection from "./collection.png";
@@ -46,6 +45,14 @@ import setting from "./setting.png";
 export default {
   data() {
     return {
+      opPage: {
+        class: "find",
+        header: true,
+        footer: true,
+        headContent:{
+          right:'+'
+        }
+      },
       application: [
         {
           ico: photo,
@@ -87,7 +94,7 @@ export default {
     };
   },
   components: {
-    vheader
+    CommonPage,
   },
   methods: {
     go() {
@@ -103,8 +110,6 @@ export default {
 }
 .me {
   background-color: #efeff4;
-  padding-top: 47px;
-  height: calc(100vh - 50px);
   overflow-y: auto;
 
   ul {

@@ -1,29 +1,20 @@
 <template>
-  <div>
-    <vheader>
-      <p slot="title">通讯录</p>
-      <p slot="more">人像</p>
-    </vheader>
-    <div class="address-component">
-      <div class="address">
-        <div class="search">
-          <input type="text"/>
-        </div>
-        <div class="top">
-          <ul>
-            <li v-for="(item,index) in data " :key="index" v-if="item.img">
-              <img :src="item.img" alt="">
-              <p>{{item.title}}</p>
-            </li>
-            <li v-else class="no-people">{{item.title}}</li>
-          </ul>
-        </div>
-      </div>
+  <CommonPage :op="opPage">
+    <Search @click="popShow"/>
+    <div class="top">
+      <ul>
+        <li v-for="(item,index) in data " :key="index" v-if="item.img">
+          <img :src="item.img" alt="">
+          <p>{{item.title}}</p>
+        </li>
+        <li v-else class="no-people">{{item.title}}</li>
+      </ul>
     </div>
-  </div>
+  </CommonPage>
 </template>
 <script>
-import vheader from "@/components/base-page/v-header.vue";
+import CommonPage from "@/common/CommonPage";
+import Search from "@/common/Search";
 import img from "../logo.png";
 import groupChat from "./group-chat.png";
 import newFriends from "./new-friends.png";
@@ -32,6 +23,15 @@ import tips from "./tips.png";
 export default {
   data() {
     return {
+      opPage: {
+        class: "address",
+        header: true,
+        footer: true,
+        headContent:{
+          middle:'通讯录',
+          right:'+'
+        }
+      },
       data: [
         { title: "新的朋友", img: newFriends },
         { title: "群聊", img: groupChat },
@@ -53,7 +53,13 @@ export default {
     };
   },
   components: {
-    vheader
+    CommonPage,
+    Search
+  },
+  methods: {
+    popShow() {
+      this.opPage.popshow = true;
+    }
   }
 };
 </script>
