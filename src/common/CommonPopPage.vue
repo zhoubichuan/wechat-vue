@@ -1,6 +1,6 @@
 <template>
-  <div id="CommonPage" :class="['common-page',op.class]">
-    <Header :op="op.headContent" v-if="op.header"/>
+  <div id="CommonPopPage" :class="['common-pop-page',op.class]">
+    <Header :op="op.headContent" v-if="op.header" @handleLeft="goBack()"/>
     <div class="main">
       <slot></slot>
     </div>
@@ -31,6 +31,11 @@ export default {
       }
     }
   },
+  methods: {
+    goBack() {
+      window.history.go(-1);
+    }
+  },
   components: {
     Header,
     Footer,
@@ -39,12 +44,16 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-.common-page {
-  position: relative;
+.common-pop-page {
+  position: absolute;
+  z-index: 10000;
+  top: -40px;
+  width: 100%;
+  left: 0;
+  background: #efeff4;
   .main {
-    height: calc(100vh - 80px);
+    height: calc(100vh - 40px);
     margin-top: 40px;
-    margin-bottom: 40px;
   }
 }
 </style>

@@ -1,28 +1,5 @@
 import Vue from "vue";
 import Router from "vue-router";
-import message from "@/components/page/message/message";
-import address from "@/components/page/address/address";
-
-import find from "@/components/page/find/find";
-
-import me from "@/components/page/me/me";
-import information from "@/components/page/me/information";
-import album from "@/components/page/me/album";
-import collection from "@/components/page/me/collection";
-import cardBag from "@/components/page/me/cardBag";
-import emoji from "@/components/page/me/emoji";
-import moneyBag from "@/components/page/me/moneyBag";
-
-import setting from "@/components/page/me/setting";
-import accountSafe from "@/components/page/me/setting/accountSafe";
-import newMessageNote from "@/components/page/me/setting/newMessageNote";
-import privacy from "@/components/page/me/setting/privacy";
-import common from "@/components/page/me/setting/common";
-import helpAndFeedback from "@/components/page/me/setting/helpAndFeedback";
-import aboutWeChate from "@/components/page/me/setting/aboutWeChate";
-import weChatePlugin from "@/components/page/me/setting/weChatePlugin";
-import changeAcount from "@/components/page/me/setting/changeAcount";
-import outLogin from "@/components/page/me/setting/outLogin";
 
 Vue.use(Router);
 
@@ -30,43 +7,127 @@ export default new Router({
   routes: [
     {
       path: "/",
-      component: message
+      redirect: { path: "/message" }
     },
     {
       path: "/message",
-      component: message
+      name: "message",
+      component: () => import("@/components/page/message/message")
     },
     {
       path: "/address",
-      component: address
+      name: "address",
+      component: () => import("@/components/page/address/address")
     },
     {
       path: "/find",
-      component: find
+      name: "find",
+      component: () => import("@/components/page/find/find")
     },
     {
       path: "/me",
-      component: me,
+      name: "me",
+      component: () => import("@/components/page/me/me"),
       children: [
-        { path: "information", component: information },
-        { path: "album", component: album },
-        { path: "cardBag", component: cardBag },
-        { path: "collection", component: collection },
-        { path: "emoji", component: emoji },
-        { path: "moneyBag", component: moneyBag },
+        {
+          path: "information",
+          name: "information",
+          component: () => import("@/components/page/me/information"),
+          children: [
+            {
+              path: "address",
+              name: "meaddress",
+              component: () =>
+                import("@/components/page/me/information/address")
+            },
+            {
+              path: "code",
+              name: "code",
+              component: () => import("@/components/page/me/information/code")
+            },
+            {
+              path: "more",
+              name: "meaddress",
+              component: () => import("@/components/page/me/information/more")
+            },
+            {
+              path: "name",
+              name: "meaddress",
+              component: () => import("@/components/page/me/information/name")
+            },
+            {
+              path: "photo",
+              name: "meaddress",
+              component: () => import("@/components/page/me/information/photo")
+            }
+          ]
+        },
+        {
+          path: "album",
+          component: () => import("@/components/page/me/album")
+        },
+        {
+          path: "cardBag",
+          component: () => import("@/components/page/me/cardBag")
+        },
+        {
+          path: "collection",
+          component: () => import("@/components/page/me/collection")
+        },
+        {
+          path: "emoji",
+          component: () => import("@/components/page/me/emoji")
+        },
+        {
+          path: "moneyBag",
+          component: () => import("@/components/page/me/moneyBag")
+        },
         {
           path: "setting",
-          component: setting,
+          component: () => import("@/components/page/me/setting"),
           children: [
-            { path: "accountSafe", component: accountSafe },
-            { path: "newMessageNote", component: newMessageNote },
-            { path: "privacy", component: privacy },
-            { path: "common", component: common },
-            { path: "helpAndFeedback", component: helpAndFeedback },
-            { path: "aboutWeChate", component: aboutWeChate },
-            { path: "weChatePlugin", component: weChatePlugin },
-            { path: "changeAcount", component: changeAcount },
-            { path: "outLogin", component: outLogin }
+            {
+              path: "accountSafe",
+              component: () =>
+                import("@/components/page/me/setting/accountSafe")
+            },
+            {
+              path: "newMessageNote",
+              component: () =>
+                import("@/components/page/me/setting/newMessageNote")
+            },
+            {
+              path: "privacy",
+              component: () => import("@/components/page/me/setting/privacy")
+            },
+            {
+              path: "common",
+              component: () => import("@/components/page/me/setting/common")
+            },
+            {
+              path: "helpAndFeedback",
+              component: () =>
+                import("@/components/page/me/setting/helpAndFeedback")
+            },
+            {
+              path: "aboutWeChate",
+              component: () =>
+                import("@/components/page/me/setting/aboutWeChate")
+            },
+            {
+              path: "weChatePlugin",
+              component: () =>
+                import("@/components/page/me/setting/weChatePlugin")
+            },
+            {
+              path: "changeAcount",
+              component: () =>
+                import("@/components/page/me/setting/changeAcount")
+            },
+            {
+              path: "outLogin",
+              component: () => import("@/components/page/me/setting/outLogin")
+            }
           ]
         }
       ]

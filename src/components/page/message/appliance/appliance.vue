@@ -1,20 +1,20 @@
 <template>
   <div class="application-component">
     <div class="application">
-        <div class="send">
-            <i class="voiceInformation"></i>
-            <input type="text" @keyup.13="sendMessage" v-model="sendDate">
-            <i class="emjoy"></i>
-            <i class="moreBtn" @click="moreBtn"></i>
-        </div>
-        <div class="function" v-show="this.$store.state.applianceShow">
-          <ul>
-            <li  v-for="(item,index) in application" :key="index" @click="appShow(item)">
-              <i :class="'ico'+item.com"></i>
-              <span>{{item.title}}</span>
-            </li>
-          </ul>
-        </div>
+      <div class="send">
+        <i class="voiceInformation"></i>
+        <input type="text" @keyup.13="sendMessage" v-model="sendDate">
+        <i class="emjoy"></i>
+        <i class="moreBtn" @click="moreBtn"></i>
+      </div>
+      <div class="function" v-show="this.$store.state.applianceShow">
+        <ul>
+          <li v-for="(item,index) in application" :key="index" @click="appShow(item)">
+            <i :class="'ico'+item.com"></i>
+            <span>{{item.title}}</span>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
@@ -33,7 +33,7 @@ export default {
     Bus.$on("scroll", val => {
       this.stopScroll = val;
     });
-    axios.get("http://localhost:3000/api/application").then(res => {
+    axios.get("/api/application").then(res => {
       if (res.data.code == 200) {
         this.application = res.data.data;
       }

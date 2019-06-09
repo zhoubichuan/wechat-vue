@@ -1,30 +1,30 @@
 <template>
   <div class="footer-component">
-      <ul class="footer">
-          <li>
-            <router-link to="/">
-                <span>微信</span>
-            </router-link>
-        </li>
-        <li>
-            <router-link to="/address">
-                <span>通讯录</span>
-            </router-link>
-        </li>
-        <li>
-            <router-link to="/find">
-                <span>发现</span>
-            </router-link>
-        </li>
-        <li>
-            <router-link to="/me">
-                <span>我</span>
-            </router-link>
-        </li>
+    <ul class="footer">
+      <li>
+        <router-link :to="{name:'message'}">
+          <span>微信</span>
+        </router-link>
+      </li>
+      <li>
+        <router-link :to="{name:'address'}">
+          <span>通讯录</span>
+        </router-link>
+      </li>
+      <li>
+        <router-link :to="{name:'find'}">
+          <span>发现</span>
+        </router-link>
+      </li>
+      <li>
+        <router-link :to="{name:'me'}">
+          <span>我</span>
+        </router-link>
+      </li>
     </ul>
   </div>
 </template>
-<style lang="less">
+<style lang="less" scoped>
 .footer {
   position: fixed;
   height: 40px;

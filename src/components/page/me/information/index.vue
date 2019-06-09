@@ -1,42 +1,50 @@
 <template>
-<div>
-  <vheader>
-      <p slot="cancel" >{{"&lt;"}}</p>
-      <p slot="title">个人信息</p>
-    </vheader>
-     <div class="information">
+  <CommonPopPage :op="opPage">
+    <div class="information">
       <ul>
-          <li v-for="(item,index) in data" :key="index">
-              <p class="title">{{item.title}}</p>
-              <img src="" alt="">
-          </li>
+        <li v-for="(item,index) in data" :key="index">
+          <router-link :to=" item.route?'/me/information/' + item.route:'#'">
+            <p class="title">{{item.title}}</p>
+            <img src alt>
+          </router-link>
+        </li>
       </ul>
-</div>
-</div>
- 
+    </div>
+    <router-view></router-view>
+  </CommonPopPage>
 </template>
 
 <script>
-import vheader from "@/components/base-page/v-header.vue";
+import CommonPopPage from "@/common/CommonPopPage";
 
 export default {
   data() {
     return {
+      opPage: {
+        class: "setting",
+        header: true,
+        headContent: {
+          left: "<",
+          middle: "设置"
+        }
+      },
       data: [
-        { title: "头像", image: "" },
-        { title: "名字", image: "" },
+        { title: "头像", image: "", route: "photo" },
+        { title: "名字", image: "", route: "name" },
         { title: "微信号", image: "" },
-        { title: "我的二维码", image: "" },
-        { title: "更多", image: "" },
-        { title: "我的地址", image: "" }
+        { title: "我的二维码", image: "", route: "code" },
+        { title: "更多", image: "", route: "more" },
+        { title: "我的地址", image: "", route: "address" }
       ]
     };
+  },
+  components: {
+    CommonPopPage
   }
 };
 </script>
-<style lang='less'>
+<style lang='less' scoped>
 .information {
-  height: 100vh;
   position: absolute;
   top: 40px;
   width: 100%;

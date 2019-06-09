@@ -1,11 +1,11 @@
 <template>
   <div class="header-component" :style="op.style">
-      <div class="header">
-        <div  @click="goBack">
-              <p class="cancel">{{op.left}}</p>
-        </div>
-        <p class="title">{{op.middle}}</p>
-        <p class="more" @click="change">{{op.right}}</p>
+    <div class="header">
+      <div @click="$listeners.handleLeft()">
+        <p class="cancel">{{op.left}}</p>
+      </div>
+      <p class="title">{{op.middle}}</p>
+      <p class="more" @click="$listeners.handleRight()">{{op.right}}</p>
     </div>
     <PopFloor v-if="op.popFloor" v-show="popFloor"/>
   </div>
@@ -35,21 +35,13 @@ export default {
   components: {
     PopFloor
   },
-  methods: {
-    change() {
-        this.popFloor=!this.popFloor
-    },
-    goBack() {
-      this.$parent.go();
-    }
-  }
+  methods: {}
 };
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 .header-component {
   margin-top: 40px;
-  position: relative;
   .header {
     position: fixed;
     width: 100%;
@@ -60,6 +52,7 @@ export default {
     padding: 0 15px;
     box-sizing: border-box;
     top: 0;
+    z-index: 5000;
   }
   &::before {
     content: "";

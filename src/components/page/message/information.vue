@@ -1,5 +1,5 @@
 <template>
-	<div class="information-component">
+  <div class="information-component">
     <!-- <redBagSend v-show="this.$store.state.pageShow" ></redBagSend> -->
     <vheader>
       <p slot="cancel" @click="goBack">返回</p>
@@ -8,35 +8,41 @@
     </vheader>
     <div class="get">
       <RedBagGet :show="isShow" @close="fn" :message="message">
-          <p slot="r-money" class="r-money" v-if="message.money">{{message.redBag.receiveRedBag}}元</p>
+        <p slot="r-money" class="r-money" v-if="message.money">{{message.redBag.receiveRedBag}}元</p>
       </RedBagGet>
-      
+
       <div>
-        <ul class="information" >
-          <li :class="item.redBag.self ? 'right':''" v-for="(item,index) in information" :key="index">
-              <img class="photo" :src="item.pho"/>
-              <div class="i-content">
-                <p class="name">{{item.name}}</p>
-                <p v-show="!item.redBag.redBag">{{item.message}}</p>
-                <div v-show="item.redBag.redBag" class="red-bag" @click="stopScroll(item)">
-                  <div class="bag">
+        <ul class="information">
+          <li
+            :class="item.redBag.self ? 'right':''"
+            v-for="(item,index) in information"
+            :key="index"
+          >
+            <img class="photo" :src="item.pho">
+            <div class="i-content">
+              <p class="name">{{item.name}}</p>
+              <p v-show="!item.redBag.redBag">{{item.message}}</p>
+              <div v-show="item.redBag.redBag" class="red-bag" @click="stopScroll(item)">
+                <div class="bag">
                   <span class="ico"></span>
                   <div class="text">
                     <p>{{item.redBag.tips}}</p>
-                    <p>{{Number(-
-                (item.redBag.sendTime - new Date().getTime()) / 100 / 60 / 60
-              ) -
-                24 >
-                0
-                ? "红包已过期"
-                : "查看红包"}}</p>
+                    <p>
+                      {{Number(-
+                      (item.redBag.sendTime - new Date().getTime()) / 100 / 60 / 60
+                      ) -
+                      24 >
+                      0
+                      ? "红包已过期"
+                      : "查看红包"}}
+                    </p>
                   </div>
-                  </div>
-                  <p class="instruction">微信红包</p>
                 </div>
+                <p class="instruction">微信红包</p>
               </div>
-            </li>
-          </ul>
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
     <appliance/>
@@ -73,7 +79,7 @@ export default {
   },
   computed: {},
   created() {
-    axios.get("http://localhost:3000/api/information").then(res => {
+    axios.get("/api/information").then(res => {
       this.information = res.data.message;
     });
     Bus.$on("hide", val => {

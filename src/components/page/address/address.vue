@@ -4,7 +4,7 @@
     <div class="top">
       <ul>
         <li v-for="(item,index) in data " :key="index" v-if="item.img">
-          <img :src="item.img" alt="">
+          <img :src="require(`../../../assets/image/address/${item.img ||'newFriends'}.png`)" alt>
           <p>{{item.title}}</p>
         </li>
         <li v-else class="no-people">{{item.title}}</li>
@@ -15,11 +15,6 @@
 <script>
 import CommonPage from "@/common/CommonPage";
 import Search from "@/common/Search";
-import img from "../logo.png";
-import groupChat from "./group-chat.png";
-import newFriends from "./new-friends.png";
-import officialAcounts from "./official-acounts.png";
-import tips from "./tips.png";
 export default {
   data() {
     return {
@@ -27,28 +22,28 @@ export default {
         class: "address",
         header: true,
         footer: true,
-        headContent:{
-          middle:'通讯录',
-          right:'+'
+        headContent: {
+          middle: "通讯录",
+          right: "+"
         }
       },
       data: [
-        { title: "新的朋友", img: newFriends },
-        { title: "群聊", img: groupChat },
-        { title: "标签", img: tips },
-        { title: "公众号", img: officialAcounts },
+        { title: "新的朋友", img: "newFriends" },
+        { title: "群聊", img: "groupChat" },
+        { title: "标签", img: "tips" },
+        { title: "公众号", img: "officialAcounts" },
         { title: "A" },
-        { title: "曹操", img },
-        { title: "孙权", img },
-        { title: "周瑜", img },
-        { title: "黄盖", img },
+        { title: "曹操", img: "" },
+        { title: "孙权", img: "" },
+        { title: "周瑜", img: "" },
+        { title: "黄盖", img: "" },
         { title: "B" },
-        { title: "刘备", img },
-        { title: "诸葛亮", img },
-        { title: "张飞", img },
+        { title: "刘备", img: "" },
+        { title: "诸葛亮", img: "" },
+        { title: "张飞", img: "" },
         { title: "D" },
-        { title: "关羽", img },
-        { title: "魏延", img }
+        { title: "关羽", img: "" },
+        { title: "魏延", img: "" }
       ]
     };
   },

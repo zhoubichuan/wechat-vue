@@ -1,17 +1,20 @@
 <template>
-  <div class="album">
-    <ul>
-      <li v-for="(item,index) in album" :key="index">
-        <h3>{{item.time}}</h3>
-        <div>
-          <img v-for="(_item,_index) in item.img" :key="_index" :src="_item" alt="">
-        </div>
-      </li>
-    </ul>
-  </div>
+  <CommonPopPage :op="opPage">
+    <div class="album">
+      <ul>
+        <li v-for="(item,index) in album" :key="index">
+          <h3>{{item.time}}</h3>
+          <div>
+            <img v-for="(_item,_index) in item.img" :key="_index" :src="_item" alt>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </CommonPopPage>
 </template>
 
 <script>
+import CommonPopPage from "@/common/CommonPopPage";
 export default {
   data() {
     return {
@@ -23,14 +26,24 @@ export default {
         { time: "5月", img: ["", "", ""] },
         { time: "6月", img: ["", "", ""] },
         { time: "7月", img: ["", "", ""] }
-      ]
+      ],
+      opPage: {
+        class: "find",
+        header: true,
+        headContent: {
+          left: "<",
+          middle: "支付"
+        }
+      }
     };
+  },
+  components: {
+    CommonPopPage
   }
 };
 </script>
-<style>
+<style lang='less' scoped>
 .album {
-  height: 100vh;
   position: absolute;
   top: 40px;
   width: 100%;

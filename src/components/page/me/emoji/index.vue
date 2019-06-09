@@ -1,39 +1,51 @@
 <template>
-  <div class="emoji">
-    <div class="top">
-      <ul>
-        <li v-for="(item,index) in money" :key="index">
-          <img src="" alt=""><p class="title">{{item.title}}</p>
-        </li>
-      </ul>
+  <CommonPopPage :op="opPage">
+    <div class="emoji">
+      <div class="top">
+        <ul>
+          <li v-for="(item,index) in money" :key="index">
+            <img src alt>
+            <p class="title">{{item.title}}</p>
+          </li>
+        </ul>
+      </div>
+      <div class="middle">
+        <h3>推荐表情</h3>
+        <ul>
+          <li v-for="(item,index) in tenxun" :key="index">
+            <img src alt>
+            <span class="title">{{item.title}}</span>
+            <button>添加</button>
+          </li>
+        </ul>
+      </div>
+      <div class="bottom">
+        <h3>更多精选</h3>
+        <ul>
+          <li v-for="(item,index) in server" :key="index">
+            <img src alt>
+            <span class="title">{{item.title}}</span>
+            <button>添加</button>
+          </li>
+        </ul>
+      </div>
     </div>
-    <div class="middle">
-      <h3>推荐表情</h3>
-      <ul>
-        <li v-for="(item,index) in tenxun" :key="index">
-          <img src="" alt="">
-          <span class="title">{{item.title}}</span>
-          <button >添加</button>
-        </li>
-      </ul>
-    </div>
-    <div class="bottom">
-      <h3>更多精选</h3>
-      <ul>
-        <li v-for="(item,index) in server" :key="index">
-          <img src="" alt="">
-          <span class="title">{{item.title}}</span>
-          <button >添加</button>
-        </li>
-      </ul>
-    </div>
-  </div>
+  </CommonPopPage>
 </template>
 
 <script>
+import CommonPopPage from "@/common/CommonPopPage";
 export default {
   data() {
     return {
+      opPage: {
+        class: "find",
+        header: true,
+        headContent: {
+          left: "<",
+          middle: "支付"
+        }
+      },
       money: [],
       tenxun: [
         { img: "", title: "小刘鸭第七弹" },
@@ -54,12 +66,14 @@ export default {
         { img: "", title: "鱼蛋" }
       ]
     };
+  },
+  components: {
+    CommonPopPage
   }
 };
 </script>
-<style lang="less">
+<style lang='less' scoped>
 .emoji {
-  height: 100vh;
   position: absolute;
   top: 40px;
   width: 100%;

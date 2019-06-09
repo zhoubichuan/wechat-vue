@@ -1,22 +1,27 @@
 <template>
-  <div class="cardBag">
-    <ul>
-      <li v-for="(item,index) in cardBag" :key="index">
-        <div class="left"><img :src="item.ico" alt=""></div>
-        <div class="right">
-          <h3 class="title">{{item.title}}</h3>
-          <div class="box">
-            <h4 class="card-name">{{item.cardName}}</h4>
-            <p class="card-text">{{item.content}}</p>
-            <p class="tips">{{item.tips}}</p>
+  <CommonPopPage :op="opPage">
+    <div class="cardBag">
+      <ul>
+        <li v-for="(item,index) in cardBag" :key="index">
+          <div class="left">
+            <img :src="item.ico" alt>
           </div>
-        </div>
-      </li>
-    </ul>
-  </div>
+          <div class="right">
+            <h3 class="title">{{item.title}}</h3>
+            <div class="box">
+              <h4 class="card-name">{{item.cardName}}</h4>
+              <p class="card-text">{{item.content}}</p>
+              <p class="tips">{{item.tips}}</p>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </CommonPopPage>
 </template>
 
 <script>
+import CommonPopPage from "@/common/CommonPopPage";
 export default {
   data() {
     return {
@@ -42,14 +47,24 @@ export default {
           content: "绝味鸭脖",
           tips: ""
         }
-      ]
+      ],
+      opPage: {
+        class: "find",
+        header: true,
+        headContent: {
+          left: "<",
+          middle: "支付"
+        }
+      }
     };
+  },
+  components: {
+    CommonPopPage
   }
 };
 </script>
-<style lang="less">
+<style lang='less' scoped>
 .cardBag {
-  height: 100vh;
   position: absolute;
   top: 40px;
   width: 100%;

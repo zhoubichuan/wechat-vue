@@ -1,92 +1,84 @@
 <template>
-<CommonPage :op="opPage">
-  <div class="me-part">
-    <div class="me-component">
-      <div class="me">
-        <div class="me-application">
-          <ul>
-            <li v-for="(item,index) in application" :key="index">
-              <router-link v-if="item.content" class="me-information" :to='"/me/" + item.route'>
-                <div class="left">
-                <img :src="item.ico" alt="">
-                <div>
+  <CommonPage :op="opPage">
+    <div class="me-part">
+      <div class="me-component">
+        <div class="me">
+          <div class="me-application">
+            <ul>
+              <li v-for="(item,index) in application" :key="index">
+                <router-link v-if="item.content" class="me-information" :to="'/me/' + item.route">
+                  <div class="left">
+                    <img :src="require(`../../../assets/image/me/${item.ico}.png`)" alt>
+                    <div>
+                      <p>{{item.title}}</p>
+                      <p>{{item.content}}</p>
+                    </div>
+                  </div>
+                  <div class="right">
+                    <img src alt>
+                    <img src alt>
+                  </div>
+                </router-link>
+                <router-link v-else :to="'/me/' + item.route">
+                  <img :src="require(`../../../assets/image/me/${item.ico}.png`)" alt>
                   <p>{{item.title}}</p>
-                  <p>{{item.content}}</p>
-                </div>
-              </div>
-              <div class="right">
-                <img src="" alt="">
-                <img src="" alt="">
-              </div>
-              </router-link>
-              <router-link v-else :to='"/me/" + item.route'>
-                <img :src="item.ico" alt="" />
-                <p>{{item.title}}</p>
-              </router-link>
-            </li>
-          </ul>
+                </router-link>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
+      <router-view></router-view>
     </div>
-    <router-view></router-view>
-  </div>
-</CommonPage>
+  </CommonPage>
 </template>
 <script>
 import CommonPage from "@/common/CommonPage";
-import photo from "./photo.png";
-import moneyBag from "./moneyBag.png";
-import collection from "./collection.png";
-import album from "./album.png";
-import cardBag from "./cardBag.png";
-import emoji from "./emoji.png";
-import setting from "./setting.png";
-
 export default {
   data() {
     return {
       opPage: {
-        class: "find",
+        class: "me",
         header: true,
         footer: true,
-        headContent:{
-          right:'+'
+        headContent: {
+          right: "+"
         }
       },
       application: [
         {
-          ico: photo,
+          ico: "photo",
           title: "会跑的鸡腿",
           content: "微信号：zbc159x",
           route: "information"
         },
         {
-          ico: moneyBag,
+          ico: "moneyBag",
           title: "钱包",
           route: "moneyBag"
         },
         {
-          ico: collection,
+          ico: "collection",
           title: "收藏",
           route: "collection"
         },
         {
-          ico: album,
+          ico: "album",
           title: "相册",
           route: "album"
         },
         {
-          ico: cardBag,
+          ico: "cardBag",
           title: "卡包",
           route: "cardBag"
         },
         {
-          ico: emoji,
+          ico: "emoji",
           title: "表情",
           route: "emoji"
         },
         {
-          ico: setting,
+          ico: "setting",
           title: "设置",
           route: "setting"
         }
@@ -94,7 +86,7 @@ export default {
     };
   },
   components: {
-    CommonPage,
+    CommonPage
   },
   methods: {
     go() {
@@ -104,7 +96,7 @@ export default {
 };
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 .me-part {
   position: relative;
 }

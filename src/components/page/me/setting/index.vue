@@ -1,22 +1,34 @@
 <template>
-<div class="setting-part">
-  <div class="setting">
-      <ul>
-        <li v-for="(item,index) in setting" :key="index">
-          <router-link :to='"/me/setting/" + item.route'>
-            <span>{{item.title}}</span><span v-if="item.img">{{item.img}}</span>
-          </router-link>
-        </li>
-      </ul>
-  </div>
-  <router-view></router-view>
-</div>
+  <CommonPopPage :op="opPage">
+    <div class="setting-part">
+      <div class="setting">
+        <ul>
+          <li v-for="(item,index) in setting" :key="index">
+            <router-link :to="'/me/setting/' + item.route">
+              <span>{{item.title}}</span>
+              <span v-if="item.img">{{item.img}}</span>
+            </router-link>
+          </li>
+        </ul>
+      </div>
+      <router-view></router-view>
+    </div>
+  </CommonPopPage>
 </template>
 
 <script>
+import CommonPopPage from "@/common/CommonPopPage";
 export default {
   data() {
     return {
+      opPage: {
+        class: "find",
+        header: true,
+        headContent: {
+          left: "<",
+          middle: "支付"
+        }
+      },
       setting: [
         { title: "账号安全", img: ">", route: "accountSafe" },
         { title: "新消息通知", img: ">", route: "newMessageNote" },
@@ -29,12 +41,14 @@ export default {
         { title: "退出登录", route: "outLogin" }
       ]
     };
+  },
+  components: {
+    CommonPopPage
   }
 };
 </script>
 <style lang='less'>
 .setting-part {
-  height: 100vh;
   position: absolute;
   top: 40px;
   width: 100%;
