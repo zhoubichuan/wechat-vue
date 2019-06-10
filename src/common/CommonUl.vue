@@ -1,10 +1,10 @@
 <template>
-  <ul class="content">
-    <li v-for="(item,index) in op.data" :key="index">
+  <ul class="list">
+    <li v-for="(item,index) in op.data" :key="index" :class="item.active?'active':''">
       <router-link :to="'/find/'+item.route">
         <img :src="require(`@/assets/image/find/${item.img||'shop'}.png`)" alt>
         <p>{{item.title}}</p>
-        <img src alt>
+        <span>></span>
       </router-link>
     </li>
   </ul>
@@ -17,11 +17,15 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-.content {
+.list {
   margin-top: 40px;
+  .active {
+    margin-top: 5px;
+  }
   li {
     padding: 10px 10px;
     background-color: #ffffff;
+    border-bottom: 1px solid #f2f2f2;
     img {
       width: 20px;
       height: 20px;
@@ -30,6 +34,12 @@ export default {
     p {
       display: inline-block;
       margin-left: 20px;
+    }
+    span {
+      float: right;
+      font-size: 16px;
+      font-weight: bold;
+      color: gray;
     }
   }
 }

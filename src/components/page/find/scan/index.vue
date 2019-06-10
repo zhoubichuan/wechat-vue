@@ -16,8 +16,8 @@ export default {
         header: true,
         headContent: {
           left: "<",
-          middle: "个人头像",
-          right: "..."
+          middle: "二维码/条码",
+          right: "相册"
         }
       }
     };

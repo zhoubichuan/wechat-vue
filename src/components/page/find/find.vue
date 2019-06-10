@@ -1,6 +1,7 @@
 <template>
   <CommonPage :op="opPage">
     <CommonUl :op="dataOp"/>
+    <router-view></router-view>
   </CommonPage>
 </template>
 <script>
@@ -23,7 +24,8 @@ export default {
           {
             title: "朋友圈",
             img: "friend",
-            route: "friend"
+            route: "friend",
+            active: true
           },
           {
             title: "扫一扫",
@@ -33,17 +35,25 @@ export default {
           {
             title: "摇一摇",
             img: "shake",
-            route: "shake"
+            route: "shake",
+            active: true
+          },
+          {
+            title: "看一看",
+            img: "shop",
+            route: "see"
           },
           {
             title: "搜一搜",
             img: "shop",
-            route: "search"
+            route: "search",
+            active: true
           },
           {
             title: "附近的人",
             img: "shop",
-            route: "nearby"
+            route: "nearby",
+            active: true
           },
           {
             title: "购物",
@@ -53,7 +63,8 @@ export default {
           {
             title: "游戏",
             img: "game",
-            route: "game"
+            route: "game",
+            active: true
           },
           {
             title: "小程序",
