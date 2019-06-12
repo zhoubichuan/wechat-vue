@@ -1,11 +1,11 @@
 export default {
   path: "/address",
   name: "address",
-  component: () => import("@/components/page/address/address"),
+  component: () => import("@/components/page/address"),
   children: [
     {
-      path: "newfriend",
-      name: "newfriend",
+      path: "friends",
+      name: "friends",
       component: () => import("@/components/page/address/newfriend")
     },
     {

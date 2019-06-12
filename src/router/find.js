@@ -1,7 +1,7 @@
 export default {
   path: "/find",
   name: "find",
-  component: () => import("@/components/page/find/find"),
+  component: () => import("@/components/page/find"),
   children: [
     {
       path: "friend",

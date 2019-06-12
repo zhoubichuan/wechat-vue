@@ -32,7 +32,7 @@ export default {
         header: true,
         headContent: {
           left: "<",
-          middle: "支付"
+          middle: "群聊"
         }
       }
     };

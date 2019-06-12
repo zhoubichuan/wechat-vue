@@ -1,6 +1,5 @@
 <template>
   <CommonPopPage :op="opPage">
-    <Search/>
     <div class="album">
       <ul>
         <li v-for="(item,index) in album" :key="index">
@@ -16,7 +15,6 @@
 
 <script>
 import CommonPopPage from "@/common/CommonPopPage";
-import Search from "@/common/Search";
 export default {
   data() {
     return {
@@ -34,20 +32,19 @@ export default {
         header: true,
         headContent: {
           left: "<",
-          middle: "公众号",
-          right: "+"
+          middle: "支付"
         }
       }
     };
   },
   components: {
-    CommonPopPage,
-    Search
+    CommonPopPage
   }
 };
 </script>
 <style lang='less' scoped>
 .album {
+  position: absolute;
   top: 40px;
   width: 100%;
   left: 0;

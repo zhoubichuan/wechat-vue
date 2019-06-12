@@ -6,7 +6,7 @@
 </template>
 <script>
 import CommonPage from "@/common/CommonPage";
-import CommonUl from "@/common/CommonUl";
+import CommonUl from "@/common/find/CommonUl";
 
 export default {
   data() {

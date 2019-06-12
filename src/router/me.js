@@ -1,7 +1,7 @@
 export default {
   path: "/me",
   name: "me",
-  component: () => import("@/components/page/me/me"),
+  component: () => import("@/components/page/me"),
   children: [
     {
       path: "information",
