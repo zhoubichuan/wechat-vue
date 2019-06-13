@@ -2,7 +2,7 @@
   <div class="top">
     <ul>
       <li class="no-people" v-for="(item,index) in data " :key="index">
-        <router-link :to="'/address'+item.link">{{item.title}}</router-link>
+        <router-link :to="'/address/people:'+item.title">{{item.title}}</router-link>
       </li>
     </ul>
     <router-view></router-view>
@@ -14,7 +14,7 @@ export default {
     return {
       data: [
         { title: "A" },
-        { title: "曹操", img: "", link: "aaa" },
+        { title: "曹操", img: "" },
         { title: "孙权", img: "" },
         { title: "周瑜", img: "" },
         { title: "黄盖", img: "" },
@@ -37,14 +37,17 @@ export default {
       padding: 10px 15px;
       background-color: #ffffff;
       border-bottom: 1px solid #f2f2f2;
-      img {
-        width: 30px;
-        height: 30px;
-        display: inline-block;
-      }
-      p {
-        display: inline-block;
-        margin-left: 20px;
+      a {
+        display: block;
+        img {
+          width: 30px;
+          height: 30px;
+          display: inline-block;
+        }
+        p {
+          display: inline-block;
+          margin-left: 20px;
+        }
       }
     }
   }

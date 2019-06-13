@@ -22,6 +22,11 @@ export default {
       path: "tips",
       name: "tips",
       component: () => import("@/components/page/address/tips")
+    },
+    {
+      path: "people:id",
+      name: "people",
+      component: () => import("@/components/page/address/people")
     }
   ]
 };

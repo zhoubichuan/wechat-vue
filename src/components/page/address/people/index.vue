@@ -1,14 +1,18 @@
 <template>
   <CommonPopPage :op="opPage">
     <div class="album">
-      <ul>
-        <li v-for="(item,index) in album" :key="index">
-          <h3>{{item.time}}</h3>
-          <div>
-            <img v-for="(_item,_index) in item.img" :key="_index" :src="_item" alt>
-          </div>
-        </li>
-      </ul>
+      <img src alt>
+      <div>
+        <h3>{{this.$route.params.id.slice(1)}}</h3>
+        <div>
+          <span>微信号：</span>
+          <span>2323</span>
+        </div>
+        <div>
+          <span>地区：</span>
+          <span>广东 深圳</span>
+        </div>
+      </div>
     </div>
   </CommonPopPage>
 </template>
@@ -18,21 +22,12 @@ import CommonPopPage from "@/common/CommonPopPage";
 export default {
   data() {
     return {
-      album: [
-        { time: "1月", img: ["", "", ""] },
-        { time: "2月", img: ["", "", ""] },
-        { time: "3月", img: ["", "", ""] },
-        { time: "4月", img: ["", "", ""] },
-        { time: "5月", img: ["", "", ""] },
-        { time: "6月", img: ["", "", ""] },
-        { time: "7月", img: ["", "", ""] }
-      ],
       opPage: {
         class: "find",
         header: true,
         headContent: {
           left: "<",
-          middle: "支付"
+          right: "..."
         }
       }
     };
