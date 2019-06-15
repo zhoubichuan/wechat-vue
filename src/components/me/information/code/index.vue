@@ -10,7 +10,7 @@ import ImgCard from "@/common/me/ImgCard";
 export default {
   data() {
     return {
-      op: { img: require("../../../../../assets/image/me/flower.png") },
+      op: { img: require("@/assets/image/me/flower.png") },
       opPage: {
         class: "setting",
         header: true,

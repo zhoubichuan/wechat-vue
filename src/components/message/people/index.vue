@@ -1,6 +1,6 @@
 <template>
   <CommonPopPage :op="opPage">
-    <information v-show="informationIsShow" :title="titleData"/>
+    <information :title="titleData"/>
   </CommonPopPage>
 </template>
 

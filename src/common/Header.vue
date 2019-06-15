@@ -5,7 +5,13 @@
         <p class="cancel">{{op.left}}</p>
       </div>
       <p class="title">{{op.middle}}</p>
-      <p class="more" @click="$listeners.handleRight()">{{op.right}}</p>
+      <img
+        v-if="op.right&&op.right.ico"
+        class="image"
+        :src="require(`@/assets/image/header/${op.right.ico}.svg`)"
+        alt
+      >
+      <p v-else class="more" @click="$listeners.handleRight()">{{(op.right&&op.right.text)||''}}</p>
     </div>
     <PopFloor v-if="op.popFloor" v-show="popFloor"/>
   </div>
@@ -22,7 +28,9 @@ export default {
           style: "color:black ;background-color: white;",
           left: "",
           middle: "微信(18)",
-          right: "+"
+          right: {
+            ico: "more"
+          }
         };
       }
     }
@@ -43,6 +51,7 @@ export default {
 .header-component {
   margin-top: 40px;
   .header {
+    background: #efeff4;
     position: fixed;
     width: 100%;
     display: flex;
@@ -53,6 +62,9 @@ export default {
     box-sizing: border-box;
     top: 0;
     z-index: 5000;
+    .image {
+      width: 20px;
+    }
   }
   &::before {
     content: "";

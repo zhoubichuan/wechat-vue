@@ -20,7 +20,9 @@ export default {
         footer: true,
         headContent: {
           middle: "通讯录",
-          right: "+"
+          right: {
+            ico: "add-friend"
+          }
         }
       }
     };

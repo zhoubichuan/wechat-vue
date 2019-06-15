@@ -1,12 +1,12 @@
 export default {
   path: "/message",
   name: "message",
-  component: () => import("@/components/page/message"),
+  component: () => import("@/components/message"),
   children: [
     {
       path: "people:id",
       name: "people",
-      component: () => import("@/components/page/message/people")
+      component: () => import("@/components/message/people")
     }
   ]
 };

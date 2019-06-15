@@ -1,42 +1,36 @@
 <template>
   <div>
-    <vheader>
-      <p slot="cancel" @click="hideRedBag">&lt;返回</p>
-      <p slot="title">微信红包</p>
-      <p slot="more">红包记录</p>
-    </vheader>
     <div class="red-bag-record-component">
       <section class="red-bag-record">
-      <div class="top">
-        <img class="photo" :src="message.pho"/>
-        <p>{{message.name}}</p>
-        <p>给你发一个红包</p>
-      </div>
-      <slot >
-        <p>{{message.sum}}个红包</p>
-        <ul class="record">
-          <li v-for="(item,index) in message.redBag" :key="index">
-            <div class="left">
-              <img :src="item.photo" alt="">
-              <div class="record-content">
-                <p>{{item.name}}</p>
-                <p>{{item.time}}</p>
+        <div class="top">
+          <img class="photo" :src="message.pho">
+          <p>{{message.name}}</p>
+          <p>给你发一个红包</p>
+        </div>
+        <slot>
+          <p>{{message.sum}}个红包</p>
+          <ul class="record">
+            <li v-for="(item,index) in message.redBag" :key="index">
+              <div class="left">
+                <img :src="item.photo" alt>
+                <div class="record-content">
+                  <p>{{item.name}}</p>
+                  <p>{{item.time}}</p>
+                </div>
               </div>
-            </div>
-            <div class="right">
-              <span>{{item.money}}元</span>
-            </div>
-          </li>
-        </ul>
-      </slot>
-    </section>
+              <div class="right">
+                <span>{{item.money}}元</span>
+              </div>
+            </li>
+          </ul>
+        </slot>
+      </section>
     </div>
   </div>
 </template>
 
 <script>
 import Bus from "@/common/Bus.js";
-import vheader from "@/components/base-page/v-header";
 import axios from "axios";
 export default {
   data() {
@@ -55,9 +49,7 @@ export default {
       this.$emit("update:s", false);
     }
   },
-  components: {
-    vheader
-  }
+  components: {}
 };
 </script>
 

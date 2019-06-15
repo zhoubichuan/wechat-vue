@@ -8,7 +8,7 @@
               <li v-for="(item,index) in application" :key="index">
                 <router-link v-if="item.content" class="me-information" :to="'/me/' + item.route">
                   <div class="left">
-                    <img :src="require(`../../../assets/image/me/${item.ico}.png`)" alt>
+                    <img :src="require(`@/assets/image/me/${item.ico}.png`)" alt>
                     <div>
                       <p>{{item.title}}</p>
                       <p>{{item.content}}</p>
@@ -20,7 +20,7 @@
                   </div>
                 </router-link>
                 <router-link v-else :to="'/me/' + item.route">
-                  <img :src="require(`../../../assets/image/me/${item.ico}.png`)" alt>
+                  <img :src="require(`@/assets/image/me/${item.ico}.png`)" alt>
                   <p>{{item.title}}</p>
                 </router-link>
               </li>
@@ -42,7 +42,9 @@ export default {
         header: true,
         footer: true,
         headContent: {
-          right: "+"
+          right: {
+            ico: "camera"
+          }
         }
       },
       application: [

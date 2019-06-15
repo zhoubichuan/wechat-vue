@@ -1,47 +1,47 @@
 export default {
   path: "/find",
   name: "find",
-  component: () => import("@/components/page/find"),
+  component: () => import("@/components/find"),
   children: [
     {
       path: "friend",
       name: "friend",
-      component: () => import("@/components/page/find/friend")
+      component: () => import("@/components/find/friend")
     },
     {
       path: "game",
       name: "game",
-      component: () => import("@/components/page/find/game")
+      component: () => import("@/components/find/game")
     },
     {
       path: "nearby",
       name: "nearby",
-      component: () => import("@/components/page/find/nearby")
+      component: () => import("@/components/find/nearby")
     },
     {
       path: "program",
       name: "program",
-      component: () => import("@/components/page/find/program")
+      component: () => import("@/components/find/program")
     },
     {
       path: "scan",
       name: "scan",
-      component: () => import("@/components/page/find/scan")
+      component: () => import("@/components/find/scan")
     },
     {
       path: "search",
       name: "search",
-      component: () => import("@/components/page/find/search")
+      component: () => import("@/components/find/search")
     },
     {
       path: "shake",
       name: "shake",
-      component: () => import("@/components/page/find/shake")
+      component: () => import("@/components/find/shake")
     },
     {
       path: "shop",
       name: "shop",
-      component: () => import("@/components/page/find/shop")
+      component: () => import("@/components/find/shop")
     }
   ]
 };

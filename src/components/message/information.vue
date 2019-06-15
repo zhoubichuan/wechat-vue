@@ -1,16 +1,10 @@
 <template>
   <div class="information-component">
-    <!-- <redBagSend v-show="this.$store.state.pageShow" ></redBagSend> -->
-    <vheader>
-      <p slot="cancel" @click="goBack">返回</p>
-      <p slot="title">{{title}}</p>
-      <p slot="more">设置</p>
-    </vheader>
+    <redBagSend v-show="this.$store.state.pageShow"></redBagSend>
     <div class="get">
       <RedBagGet :show="isShow" @close="fn" :message="message">
         <p slot="r-money" class="r-money" v-if="message.money">{{message.redBag.receiveRedBag}}元</p>
       </RedBagGet>
-
       <div>
         <ul class="information">
           <li
@@ -50,9 +44,8 @@
 </template>
 
 <script type="text/javascript">
-import vheader from "@/components/base-page/v-header";
 import RedBagGet from "./appliance/red-bag/RedBagGet";
-// import RedBagSend from "./appliance/red-bag/RedBagSend";
+import RedBagSend from "./appliance/red-bag/RedBagSend";
 import Bus from "@/common/Bus.js";
 import axios from "axios";
 import appliance from "./appliance/appliance.vue";
@@ -72,9 +65,8 @@ export default {
   },
 
   components: {
-    vheader,
     RedBagGet,
-    // RedBagSend,
+    RedBagSend,
     appliance
   },
   computed: {},

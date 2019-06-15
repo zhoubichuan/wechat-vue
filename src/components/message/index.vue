@@ -29,7 +29,9 @@ export default {
           style: "color:black ;background-color: white;",
           left: "",
           middle: "微信(18)",
-          right: "+",
+          right: {
+            ico: "more"
+          },
           popFloor: true
         }
       },
@@ -65,6 +67,5 @@ export default {
       padding-left: 10px;
     }
   }
-  
 }
 </style>
