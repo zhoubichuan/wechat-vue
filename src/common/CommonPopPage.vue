@@ -1,7 +1,7 @@
 <template>
   <div id="CommonPopPage" :class="['common-pop-page',op.class]">
     <Header :op="op.headContent" v-if="op.header" @handleLeft="goBack()"/>
-    <div class="main">
+    <div class="pop-content">
       <slot></slot>
     </div>
     <Footer v-if="op.footer"/>
@@ -45,14 +45,14 @@ export default {
 </script>
 <style lang="less" scoped>
 .common-pop-page {
-  position: absolute;
+  position: fixed;
   z-index: 10000;
   top: -40px;
   width: 100%;
   left: 0;
   background: #efeff4;
-  .main {
-    height: calc(100vh - 40px);
+  .pop-content {
+    min-height: calc(100vh - 40px);
     margin-top: 40px;
   }
 }

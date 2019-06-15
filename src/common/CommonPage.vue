@@ -1,7 +1,7 @@
 <template>
   <div id="CommonPage" :class="['common-page',op.class]">
     <Header :op="op.headContent" v-if="op.header"/>
-    <div class="main">
+    <div class="common-content">
       <slot></slot>
     </div>
     <Footer v-if="op.footer"/>
@@ -41,8 +41,8 @@ export default {
 <style lang="less" scoped>
 .common-page {
   position: relative;
-  .main {
-    height: calc(100vh - 80px);
+  .common-content {
+    min-height: calc(100vh - 80px);
     margin-top: 40px;
     margin-bottom: 40px;
   }

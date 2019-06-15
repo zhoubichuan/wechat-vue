@@ -1,7 +1,9 @@
 <template>
   <CommonPage :op="opPage">
     <CommonUl :op="dataOp"/>
-    <router-view></router-view>
+    <transition name="transitionRouter" mode="out-in">
+      <router-view/>
+    </transition>
   </CommonPage>
 </template>
 <script>
@@ -84,5 +86,13 @@ export default {
 <style lang="less" >
 .find {
   background-color: #efeff4;
+}
+.transitionRouter-enter-active,
+.transitionRouter-leave-active {
+  transition: all 0.4s;
+}
+.transitionRouter-enter,
+.transitionRouter-leave {
+  transform: translate3d(100%, 0, 0);
 }
 </style>

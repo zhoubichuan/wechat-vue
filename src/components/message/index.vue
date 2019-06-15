@@ -8,7 +8,9 @@
       </div>
       <People/>
     </div>
-    <router-view></router-view>
+    <transition name="transitionRouter" mode="out-in">
+      <router-view/>
+    </transition>
   </CommonPage>
 </template>
 
@@ -67,5 +69,13 @@ export default {
       padding-left: 10px;
     }
   }
+}
+.transitionRouter-enter-active,
+.transitionRouter-leave-active {
+  transition: all 0.4s;
+}
+.transitionRouter-enter,
+.transitionRouter-leave {
+  transform: translate3d(100%, 0, 0);
 }
 </style>
