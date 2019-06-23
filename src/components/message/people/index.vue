@@ -1,19 +1,20 @@
 <template>
   <CommonPopPage :op="opPage">
-    <information :title="titleData"/>
+    <information :op="opInformation"/>
   </CommonPopPage>
 </template>
 
 <script>
 import CommonPopPage from "@/common/CommonPopPage";
 import information from "../information.vue";
+import axios from "axios";
 export default {
   data() {
     return {
       informationIsShow: false,
-      titleData: "",
+      opInformation: {},
       opPage: {
-        class: "find",
+        class: "people",
         header: true,
         headContent: {
           left: "<",
@@ -23,6 +24,12 @@ export default {
       }
     };
   },
+  created() {
+    axios.get("/api/information").then(res => {
+      this.opInformation.data = res.data.message;
+    });
+  },
+  mounted() {},
   components: {
     CommonPopPage,
     information

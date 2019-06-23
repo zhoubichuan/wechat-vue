@@ -1,5 +1,6 @@
 module.exports = {
   runtimeCompiler: true,
+  productionSourceMap: false,
   publicPath: "./",
   devServer: {
     before(app) {

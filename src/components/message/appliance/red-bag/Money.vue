@@ -31,7 +31,7 @@ export default {
   computed: {
     redBagAmount: {
       get() {
-        return this.$store.state.redBagAmount;
+        return this.$store.state.redBagAmount; 
       },
       set(val) {
         this.$store.state.redBagAmount = val;

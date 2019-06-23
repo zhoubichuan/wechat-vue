@@ -1,10 +1,10 @@
 <template>
-  <div class="notice">
+  <div class="people">
     <ul>
       <li @click="handleClick" v-for="(item,key) in messageData" :key="key">
         <router-link :to="'/message/people:'+item.title">
           <div class="left">
-            <img :src="''" alt>
+            <img :src="require(`@/assets/image/message/${item.photo||p1}.svg`)" alt>
             <div>
               <p class="title">{{item.title}}</p>
               <p>{{item.tips}}</p>
@@ -40,7 +40,7 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-.notice {
+.people {
   ul {
     background-color: white;
     padding: 0 10px;

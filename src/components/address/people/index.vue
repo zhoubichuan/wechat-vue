@@ -43,6 +43,16 @@ export default {
             title: "更多信息",
             img: "shake",
             route: "shake"
+          },
+          {
+            title: "发消息",
+            img: "shake",
+            route: "shake"
+          },
+          {
+            title: "音视频通话",
+            img: "shake",
+            route: "shake"
           }
         ]
       },

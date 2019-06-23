@@ -2,7 +2,7 @@
   <div class="header-component" :style="op.style">
     <div class="header">
       <div @click="$listeners.handleLeft()">
-        <p class="cancel">{{op.left}}</p>
+        <img :src="require(`@/assets/image/header/back.svg`)" class="back" v-if="op.left">
       </div>
       <p class="title">{{op.middle}}</p>
       <img
@@ -62,6 +62,9 @@ export default {
     box-sizing: border-box;
     top: 0;
     z-index: 5000;
+    .back {
+      height: 10px;
+    }
     .image {
       width: 20px;
     }

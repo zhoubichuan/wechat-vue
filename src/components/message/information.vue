@@ -9,10 +9,10 @@
         <ul class="information">
           <li
             :class="item.redBag.self ? 'right':''"
-            v-for="(item,index) in information"
+            v-for="(item,index) in information.data"
             :key="index"
           >
-            <img class="photo" :src="item.pho">
+            <img class="photo" :src="require(`@/assets/image/message/${item.pho||p1}.svg`)">
             <div class="i-content">
               <p class="name">{{item.name}}</p>
               <p v-show="!item.redBag.redBag">{{item.message}}</p>
@@ -47,16 +47,17 @@
 import RedBagGet from "./appliance/red-bag/RedBagGet";
 import RedBagSend from "./appliance/red-bag/RedBagSend";
 import Bus from "@/common/Bus.js";
-import axios from "axios";
+
 import appliance from "./appliance/appliance.vue";
 
 export default {
   props: {
-    title: String
+    op: Object
   },
+  mounted() {},
   data() {
     return {
-      information: [],
+      information: {},
       message: "",
       isShow: false,
       redBagDate: "",
@@ -71,14 +72,12 @@ export default {
   },
   computed: {},
   created() {
-    axios.get("/api/information").then(res => {
-      this.information = res.data.message;
-    });
+    this.information = JSON.parse(JSON.stringify(this.$props.op));
     Bus.$on("hide", val => {
       this.isShow = !val;
     });
     Bus.$on("redBagDate", val => {
-      this.information.push({
+      this.information.data.push({
         pho: "../logo.png",
         name: "我自己1",
         message: "",
@@ -87,7 +86,7 @@ export default {
       });
     });
     Bus.$on("sendMessage", val => {
-      this.information.push({
+      this.information.data.push({
         pho: "../logo.png",
         name: "我自己2",
         message: val,
