@@ -2,10 +2,7 @@
   <CommonPage :op="opPage">
     <div v-show="!informationIsShow">
       <Search/>
-      <div class="device">
-        <img :src="imgData" alt>
-        <p>微信已登录</p>
-      </div>
+      <LoginTip/>
       <People/>
     </div>
     <transition name="transitionRouter" mode="out-in">
@@ -17,8 +14,8 @@
 <script>
 import CommonPage from "@/common/CommonPage";
 import Search from "@/common/Search";
+import LoginTip from "@/common/message/LoginTip";
 import People from "@/common/message/People";
-import img from "../logo.png";
 
 export default {
   data() {
@@ -37,7 +34,6 @@ export default {
           popFloor: true
         }
       },
-      imgData: img,
       titleData: "",
       informationIsShow: false
     };
@@ -45,6 +41,7 @@ export default {
   components: {
     CommonPage,
     Search,
+    LoginTip,
     People
   }
 };
@@ -55,20 +52,6 @@ export default {
 .message {
   background-color: #efeff4;
   overflow-y: scroll;
-  .device {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 10px 0;
-    img {
-      width: 20px;
-      height: 20px;
-      margin-left: 10px;
-    }
-    p {
-      padding-left: 10px;
-    }
-  }
 }
 .transitionRouter-enter-active,
 .transitionRouter-leave-active {

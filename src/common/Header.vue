@@ -49,7 +49,7 @@ export default {
 
 <style lang="less" scoped>
 .header-component {
-  margin-top: 40px;
+  height: 40px;
   .header {
     background: #efeff4;
     position: fixed;

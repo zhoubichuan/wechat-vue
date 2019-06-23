@@ -1,15 +1,24 @@
 <template>
-  <div class="search">
-    <input type="text" placeholder="搜索" @click="$emit('click')">
+  <div class="search" id="search">
+    <input type="text" :placeholder="op.text" @click="$emit('click')">
   </div>
 </template>
 <script>
 export default {
+  props: {
+    op: {
+      type: Object,
+      default: function() {
+        return {
+          text: "搜索"
+        };
+      }
+    }
+  },
   data() {
     return {};
   },
-  mounted() {
-  },
+  mounted() {},
   components: {}
 };
 </script>

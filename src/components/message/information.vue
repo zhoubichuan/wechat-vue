@@ -47,7 +47,6 @@
 import RedBagGet from "./appliance/red-bag/RedBagGet";
 import RedBagSend from "./appliance/red-bag/RedBagSend";
 import Bus from "@/common/Bus.js";
-
 import appliance from "./appliance/appliance.vue";
 
 export default {

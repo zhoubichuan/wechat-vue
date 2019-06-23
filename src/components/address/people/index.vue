@@ -61,7 +61,9 @@ export default {
         header: true,
         headContent: {
           left: "<",
-          right: "..."
+          right: {
+            ico: "add-friend"
+          }
         }
       }
     };
@@ -76,7 +78,8 @@ export default {
 .popple {
   display: flex;
   flex-direction: row;
-
+  padding: 10px 0;
+  border-bottom: 1px solid gray;
   .photo {
     width: 50px;
   }

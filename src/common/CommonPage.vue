@@ -43,7 +43,6 @@ export default {
   position: relative;
   .common-content {
     min-height: calc(100vh - 80px);
-    margin-top: 40px;
     margin-bottom: 40px;
   }
 }

@@ -18,7 +18,6 @@ export default {
 </script>
 <style lang="less" scoped>
 .list {
-  margin-top: 40px;
   .active {
     margin-top: 5px;
   }

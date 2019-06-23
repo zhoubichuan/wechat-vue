@@ -46,7 +46,6 @@ export default {
 <style lang="less">
 .address {
   background-color: #efeff4;
-  margin-top: 20px;
   height: calc(100vh - 50px);
 }
 .transitionRouter-enter-active,
