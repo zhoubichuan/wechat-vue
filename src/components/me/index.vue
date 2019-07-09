@@ -58,7 +58,7 @@ export default {
         },
         {
           ico: "moneyBag",
-          title: "钱包",
+          title: "支付",
           route: "moneyBag"
         },
         {

@@ -9,11 +9,11 @@ export default {
   data() {
     return {
       opPage: {
-        class: "setting",
+        class: "address",
         header: true,
         headContent: {
           left: "<",
-          middle: "设置"
+          middle: "我的地址"
         }
       }
     };

@@ -28,7 +28,7 @@ export default {
         { time: "7月", img: ["", "", ""] }
       ],
       opPage: {
-        class: "find",
+        class: "me",
         header: true,
         headContent: {
           left: "<",

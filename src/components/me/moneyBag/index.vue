@@ -69,8 +69,6 @@ export default {
 </script>
 <style lang='less' scoped>
 .moneyBag {
-  position: absolute;
-  top: 40px;
   width: 100%;
   left: 0;
   background-color: #efeff4;

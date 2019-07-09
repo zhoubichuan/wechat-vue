@@ -25,7 +25,7 @@ export default {
         header: true,
         headContent: {
           left: "<",
-          middle: "设置"
+          middle: "个人信息"
         }
       },
       data: [
@@ -45,8 +45,6 @@ export default {
 </script>
 <style lang='less' scoped>
 .information {
-  position: absolute;
-  top: 40px;
   width: 100%;
   left: 0;
   background-color: #efeff4;
