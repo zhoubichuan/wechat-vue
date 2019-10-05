@@ -26,52 +26,52 @@ export default {
           {
             title: "朋友圈",
             img: "friend",
-            route: "friend",
+            route: "/find/friend",
             active: true
           },
           {
             title: "扫一扫",
             img: "scan",
-            route: "scan"
+            route: "/find/scan"
           },
           {
             title: "摇一摇",
             img: "shake",
-            route: "shake",
+            route: "/find/shake",
             active: true
           },
           {
             title: "看一看",
             img: "shop",
-            route: "see"
+            route: "/find/see"
           },
           {
             title: "搜一搜",
             img: "shop",
-            route: "search",
+            route: "/find/search",
             active: true
           },
           {
             title: "附近的人",
             img: "shop",
-            route: "nearby",
+            route: "/find/nearby",
             active: true
           },
           {
             title: "购物",
             img: "shop",
-            route: "shop"
+            route: "/find/shop"
           },
           {
             title: "游戏",
             img: "game",
-            route: "game",
+            route: "/find/game",
             active: true
           },
           {
             title: "小程序",
             img: "shop",
-            route: "program"
+            route: "/find/program"
           }
         ]
       }

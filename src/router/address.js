@@ -1,9 +1,29 @@
+// export default {
+//   address: () => import("@/components/address"),
+//   children: [{
+//       friends: () => import("@/components/address/newfriend"),
+//     },
+//     {
+//       number: () => import("@/components/address/number"),
+//     },
+//     {
+//       talk: () => import("@/components/address/talk"),
+//     },
+//     {
+//       tips: () => import("@/components/address/tips"),
+//     },
+//     {
+//       people: () => import("@/components/address/people"),
+//       move: true
+//     }
+//   ]
+// }
+
 export default {
   path: "/address",
   name: "address",
   component: () => import("@/components/address"),
-  children: [
-    {
+  children: [{
       path: "friends",
       name: "friends",
       component: () => import("@/components/address/newfriend")
@@ -26,7 +46,29 @@ export default {
     {
       path: "people:id",
       name: "people",
-      component: () => import("@/components/address/people")
+      component: () => import("@/components/address/people"),
+      children: [{
+          path: "settingAndTips",
+          name: "settingAndTips",
+          component: () => import("@/components/address/people/settingAndTips")
+        },
+        {
+          path: "friend",
+          name: "friend",
+          component: () => import("@/components/address/people/friend")
+        },
+        {
+          path: "moreInformation",
+          name: "moreInformation",
+          component: () => import("@/components/address/people/moreInformation")
+        },
+        {
+          path: "sendInformation",
+          redirect: {
+            path: "/message/people:id"
+          }
+        },
+      ]
     }
   ]
 };

@@ -1,18 +1,18 @@
 <template>
-  <div class="information-component">
+  <div class="information2-component">
     <redBagSend v-show="this.$store.state.pageShow"></redBagSend>
     <div class="get">
       <RedBagGet :show="isShow" @close="fn" :message="message">
         <p slot="r-money" class="r-money" v-if="message.money">{{message.redBag.receiveRedBag}}元</p>
       </RedBagGet>
       <div>
-        <ul class="information">
+        <ul class="information2">
           <li
             :class="item.redBag.self ? 'right':''"
-            v-for="(item,index) in information.data"
+            v-for="(item,index) in information2.data"
             :key="index"
           >
-            <img class="photo" :src="require(`@/assets/image/message/${item.pho||p1}.svg`)">
+            <img class="photo" :src="require(`@/assets/image/message/${item.pho||p1}.svg`)" />
             <div class="i-content">
               <p class="name">{{item.name}}</p>
               <p v-show="!item.redBag.redBag">{{item.message}}</p>
@@ -39,7 +39,7 @@
         </ul>
       </div>
     </div>
-    <appliance/>
+    <appliance />
   </div>
 </template>
 
@@ -56,7 +56,7 @@ export default {
   mounted() {},
   data() {
     return {
-      information: {},
+      information2: {},
       message: "",
       isShow: false,
       redBagDate: "",
@@ -71,12 +71,12 @@ export default {
   },
   computed: {},
   created() {
-    this.information = JSON.parse(JSON.stringify(this.$props.op));
+    this.information2 = JSON.parse(JSON.stringify(this.$props.op));
     Bus.$on("hide", val => {
       this.isShow = !val;
     });
     Bus.$on("redBagDate", val => {
-      this.information.data.push({
+      this.information2.data.push({
         pho: "../logo.png",
         name: "我自己1",
         message: "",
@@ -85,7 +85,7 @@ export default {
       });
     });
     Bus.$on("sendMessage", val => {
-      this.information.data.push({
+      this.information2.data.push({
         pho: "../logo.png",
         name: "我自己2",
         message: val,
@@ -115,7 +115,7 @@ export default {
   background-color: #cccccc;
   min-height: 100vh;
   padding: 0 10px;
-  .information {
+  .information2 {
     width: 100%;
     margin: 0 auto;
     li {

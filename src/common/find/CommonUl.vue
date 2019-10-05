@@ -1,8 +1,8 @@
 <template>
   <ul class="list">
     <li v-for="(item,index) in op.data" :key="index" :class="item.active?'active':''">
-      <router-link :to="'/find/'+item.route">
-        <img :src="require(`@/assets/image/find/${item.img||'shop'}.png`)" alt>
+      <router-link :to="item.route">
+        <img :src="require(`@/assets/image/find/${item.img||'shop'}.png`)" alt />
         <p>{{item.title}}</p>
         <span>></span>
       </router-link>
@@ -25,20 +25,24 @@ export default {
     padding: 10px 10px;
     background-color: #ffffff;
     border-bottom: 1px solid #f2f2f2;
-    img {
-      width: 20px;
-      height: 20px;
-      display: inline-block;
-    }
-    p {
-      display: inline-block;
-      margin-left: 20px;
-    }
-    span {
-      float: right;
-      font-size: 16px;
-      font-weight: bold;
-      color: gray;
+    position: relative;
+    a {
+      img {
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+      }
+      p {
+        display: inline-block;
+        margin-left: 20px;
+      }
+      span {
+        font-size: 16px;
+        font-weight: bold;
+        color: gray;
+        position: absolute;
+        right: 20px;
+      }
     }
   }
 }

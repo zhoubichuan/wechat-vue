@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <transition name="transitionRouter" mode="out-in">
-      <router-view/>
-    </transition>
+    <!-- <transition name="transitionRouter" mode="out-in"> -->
+    <router-view />
+    <!-- </transition> -->
   </div>
 </template>
 
@@ -44,7 +44,7 @@ export default {
 <style lang="less" scoped>
 .transitionRouter-enter-active,
 .transitionRouter-leave-active {
-  transition: all 0.4s;
+  transition: all 0.3s;
 }
 .transitionRouter-enter,
 .transitionRouter-leave {

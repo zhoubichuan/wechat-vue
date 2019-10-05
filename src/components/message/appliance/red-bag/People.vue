@@ -1,14 +1,14 @@
 <template>
-	<li class="people">
-      <div class="sum">
-       <span>红包个数</span>
-       <input maxlength="3" type="tel" placeholder="填写个数" v-model="redBagNumber"/>
-       <span>个</span>
-      </div>
-      <div class="tips">
-       <span>{{totalPeopleAmount}}</span>
-      </div>
-    </li>
+  <li class="people">
+    <div class="sum">
+      <span>红包个数</span>
+      <input maxlength="3" type="tel" placeholder="填写个数" v-model="redBagNumber" />
+      <span>个</span>
+    </div>
+    <div class="tips">
+      <span>{{totalPeopleAmount}}</span>
+    </div>
+  </li>
 </template>
 
 <script type="text/javascript">
@@ -35,7 +35,7 @@ export default {
 };
 </script>
 
-<style>
+<style type="text/css" scoped lang="less">
 .people {
   margin-top: 20px;
 }

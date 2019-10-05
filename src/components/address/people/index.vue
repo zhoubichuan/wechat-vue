@@ -2,7 +2,7 @@
   <CommonPopPage :op="opPage">
     <div class="popple">
       <div class="photo">
-        <img src alt>
+        <img :src="require(`@/assets/image/message/p1.svg`)" alt />
       </div>
       <div class="card">
         <h3>{{this.$route.params.id.slice(1)}}</h3>
@@ -16,7 +16,8 @@
         </div>
       </div>
     </div>
-    <CommonUl :op="dataOp"/>
+    <CommonUl :op="dataOp" />
+    <router-view />
   </CommonPopPage>
 </template>
 
@@ -31,28 +32,41 @@ export default {
           {
             title: "设置备注和标签",
             img: "friend",
-            route: "friend"
+            route:
+              "/address/people:" +
+              this.$route.params.id.slice(1) +
+              "/settingAndTips"
           },
           {
             title: "朋友圈",
             img: "scan",
-            route: "scan",
+            route:
+              "/address/people:" + this.$route.params.id.slice(1) + "/friend",
             active: true
           },
           {
             title: "更多信息",
             img: "shake",
-            route: "shake"
+            route:
+              "/address/people:" +
+              this.$route.params.id.slice(1) +
+              "/moreInformation"
           },
           {
             title: "发消息",
             img: "shake",
-            route: "shake"
+            route:
+              "/address/people:" +
+              this.$route.params.id.slice(1) +
+              "/sendInformation"
           },
           {
             title: "音视频通话",
             img: "shake",
-            route: "shake"
+            route:
+              "/address/people:" +
+              this.$route.params.id.slice(1) +
+              "/audioVideoTalk"
           }
         ]
       },
@@ -61,9 +75,7 @@ export default {
         header: true,
         headContent: {
           left: "<",
-          right: {
-            ico: "add-friend"
-          }
+          right: {}
         }
       }
     };
@@ -78,10 +90,16 @@ export default {
 .popple {
   display: flex;
   flex-direction: row;
-  padding: 10px 0;
-  border-bottom: 1px solid gray;
+  padding: 0 0 10px;
+  border-bottom: 1px solid #f2f2f2;
   .photo {
     width: 50px;
+    img {
+      margin-left: 10px;
+      width: 30px;
+      height: 30px;
+      display: inline-block;
+    }
   }
   .card {
     h3 {
