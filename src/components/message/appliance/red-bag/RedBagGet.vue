@@ -53,7 +53,7 @@ export default {
   }
 };
 </script>
-<style lang="less">
+<style lang="less" scoped>
 /* 弹出层 */
 #modal {
   .mask {

@@ -43,7 +43,7 @@ export default {
 };
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 .address {
   background-color: #efeff4;
   height: calc(100vh - 50px);

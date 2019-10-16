@@ -25,7 +25,7 @@ export default {
 };
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 .account-safe {
   height: 100vh;
   position: absolute;

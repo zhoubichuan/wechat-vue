@@ -4,13 +4,13 @@
       <li @click="handleClick" v-for="(item,key) in messageData" :key="key">
         <router-link :to="'/message/people:'+item.title">
           <div class="left">
-            <img :src="require(`@/assets/image/message/${item.photo||p1}.svg`)" alt>
-            <div>
-              <p class="title">{{item.title}}</p>
-              <p>{{item.tips}}</p>
+            <img class="photo" :src="require(`@/assets/image/message/${item.photo||p1}.svg`)" alt>
+            <div class="message">
+              <p class="message-title">{{item.title}}</p>
+              <p class="message-information">{{item.tips}}</p>
             </div>
           </div>
-          <div class="time">{{item.time}}</div>
+          <div class="message-time">{{item.time}}</div>
         </router-link>
       </li>
     </ul>
@@ -55,16 +55,20 @@ export default {
         .left {
           display: flex;
           flex-direction: rew;
-          img {
+          .photo {
             width: 40px;
             height: 40px;
           }
-          div {
+          .message {
             padding-left: 10px;
+            .message-information{
+              color:gray;
+            }
           }
         }
-        .time {
+        .message-time {
           float: right;
+          color:gray;
         }
       }
     }
