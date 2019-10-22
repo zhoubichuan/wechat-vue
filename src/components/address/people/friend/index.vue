@@ -15,8 +15,8 @@
 </template>
 
 <script>
-import CommonPopPage from "@/common/CommonPopPage";
-import Search from "@/common/Search";
+import CommonPopPage from "@/public_components/CommonPopPage";
+import Search from "@/public_components/Search";
 export default {
   data() {
     return {

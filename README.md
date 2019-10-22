@@ -43,7 +43,7 @@ Vue 版微信：[http://www.91cloud.top]()
 - 复制该项目到本地中
 - 将项目导入到 IDEA 开发工具(必须有 maven 环境)
 - 修改数据库配置文件 jdbc.properties 配置成自己的数据库参数
-- 修改/src/main/java/com/xuzijia/common/Config.java 将 uploadUrlRoot 属性修改为自己的上传路径
+- 修改/src/main/java/com/xuzijia/public_components/Config.java 将 uploadUrlRoot 属性修改为自己的上传路径
 - 配置 tomcat 配置文件 server.xml 增加虚拟路径，供访问本地图片(看不懂的自行 google 了解~)
 
 ```

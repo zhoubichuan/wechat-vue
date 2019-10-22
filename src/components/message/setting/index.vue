@@ -12,10 +12,10 @@
 </template>
 
 <script>
-import CommonPage from "@/common/CommonPage";
-import Search from "@/common/Search";
-import LoginTip from "@/common/message/LoginTip";
-import People from "@/common/message/People";
+import CommonPage from "@/public_components/CommonPage";
+import Search from "@/public_components/Search";
+import LoginTip from "@/public_components/message/LoginTip";
+import People from "@/public_components/message/People";
 import { mapState } from "vuex";
 
 export default {

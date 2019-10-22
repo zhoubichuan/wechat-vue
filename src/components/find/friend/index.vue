@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import CommonPopPage from "@/common/CommonPopPage";
+import CommonPopPage from "@/public_components/CommonPopPage";
 export default {
   data() {
     return {
