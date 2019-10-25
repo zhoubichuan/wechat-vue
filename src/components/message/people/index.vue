@@ -20,7 +20,7 @@ export default {
         headContent: {
           left: "<",
           middle: this.$route.params.id.slice(1),
-          right: "..."
+          right:{text: "..."}
         }
       }
     };
