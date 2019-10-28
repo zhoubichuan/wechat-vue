@@ -38,6 +38,12 @@ export default {
     //   console.log(location.href + this.pathname);
     //   this.href = location.href + "#" + this.pathname.slice(1);
     // });
+  },
+  beforeDestroy(){
+    window.console.log('beforeDestroy')
+  },
+   destroyed(){
+    window.console.log('destroyed')
   }
 };
 </script>

@@ -26,7 +26,7 @@ export default {
     People
   },
   computed: {
-    ...mapState("message", ["opPage", "titleData", "informationIsShow"])
+    ...mapState("storeMessageModules", ["opPage", "titleData", "informationIsShow"])
   }
 };
 </script>

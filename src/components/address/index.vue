@@ -13,27 +13,22 @@ import CommonPage from "@/public_components/CommonPage";
 import Search from "@/public_components/Search";
 import ClassList from "@/public_components/address/ClassList";
 import NameList from "@/public_components/address/NameList";
+import {mapState} from 'vuex'
+
 export default {
-  data() {
-    return {
-      opPage: {
-        class: "address",
-        header: true,
-        footer: true,
-        headContent: {
-          middle: "通讯录",
-          right: {
-            ico: "add-friend"
-          }
-        }
-      }
-    };
-  },
   components: {
     CommonPage,
     Search,
     ClassList,
     NameList
+  },
+  data() {
+    return {
+      
+    };
+  },
+   computed:{
+    ...mapState('storeAddressModules',['opPage'])
   },
   methods: {
     popShow() {
