@@ -5,9 +5,7 @@ export default {
             class: "find",
             header: true,
             footer: true,
-            headContent: {
-              middle: "发现"
-            }
+            
           },
           dataOp: {
             data: [

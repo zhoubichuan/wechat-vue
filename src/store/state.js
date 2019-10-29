@@ -1,4 +1,6 @@
 export default {
+  headerData:{
+  },
   redBagTyep: "commonRedBag",
   redBagAmount: "",
   redBagNumber: "",

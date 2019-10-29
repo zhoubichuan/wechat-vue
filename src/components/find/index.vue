@@ -23,7 +23,7 @@ export default {
   },
   computed:{
     ...mapState('storeFindModules',['opPage','dataOp'])
-  }
+  },
 };
 </script>
 <style lang="less" scoped>

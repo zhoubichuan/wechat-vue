@@ -36,7 +36,7 @@
 </template>
 <script>
 import CommonPage from "@/public_components/CommonPage";
-import {mapState} from 'vuex'
+import {mapState,mapMutations} from 'vuex'
 export default {
   components: {
     CommonPage
@@ -50,6 +50,9 @@ export default {
     ...mapState('storeMeModules',['opPage','application'])
   },
   methods: {
+    ...mapMutations({
+      changeHeaderData:'CHANGE_HEADER_DATA'
+    }),
     go() {
       history.go(-1);
     }

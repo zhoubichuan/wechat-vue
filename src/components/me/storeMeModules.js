@@ -4,12 +4,7 @@ export default {
         opPage: {
             class: "me",
             header: true,
-            footer: true,
-            headContent: {
-              right: {
-                ico: "camera"
-              }
-            }
+            footer: true
           },
         application: [
         {

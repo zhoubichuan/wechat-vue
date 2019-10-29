@@ -1,23 +1,40 @@
 <template>
   <div id="app">
+    <Header :op="headContent" v-if="header"/>
     <!-- <transition name="transitionRouter" mode="out-in"> -->
     <router-view />
     <!-- </transition> -->
+    <Footer v-if="footer"/>
   </div>
 </template>
 
 <script>
 import Bus from "@/public_components/Bus.js";
+import Header from "@/public_components/Header";
+import Footer from "@/public_components/Footer";
 export default {
   data() {
-    return {};
+    return {
+      class: "page",
+      header: true,
+      headContent: {
+        style: "color:black ;background-color: white;",
+        left: "",
+        middle: "微信(18)",
+        right: "+"
+      },
+      footer: true
+    };
   },
   created() {
     Bus.$on("scroll", val => {
       this.stopScroll = val;
     });
   },
-  components: {},
+  components: {
+    Header,
+    Footer,
+  },
   methods: {},
   mounted() {
     // if (!!window.ActiveXObject || "ActiveXObject" in window) {

@@ -11,6 +11,7 @@
   </div>
 </template>
 <script>
+import {mapMutations} from 'vuex'
 export default {
   data() {
     return {
@@ -21,6 +22,16 @@ export default {
         { image: "myself", text: "我", link: "me" }
       ]
     };
+  },
+  methods:{
+    ...mapMutations({
+      changeHeaderData:'change_header_data'
+    })
+  },
+  watch:{
+    $route(to){
+      this.changeHeaderData(to.path)
+    }
   }
 };
 </script>

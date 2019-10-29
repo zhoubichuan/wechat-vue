@@ -1,47 +1,36 @@
 <template>
-  <div class="header-component" :style="op.style">
+  <div class="header-component" :style="headerData.style">
     <div class="header">
       <div @click="$listeners.handleLeft()">
-        <img :src="require(`@/assets/image/header/back.svg`)" class="back" v-if="op.left">
+        <img :src="require(`@/assets/image/header/back.svg`)" class="back" v-if="headerData.left">
       </div>
-      <p class="title">{{op.middle}}</p>
+      <p class="title">{{headerData.middle}}</p>
       <img
-        v-if="op.right&&op.right.ico"
+        v-if="headerData.right&&headerData.right.ico"
         class="image"
-        :src="require(`@/assets/image/header/${op.right.ico}.svg`)"
+        :src="require(`@/assets/image/header/${headerData.right.ico}.svg`)"
         alt
       >
-      <p v-else class="more" @click="$listeners.handleRight()">{{(op.right&&op.right.text)||''}}</p>
+      <p v-else class="more" @click="$listeners.handleRight()">{{(headerData.right&&headerData.right.text)||''}}</p>
     </div>
-    <PopFloor v-if="op.popFloor" v-show="popFloor"/>
+    <PopFloor v-if="headerData.popFloor" v-show="popFloor"/>
   </div>
 </template>
 <script>
 import PopFloor from "./PopFloor";
+import {mapState} from 'vuex'
 export default {
   name: "Header",
-  props: {
-    op: {
-      type: Object,
-      default: function() {
-        return {
-          style: "color:black ;background-color: white;",
-          left: "",
-          middle: "微信(18)",
-          right: {
-            ico: "more"
-          }
-        };
-      }
-    }
+  components: {
+    PopFloor
   },
   data() {
     return {
       popFloor: false
     };
   },
-  components: {
-    PopFloor
+  computed:{
+    ...mapState(['headerData'])
   },
   methods: {}
 };
