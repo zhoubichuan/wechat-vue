@@ -18,11 +18,22 @@
 //     }
 //   ]
 // }
+import store from '../store'
 
 export default {
   path: "/address",
   name: "address",
   component: () => import("@/components/address"),
+  beforeEnter:(to, from, next) => {
+    let data={
+      middle: "通讯录",
+      right: {
+        ico: "add-friend"
+    }
+  }
+    store.commit('change_header_data',data)
+    next()
+  },
   children: [{
       path: "friends",
       name: "friends",

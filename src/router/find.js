@@ -1,7 +1,15 @@
+import store from '../store'
 export default {
   path: "/find",
   name: "find",
   component: () => import("@/components/find"),
+  beforeEnter:(to, from, next) => {
+    let data={
+      middle: "发现"
+  }
+    store.commit('change_header_data',data)
+    next()
+  },
   children: [
     {
       path: "friend",

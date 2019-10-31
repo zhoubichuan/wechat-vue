@@ -1,7 +1,17 @@
+import store from '../store'
 export default {
   path: "/me",
   name: "me",
   component: () => import("@/components/me"),
+  beforeEnter:(to, from, next) => {
+    let data={
+        right: {
+          ico: "camera"
+      }
+    }
+    store.commit('change_header_data',data)
+    next()
+  },
   children: [
     {
       path: "information",

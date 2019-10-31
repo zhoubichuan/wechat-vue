@@ -27,11 +27,6 @@ export default {
     ...mapMutations({
       changeHeaderData:'change_header_data'
     })
-  },
-  watch:{
-    $route(to){
-      this.changeHeaderData(to.path)
-    }
   }
 };
 </script>
