@@ -9,7 +9,7 @@
 <script>
 import CommonPage from "@/public_components/CommonPage";
 import CommonUl from "@/public_components/find/CommonUl";
-import {mapState} from 'vuex'
+import {mapState,mapMutations} from 'vuex'
 
 export default {
   components: {
@@ -22,8 +22,19 @@ export default {
     };
   },
   computed:{
-    ...mapState('storeFindModules',['opPage','dataOp'])
+    ...mapState('storeFindModules',['opPage','dataOp','findHeader'])
   },
+    methods: {
+    ...mapMutations({
+      setHeaderConfig:"HEADER_CONFIG"
+    }),
+    init(){
+      this.setHeaderConfig(this.findHeader)
+    }
+  },
+  created(){
+    this.init()
+  }
 };
 </script>
 <style lang="less" scoped>

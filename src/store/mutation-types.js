@@ -1,2 +1,1 @@
-export const SET_SINGER = "SET_SINGER";
-export const CHANGE_HEADER_DATA="CHANGE_HEADER_DATA"
+export const HEADER_CONFIG = "HEADER_CONFIG";

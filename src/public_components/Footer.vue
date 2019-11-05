@@ -25,7 +25,7 @@ export default {
   },
   methods:{
     ...mapMutations({
-      changeHeaderData:'change_header_data'
+      changeHeaderData:'HEADER_CONFIG'
     })
   }
 };

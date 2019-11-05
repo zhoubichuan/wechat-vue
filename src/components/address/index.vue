@@ -13,7 +13,7 @@ import CommonPage from "@/public_components/CommonPage";
 import Search from "@/public_components/Search";
 import ClassList from "@/public_components/address/ClassList";
 import NameList from "@/public_components/address/NameList";
-import {mapState} from 'vuex'
+import {mapState,mapMutations} from 'vuex'
 
 export default {
   components: {
@@ -28,12 +28,21 @@ export default {
     };
   },
    computed:{
-    ...mapState('storeAddressModules',['opPage'])
+    ...mapState('storeAddressModules',['opPage','addressHeader'])
   },
   methods: {
+    ...mapMutations({
+      setHeaderConfig:"HEADER_CONFIG"
+    }),
+    init(){
+      this.setHeaderConfig(this.addressHeader)
+    },
     popShow() {
       this.opPage.popshow = true;
     }
+  },
+  created(){
+    this.init()
   }
 };
 </script>

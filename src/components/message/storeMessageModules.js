@@ -7,6 +7,14 @@ export default {
             footer: true,
         },
         titleData: "",
-        informationIsShow: false
+        informationIsShow: false,
+        messageHeader:{
+            style: "color:black ;background-color: white;",
+            left: "",
+            middle: "微信(18)",
+            right: {
+              ico: "more"
+            }
+          }
     }
 };

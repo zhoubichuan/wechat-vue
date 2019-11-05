@@ -1,19 +1,19 @@
 <template>
-  <div class="header-component" :style="headerData.style">
+  <div class="header-component" :style="header.style">
     <div class="header">
       <div @click="$listeners.handleLeft()">
-        <img :src="require(`@/assets/image/header/back.svg`)" class="back" v-if="headerData.left">
+        <img :src="require(`@/assets/image/header/back.svg`)" class="back" v-if="header.left">
       </div>
-      <p class="title">{{headerData.middle}}</p>
+      <p class="title">{{header.middle}}</p>
       <img
-        v-if="headerData.right&&headerData.right.ico"
+        v-if="header.right&&header.right.ico"
         class="image"
-        :src="require(`@/assets/image/header/${headerData.right.ico}.svg`)"
+        :src="require(`@/assets/image/header/${header.right.ico}.svg`)"
         alt
       >
-      <p v-else class="more" @click="$listeners.handleRight()">{{(headerData.right&&headerData.right.text)||''}}</p>
+      <p v-else class="more" @click="$listeners.handleRight()">{{(header.right&&header.right.text)||''}}</p>
     </div>
-    <PopFloor v-if="headerData.popFloor" v-show="popFloor"/>
+    <PopFloor v-if="header.popFloor" v-show="popFloor"/>
   </div>
 </template>
 <script>
@@ -30,7 +30,7 @@ export default {
     };
   },
   computed:{
-    ...mapState(['headerData'])
+    ...mapState(['header'])
   },
   methods: {}
 };

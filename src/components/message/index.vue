@@ -16,7 +16,7 @@ import CommonPage from "@/public_components/CommonPage";
 import Search from "@/public_components/Search";
 import LoginTip from "@/public_components/message/LoginTip";
 import People from "@/public_components/message/People";
-import { mapState } from "vuex";
+import { mapState,mapMutations } from "vuex";
 
 export default {
   components: {
@@ -26,7 +26,18 @@ export default {
     People
   },
   computed: {
-    ...mapState("storeMessageModules", ["opPage", "titleData", "informationIsShow"])
+    ...mapState("storeMessageModules", ["opPage", "titleData", "informationIsShow",'messageHeader'])
+  },
+  methods: {
+    ...mapMutations({
+      setHeaderConfig:"HEADER_CONFIG"
+    }),
+    init(){
+      this.setHeaderConfig(this.messageHeader)
+    }
+  },
+  created(){
+    this.init()
   }
 };
 </script>

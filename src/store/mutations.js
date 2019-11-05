@@ -1,10 +1,7 @@
 import * as types from "./mutation-types";
 
 export default {
-  [types.SET_SINGER](state, singer) {
-    state.singer = singer;
-  },
-  change_header_data(state,params){
-    state.headerData=params
+  [types.HEADER_CONFIG](state,header){
+    state.header=header
   }
 };

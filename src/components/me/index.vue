@@ -47,15 +47,21 @@ export default {
     };
   },
   computed:{
-    ...mapState('storeMeModules',['opPage','application'])
+    ...mapState('storeMeModules',['opPage','application','meHeader'])
   },
   methods: {
     ...mapMutations({
-      changeHeaderData:'CHANGE_HEADER_DATA'
+      setHeaderConfig:"HEADER_CONFIG"
     }),
+    init(){
+      this.setHeaderConfig(this.meHeader)
+    },
     go() {
       history.go(-1);
     }
+  },
+  created(){
+    this.init()
   }
 };
 </script>

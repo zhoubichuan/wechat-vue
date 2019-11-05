@@ -43,6 +43,11 @@ export default {
             title: "设置",
             route: "setting"
         }
-        ]
+        ],
+        meHeader:{
+            right: {
+                ico: "camera"
+            }
+        }
     }
 };

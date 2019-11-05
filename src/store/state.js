@@ -1,5 +1,5 @@
 export default {
-  headerData:{
+  header:{
   },
   redBagTyep: "commonRedBag",
   redBagAmount: "",
