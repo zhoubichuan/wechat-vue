@@ -1,30 +1,41 @@
 <template>
-  <CommonPopPage :op="opPage">
-    <ImgCard :op="op"/>
-  </CommonPopPage>
+  <CommonPage :op="opPage">
+    <ImgCard :op="op" />
+  </CommonPage>
 </template>
 
 <script>
-import CommonPopPage from "@/public_components/CommonPopPage";
+import CommonPage from "@/public_components/CommonPage";
 import ImgCard from "@/public_components/me/ImgCard";
+import { mapState, mapMutations } from 'vuex'
 export default {
-  data() {
+  data () {
     return {
       op: { img: require("@/assets/image/me/flower.png") },
       opPage: {
         class: "me-information-photo",
         header: true,
-        headContent: {
-          left: "<",
-          middle: "个人头像",
-          right: "..."
-        }
+
       }
     };
   },
   components: {
-    CommonPopPage,
+    CommonPage,
     ImgCard
+  },
+  computed: {
+    ...mapState('storeMeModules/storeInformationModules', ['photoHeader'])
+  },
+  methods: {
+    ...mapMutations({
+      setHeaderConfig: 'HEADER_CONFIG'
+    }),
+    init () {
+      this.setHeaderConfig(this.photoHeader)
+    }
+  },
+  created () {
+    this.init()
   }
 };
 </script>

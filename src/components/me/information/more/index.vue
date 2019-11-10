@@ -1,24 +1,52 @@
 <template>
-  <CommonPopPage :op="opPage">更多</CommonPopPage>
+  <CommonPage :op="opPage">
+    <CommonUl :op="dataOp" />
+    <transition name="transitionRouter"
+                mode="out-in">
+      <router-view />
+    </transition>
+  </CommonPage>
 </template>
 
 <script>
-import CommonPopPage from "@/public_components/CommonPopPage";
+import CommonPage from "@/public_components/CommonPage";
+import CommonUl from "@/public_components/find/CommonUl";
+import { mapState, mapMutations } from 'vuex'
 
 export default {
-  data() {
+  components: {
+    CommonPage,
+    CommonUl
+  },
+  data () {
     return {
       opPage: {
         class: "setting",
         header: true,
-        headContent: {
-          left: "<"
-        }
+      },
+      dataOp: {
+        data: [
+          { title: "性别", image: "", route: "sex" },
+          { title: "地区", image: "", route: "location" },
+          { title: "个性签名", image: "", route: "self" },
+        ]
       }
     };
   },
-  components: {
-    CommonPopPage
+
+  computed: {
+    ...mapState('storeMeModules/storeInformationModules', ['moreHeader'])
+  },
+  methods: {
+    ...mapMutations({
+      setHeaderConfig: 'HEADER_CONFIG'
+    }),
+    init () {
+      this.setHeaderConfig(this.moreHeader)
+    }
+  },
+  created () {
+    this.init()
   }
 };
 </script>

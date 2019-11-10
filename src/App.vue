@@ -1,10 +1,12 @@
 <template>
   <div id="app">
-    <Header :op="headContent" v-if="header"/>
+    <Header :op="headContent"
+            v-if="header"
+            @handleLeft="goBack()" />
     <!-- <transition name="transitionRouter" mode="out-in"> -->
     <router-view />
     <!-- </transition> -->
-    <Footer v-if="footer"/>
+    <Footer v-if="footer" />
   </div>
 </template>
 
@@ -13,7 +15,7 @@ import Bus from "@/public_components/Bus.js";
 import Header from "@/public_components/Header";
 import Footer from "@/public_components/Footer";
 export default {
-  data() {
+  data () {
     return {
       class: "page",
       header: true,
@@ -26,7 +28,7 @@ export default {
       footer: true
     };
   },
-  created() {
+  created () {
     Bus.$on("scroll", val => {
       this.stopScroll = val;
     });
@@ -35,8 +37,13 @@ export default {
     Header,
     Footer,
   },
-  methods: {},
-  mounted() {
+  methods: {
+    goBack () {
+      window.history.go(-1);
+    }
+  },
+  mounted () {
+
     // if (!!window.ActiveXObject || "ActiveXObject" in window) {
     //   window.addEventListener(
     //     "hashchange",
@@ -56,10 +63,10 @@ export default {
     //   this.href = location.href + "#" + this.pathname.slice(1);
     // });
   },
-  beforeDestroy(){
+  beforeDestroy () {
     window.console.log('beforeDestroy')
   },
-   destroyed(){
+  destroyed () {
     window.console.log('destroyed')
   }
 };

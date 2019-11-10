@@ -1,5 +1,5 @@
 <template>
-  <CommonPopPage :op="opPage">
+  <CommonPage :op="opPage">
     <Search/>
     <div class="album">
       <ul>
@@ -11,11 +11,11 @@
         </li>
       </ul>
     </div>
-  </CommonPopPage>
+  </CommonPage>
 </template>
 
 <script>
-import CommonPopPage from "@/public_components/CommonPopPage";
+import CommonPage from "@/public_components/CommonPage";
 import Search from "@/public_components/Search";
 export default {
   data() {
@@ -41,7 +41,7 @@ export default {
     };
   },
   components: {
-    CommonPopPage,
+    CommonPage,
     Search
   }
 };

@@ -5,9 +5,6 @@
       <LoginTip />
       <People />
     </div>
-    <transition name="transitionRouter" mode="out-in">
-      <router-view />
-    </transition>
   </CommonPage>
 </template>
 
@@ -16,7 +13,7 @@ import CommonPage from "@/public_components/CommonPage";
 import Search from "@/public_components/Search";
 import LoginTip from "@/public_components/message/LoginTip";
 import People from "@/public_components/message/People";
-import { mapState,mapMutations } from "vuex";
+import { mapState, mapMutations } from "vuex";
 
 export default {
   components: {
@@ -26,17 +23,17 @@ export default {
     People
   },
   computed: {
-    ...mapState("storeMessageModules", ["opPage", "titleData", "informationIsShow",'messageHeader'])
+    ...mapState("storeMessageModules", ["opPage", "titleData", "informationIsShow", 'messageHeader'])
   },
   methods: {
     ...mapMutations({
-      setHeaderConfig:"HEADER_CONFIG"
+      setHeaderConfig: "HEADER_CONFIG"
     }),
-    init(){
+    init () {
       this.setHeaderConfig(this.messageHeader)
     }
   },
-  created(){
+  created () {
     this.init()
   }
 };

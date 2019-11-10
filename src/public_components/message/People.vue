@@ -1,10 +1,14 @@
 <template>
   <div class="people">
     <ul>
-      <li @click="handleClick" v-for="(item,key) in messageData" :key="key">
-        <router-link :to="'/message/people:'+item.title">
+      <li @click="handleClick"
+          v-for="(item,key) in messageData"
+          :key="key">
+        <router-link :to="'/people:'+item.title">
           <div class="left">
-            <img class="photo" :src="require(`@/assets/image/message/${item.photo||p1}.svg`)" alt>
+            <img class="photo"
+                 :src="require(`@/assets/image/message/${item.photo||p1}.svg`)"
+                 alt>
             <div class="message">
               <p class="message-title">{{item.title}}</p>
               <p class="message-information">{{item.tips}}</p>
@@ -19,12 +23,12 @@
 <script>
 import axios from "axios";
 export default {
-  data() {
+  data () {
     return {
       messageData: ""
     };
   },
-  created() {
+  created () {
     axios.get("/api/message").then(res => {
       if (res.data.code == 200) {
         this.messageData = res.data.message;
@@ -32,7 +36,7 @@ export default {
     });
   },
   methods: {
-    handleClick(e) {
+    handleClick (e) {
       this.informationIsShow = !this.informationIsShow;
       this.titleData = e.target.innerText;
     }
@@ -61,14 +65,14 @@ export default {
           }
           .message {
             padding-left: 10px;
-            .message-information{
-              color:gray;
+            .message-information {
+              color: gray;
             }
           }
         }
         .message-time {
           float: right;
-          color:gray;
+          color: gray;
         }
       }
     }

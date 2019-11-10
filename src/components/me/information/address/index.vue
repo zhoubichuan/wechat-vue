@@ -1,25 +1,36 @@
 <template>
-  <CommonPopPage :op="opPage">我的地址</CommonPopPage>
+  <CommonPage :op="opPage">我的地址</CommonPage>
 </template>
 
 <script>
-import CommonPopPage from "@/public_components/CommonPopPage";
-
+import CommonPage from "@/public_components/CommonPage";
+import { mapState, mapMutations } from 'vuex'
 export default {
-  data() {
+  data () {
     return {
       opPage: {
         class: "address",
         header: true,
-        headContent: {
-          left: "<",
-          middle: "我的地址"
-        }
+
       }
     };
   },
   components: {
-    CommonPopPage
+    CommonPage
+  },
+  computed: {
+    ...mapState('storeMeModules/storeInformationModules', ['addressHeader'])
+  },
+  methods: {
+    ...mapMutations({
+      setHeaderConfig: 'HEADER_CONFIG'
+    }),
+    init () {
+      this.setHeaderConfig(this.addressHeader)
+    }
+  },
+  created () {
+    this.init()
   }
 };
 </script>

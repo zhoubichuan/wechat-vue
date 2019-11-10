@@ -1,12 +1,12 @@
 <template>
-  <CommonPopPage :op="opPage">
+  <CommonPage :op="opPage">
     <Search :op="opSearch"/>
     <NameList/>
-  </CommonPopPage>
+  </CommonPage>
 </template>
 
 <script>
-import CommonPopPage from "@/public_components/CommonPopPage";
+import CommonPage from "@/public_components/CommonPage";
 import Search from "@/public_components/Search";
 import NameList from "@/public_components/address/NameList";
 export default {
@@ -27,7 +27,7 @@ export default {
     };
   },
   components: {
-    CommonPopPage,
+    CommonPage,
     Search,
     NameList
   }

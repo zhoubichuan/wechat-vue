@@ -1,45 +1,50 @@
 <template>
-  <CommonPopPage :op="opPage">
-    <div class="information">
-      <ul>
-        <li v-for="(item,index) in data" :key="index">
-          <router-link :to=" item.route?'/me/information/' + item.route:'#'">
-            <p class="title">{{item.title}}</p>
-            <img src alt>
-          </router-link>
-        </li>
-      </ul>
-    </div>
-    <router-view></router-view>
-  </CommonPopPage>
+  <CommonPage :op="opPage">
+    <CommonUl :op="dataOp" />
+  </CommonPage>
 </template>
 
 <script>
-import CommonPopPage from "@/public_components/CommonPopPage";
+import CommonPage from "@/public_components/CommonPage";
+import { mapState, mapMutations } from 'vuex'
+import CommonUl from "@/public_components/find/CommonUl";
 
 export default {
-  data() {
+  components: {
+    CommonPage,
+    CommonUl
+  },
+  data () {
     return {
       opPage: {
         class: "setting",
         header: true,
-        headContent: {
-          left: "<",
-          middle: "个人信息"
-        }
       },
-      data: [
-        { title: "头像", image: "", route: "photo" },
-        { title: "名字", image: "", route: "name" },
-        { title: "微信号", image: "" },
-        { title: "我的二维码", image: "", route: "code" },
-        { title: "更多", image: "", route: "more" },
-        { title: "我的地址", image: "", route: "address" }
-      ]
+      dataOp: {
+        data: [
+          { title: "头像", image: "", link: "photo", ico: 'photo' },
+          { title: "名字", image: "", link: "name" },
+          { title: "微信号", tips: 'zbc159x', image: "" },
+          { title: "我的二维码", image: "", link: "code", ico: 'photo' },
+          { title: "更多", image: "", link: "more" },
+          { title: "我的地址", image: "", link: "address" }
+        ]
+      }
     };
   },
-  components: {
-    CommonPopPage
+  computed: {
+    ...mapState('storeMeModules/storeInformationModules', ['informationHeader'])
+  },
+  methods: {
+    ...mapMutations({
+      setHeaderConfig: 'HEADER_CONFIG'
+    }),
+    init () {
+      this.setHeaderConfig(this.informationHeader)
+    }
+  },
+  created () {
+    this.init()
   }
 };
 </script>
@@ -62,6 +67,18 @@ export default {
       &:nth-of-type(5) {
         border-bottom: none;
         margin-bottom: 10px;
+      }
+      a {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        &::after {
+          content: ">";
+          font-size: 18px;
+          color: gray;
+        }
       }
     }
   }

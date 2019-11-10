@@ -5,22 +5,30 @@
         <div class="me">
           <div class="me-application">
             <ul>
-              <li v-for="(item,index) in application" :key="index">
-                <router-link v-if="item.content" class="me-information" :to="'/me/' + item.route">
+              <li v-for="(item,index) in application"
+                  :key="index">
+                <router-link v-if="item.content"
+                             class="me-information"
+                             :to="item.link">
                   <div class="left">
-                    <img :src="require(`@/assets/image/me/${item.ico}.png`)" alt>
+                    <img :src="require(`@/assets/image/me/${item.ico}.png`)"
+                         alt>
                     <div>
                       <p>{{item.title}}</p>
                       <p>{{item.content}}</p>
                     </div>
                   </div>
                   <div class="right">
-                    <img src alt>
-                    <img src alt>
+                    <img src
+                         alt>
+                    <img src
+                         alt>
                   </div>
                 </router-link>
-                <router-link v-else :to="'/me/' + item.route">
-                  <img :src="require(`@/assets/image/me/${item.ico}.png`)" alt>
+                <router-link v-else
+                             :to="item.link">
+                  <img :src="require(`@/assets/image/me/${item.ico}.png`)"
+                       alt>
                   <p>{{item.title}}</p>
                 </router-link>
               </li>
@@ -28,39 +36,36 @@
           </div>
         </div>
       </div>
-      <transition name="transitionRouter" mode="out-in">
-        <router-view/>
-      </transition>
     </div>
   </CommonPage>
 </template>
 <script>
 import CommonPage from "@/public_components/CommonPage";
-import {mapState,mapMutations} from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 export default {
   components: {
     CommonPage
   },
-  data() {
+  data () {
     return {
-      
+
     };
   },
-  computed:{
-    ...mapState('storeMeModules',['opPage','application','meHeader'])
+  computed: {
+    ...mapState('storeMeModules', ['opPage', 'application', 'meHeader'])
   },
   methods: {
     ...mapMutations({
-      setHeaderConfig:"HEADER_CONFIG"
+      setHeaderConfig: "HEADER_CONFIG"
     }),
-    init(){
+    init () {
       this.setHeaderConfig(this.meHeader)
     },
-    go() {
+    go () {
       history.go(-1);
     }
   },
-  created(){
+  created () {
     this.init()
   }
 };

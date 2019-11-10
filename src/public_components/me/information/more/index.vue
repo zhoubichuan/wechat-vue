@@ -1,9 +1,9 @@
 <template>
-  <CommonPopPage :op="opPage">更多</CommonPopPage>
+  <CommonPage :op="opPage">更多</CommonPage>
 </template>
 
 <script>
-import CommonPopPage from "@/public_components/CommonPopPage";
+import CommonPage from "@/public_components/CommonPage";
 
 export default {
   data() {
@@ -18,7 +18,7 @@ export default {
     };
   },
   components: {
-    CommonPopPage
+    CommonPage
   }
 };
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <CommonPopPage :op="opPage">
+  <CommonPage :op="opPage">
     <div class="popple">
       <div class="photo">
         <img :src="require(`@/assets/image/message/p1.svg`)" alt />
@@ -18,11 +18,11 @@
     </div>
     <CommonUl :op="dataOp" />
     <router-view />
-  </CommonPopPage>
+  </CommonPage>
 </template>
 
 <script>
-import CommonPopPage from "@/public_components/CommonPopPage";
+import CommonPage from "@/public_components/CommonPage";
 import CommonUl from "@/public_components/find/CommonUl";
 export default {
   data() {
@@ -81,7 +81,7 @@ export default {
     };
   },
   components: {
-    CommonPopPage,
+    CommonPage,
     CommonUl
   }
 };

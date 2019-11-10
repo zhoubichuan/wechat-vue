@@ -1,31 +1,42 @@
 <template>
-  <CommonPopPage :op="opPage">
+  <CommonPage :op="opPage">
     <div class="information">
-      <input type="text" v-model="val">
+      <input type="text"
+             v-model="val">
     </div>
-  </CommonPopPage>
+  </CommonPage>
 </template>
 
 <script>
-import CommonPopPage from "@/public_components/CommonPopPage";
-
+import CommonPage from "@/public_components/CommonPage";
+import { mapState, mapMutations } from 'vuex'
 export default {
-  data() {
+  data () {
     return {
       val: "会跑的鸡腿",
       opPage: {
         class: "me-information-name",
         header: true,
-        headContent: {
-          left: "取消",
-          middle: "设置名字",
-          right: "完成"
-        }
+
       }
     };
   },
   components: {
-    CommonPopPage
+    CommonPage
+  },
+  computed: {
+    ...mapState('storeMeModules/storeInformationModules', ['nameHeader'])
+  },
+  methods: {
+    ...mapMutations({
+      setHeaderConfig: 'HEADER_CONFIG'
+    }),
+    init () {
+      this.setHeaderConfig(this.nameHeader)
+    }
+  },
+  created () {
+    this.init()
   }
 };
 </script>

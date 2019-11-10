@@ -1,5 +1,5 @@
 <template>
-  <CommonPopPage :op="opPage">
+  <CommonPage :op="opPage">
     <div class="moneyBag">
       <div class="top">
         <ul>
@@ -12,11 +12,11 @@
       <Card :op="op"/>
       <Card :op="op2"/>
     </div>
-  </CommonPopPage>
+  </CommonPage>
 </template>
 
 <script>
-import CommonPopPage from "@/public_components/CommonPopPage";
+import CommonPage from "@/public_components/CommonPage";
 import Card from "@/public_components/me/Card";
 export default {
   data() {
@@ -62,7 +62,7 @@ export default {
     };
   },
   components: {
-    CommonPopPage,
+    CommonPage,
     Card
   }
 };

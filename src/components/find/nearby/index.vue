@@ -1,5 +1,5 @@
 <template>
-  <CommonPopPage :op="opPage">
+  <CommonPage :op="opPage">
     <div class="album">
       <ul>
         <li v-for="(item,index) in album" :key="index">
@@ -10,11 +10,11 @@
         </li>
       </ul>
     </div>
-  </CommonPopPage>
+  </CommonPage>
 </template>
 
 <script>
-import CommonPopPage from "@/public_components/CommonPopPage";
+import CommonPage from "@/public_components/CommonPage";
 export default {
   data() {
     return {
@@ -39,7 +39,7 @@ export default {
     };
   },
   components: {
-    CommonPopPage
+    CommonPage
   }
 };
 </script>
