@@ -1,6 +1,7 @@
 export default {
-  header:{
-  },
+  isShowHeader: true,
+  isShowFooter: true,
+  header: {},
   redBagTyep: "commonRedBag",
   redBagAmount: "",
   redBagNumber: "",

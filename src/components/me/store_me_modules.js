@@ -1,10 +1,5 @@
-import storeInformationModules from "@/components/me/information/storeInformationModules";
-
 export default {
   namespaced: true,
-  modules: {
-    storeInformationModules
-  },
   state: {
     opPage: {
       class: "me",
@@ -15,37 +10,37 @@ export default {
         ico: "photo",
         title: "会跑的鸡腿",
         content: "微信号：zbc159x",
-        link: "information"
+        link: "meInformation"
       },
       {
         ico: "moneyBag",
         title: "支付",
-        link: "moneyBag"
+        link: "meMoneyBag"
       },
       {
         ico: "collection",
         title: "收藏",
-        link: "collection"
+        link: "meCollection"
       },
       {
         ico: "album",
         title: "相册",
-        link: "album"
+        link: "meAlbum"
       },
       {
         ico: "cardBag",
         title: "卡包",
-        link: "cardBag"
+        link: "meCardBag"
       },
       {
         ico: "emoji",
         title: "表情",
-        link: "emoji"
+        link: "meEmoji"
       },
       {
         ico: "setting",
         title: "设置",
-        link: "setting"
+        link: "meSetting"
       }
     ],
     meHeader: {

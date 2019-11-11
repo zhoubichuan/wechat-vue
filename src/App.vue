@@ -1,42 +1,45 @@
 <template>
   <div id="app">
-    <Header :op="headContent"
-            v-if="header"
+    <Header v-show="isShowHeader"
             @handleLeft="goBack()" />
-    <!-- <transition name="transitionRouter" mode="out-in"> -->
-    <router-view />
-    <!-- </transition> -->
-    <Footer v-if="footer" />
+    <CommonPage :op="opPage">
+      <!-- <transition name="transitionRouter" mode="out-in"> -->
+      <router-view />
+      <!-- </transition> -->
+    </CommonPage>
+    <Footer v-show="isShowFooter" />
   </div>
 </template>
 
 <script>
+import CommonPage from "@/public_components/CommonPage";
 import Bus from "@/public_components/Bus.js";
 import Header from "@/public_components/Header";
 import Footer from "@/public_components/Footer";
+import { mapState } from 'vuex'
 export default {
+  components: {
+    Header,
+    Footer,
+    CommonPage
+  },
   data () {
     return {
-      class: "page",
-      header: true,
-      headContent: {
-        style: "color:black ;background-color: white;",
-        left: "",
-        middle: "微信(18)",
-        right: "+"
-      },
-      footer: true
+      opPage: {
+        class: "address",
+        header: true,
+      }
     };
+  },
+  computed: {
+    ...mapState(['isShowHeader', 'isShowFooter'])
   },
   created () {
     Bus.$on("scroll", val => {
       this.stopScroll = val;
     });
   },
-  components: {
-    Header,
-    Footer,
-  },
+
   methods: {
     goBack () {
       window.history.go(-1);

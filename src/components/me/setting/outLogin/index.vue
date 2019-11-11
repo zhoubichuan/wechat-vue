@@ -1,16 +1,19 @@
 <template>
   <div class="outLogin">
-      <ul>
-          <li v-for="(item,index) in outLogin" :key="index" @click="cancel">
-              <p>{{item.name}}</p>
-          </li>
-      </ul>
+    <ul>
+      <li v-for="(item,index) in outLogin"
+          :key="index"
+          @click="cancel">
+        <p>{{item.name}}</p>
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
+import { mapState, mapMutations } from 'vuex'
 export default {
-  data() {
+  data () {
     return {
       outLogin: [
         { name: "退出后不会删除任何历史数据，下次登录依然可以使本账号。" },
@@ -19,13 +22,30 @@ export default {
       ]
     };
   },
+  computed: {
+    ...mapState(['isShowHeader', 'isShowFooter']),
+    ...mapState('store_me_setting_modules', ['settingOutLoginHeader'])
+  },
   methods: {
-    cancel: function(e) {
+    ...mapMutations({
+      setShowOrHideHeader: 'SHOW_OR_HIDE_HEADER',
+      setShowOrHideFooter: 'SHOW_OR_HIDE_FOOTER',
+      setHeaderConfig: "HEADER_CONFIG"
+    }),
+    cancel: function (e) {
       if (e.target.textContent == "取消") {
         history.go(-1);
       }
+    },
+    init () {
+      this.setShowOrHideFooter(true)
+      this.setShowOrHideFooter(false)
+      this.setHeaderConfig(this.settingOutLoginHeader)
     }
-  }
+  },
+  created () {
+    this.init()
+  },
 };
 </script>
 

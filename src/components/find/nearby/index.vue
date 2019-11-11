@@ -1,5 +1,5 @@
 <template>
-  <CommonPage :op="opPage">
+ <div>
     <div class="album">
       <ul>
         <li v-for="(item,index) in album" :key="index">
@@ -10,11 +10,11 @@
         </li>
       </ul>
     </div>
-  </CommonPage>
+  </div>
 </template>
 
 <script>
-import CommonPage from "@/public_components/CommonPage";
+
 export default {
   data() {
     return {
@@ -39,7 +39,7 @@ export default {
     };
   },
   components: {
-    CommonPage
+    
   }
 };
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <CommonPage :op="opPage">
+  <div>
     <div class="me-part">
       <div class="me-component">
         <div class="me">
@@ -37,32 +37,31 @@
         </div>
       </div>
     </div>
-  </CommonPage>
+  </div>
 </template>
 <script>
-import CommonPage from "@/public_components/CommonPage";
+
 import { mapState, mapMutations } from 'vuex'
 export default {
-  components: {
-    CommonPage
-  },
   data () {
     return {
 
     };
   },
   computed: {
-    ...mapState('storeMeModules', ['opPage', 'application', 'meHeader'])
+    ...mapState(['isShowHeader', 'isShowFooter']),
+    ...mapState('store_me_modules', ['opPage', 'application', 'meHeader'])
   },
   methods: {
     ...mapMutations({
+      setShowOrHideHeader: 'SHOW_OR_HIDE_HEADER',
+      setShowOrHideFooter: 'SHOW_OR_HIDE_FOOTER',
       setHeaderConfig: "HEADER_CONFIG"
     }),
     init () {
+      this.setShowOrHideFooter(true)
+      this.setShowOrHideFooter(true)
       this.setHeaderConfig(this.meHeader)
-    },
-    go () {
-      history.go(-1);
     }
   },
   created () {

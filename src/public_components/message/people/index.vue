@@ -1,11 +1,11 @@
 <template>
-  <CommonPage :op="opPage">
+ <div>
     <information :op="message2" />
-  </CommonPage>
+  </div>
 </template>
 
 <script>
-import CommonPage from "@/public_components/CommonPage";
+
 import information from "../information";
 import axios from "axios";
 import { mapState } from "vuex";
@@ -34,7 +34,7 @@ export default {
     ...mapState(["message2"])
   },
   components: {
-    CommonPage,
+   
     information
   }
 };

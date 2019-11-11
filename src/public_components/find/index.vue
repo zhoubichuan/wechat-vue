@@ -1,13 +1,13 @@
 <template>
-  <CommonPage :op="opPage">
+ <div>
     <CommonUl :op="dataOp"/>
     <transition name="transitionRouter" mode="out-in">
       <router-view/>
     </transition>
-  </CommonPage>
+  </div>
 </template>
 <script>
-import CommonPage from "@/public_components/CommonPage";
+
 import CommonUl from "@/public_components/find/CommonUl";
 
 export default {
@@ -78,7 +78,7 @@ export default {
     };
   },
   components: {
-    CommonPage,
+   
     CommonUl
   }
 };

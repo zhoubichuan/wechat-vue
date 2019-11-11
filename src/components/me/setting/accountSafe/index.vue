@@ -1,18 +1,20 @@
 <template>
   <div class="account-safe">
-      <ul>
-          <li v-for="(item,index) in accountSafe" :key="index">
-              <span>{{item.name}}</span>
-              <span>{{item.text}}</span>
-              <span>{{item.ico}}</span>
-          </li>
-      </ul>
+    <ul>
+      <li v-for="(item,index) in accountSafe"
+          :key="index">
+        <span>{{item.name}}</span>
+        <span>{{item.text}}</span>
+        <span>{{item.ico}}</span>
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
+import { mapState, mapMutations } from 'vuex'
 export default {
-  data() {
+  data () {
     return {
       accountSafe: [
         { name: "微信号", text: "zbc159x", ico: ">" },
@@ -28,6 +30,24 @@ export default {
       tips:
         "如果遇到账号信息泄露，忘记密码，诈骗等账号安全问题，可前往微信安全中心"
     };
+  }, computed: {
+    ...mapState(['isShowHeader', 'isShowFooter']),
+    ...mapState('store_me_setting_modules', ['settingAccountSafeHeader'])
+  },
+  methods: {
+    ...mapMutations({
+      setShowOrHideHeader: 'SHOW_OR_HIDE_HEADER',
+      setShowOrHideFooter: 'SHOW_OR_HIDE_FOOTER',
+      setHeaderConfig: "HEADER_CONFIG"
+    }),
+    init () {
+      this.setShowOrHideFooter(true)
+      this.setShowOrHideFooter(false)
+      this.setHeaderConfig(this.settingAccountSafeHeader)
+    }
+  },
+  created () {
+    this.init()
   }
 };
 </script>

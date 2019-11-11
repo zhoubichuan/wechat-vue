@@ -1,15 +1,15 @@
 <template>
-  <CommonPage :op="opPage">
+ <div>
     <div v-show="!informationIsShow">
       <Search />
       <LoginTip />
       <People />
     </div>
-  </CommonPage>
+  </div>
 </template>
 
 <script>
-import CommonPage from "@/public_components/CommonPage";
+
 import Search from "@/public_components/Search";
 import LoginTip from "@/public_components/message/LoginTip";
 import People from "@/public_components/message/People";
@@ -17,13 +17,13 @@ import { mapState, mapMutations } from "vuex";
 
 export default {
   components: {
-    CommonPage,
+   
     Search,
     LoginTip,
     People
   },
   computed: {
-    ...mapState("storeMessageModules", ["opPage", "titleData", "informationIsShow", 'messageHeader'])
+    ...mapState("store_message_modules", ["opPage", "titleData", "informationIsShow", 'messageHeader'])
   },
   methods: {
     ...mapMutations({

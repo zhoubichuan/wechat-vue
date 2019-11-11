@@ -1,14 +1,14 @@
 <template>
-  <CommonPage :op="opPage">
+  <div>
     <div class="information">
       <input type="text"
              v-model="val">
     </div>
-  </CommonPage>
+  </div>
 </template>
 
 <script>
-import CommonPage from "@/public_components/CommonPage";
+
 import { mapState, mapMutations } from 'vuex'
 export default {
   data () {
@@ -20,9 +20,6 @@ export default {
 
       }
     };
-  },
-  components: {
-    CommonPage
   },
   computed: {
     ...mapState('storeMeModules/storeInformationModules', ['nameHeader'])

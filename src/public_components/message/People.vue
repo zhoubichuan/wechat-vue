@@ -4,7 +4,7 @@
       <li @click="handleClick"
           v-for="(item,key) in messageData"
           :key="key">
-        <router-link :to="'/people:'+item.title">
+        <router-link :to="'/messagePeople:'+item.title">
           <div class="left">
             <img class="photo"
                  :src="require(`@/assets/image/message/${item.photo||p1}.svg`)"

@@ -1,10 +1,12 @@
 <template>
-  <CommonPage :op="opPage">
+  <div>
     <div class="emoji">
       <div class="top">
         <ul>
-          <li v-for="(item,index) in money" :key="index">
-            <img src alt>
+          <li v-for="(item,index) in money"
+              :key="index">
+            <img src
+                 alt>
             <p class="title">{{item.title}}</p>
           </li>
         </ul>
@@ -12,8 +14,10 @@
       <div class="middle">
         <h3>推荐表情</h3>
         <ul>
-          <li v-for="(item,index) in tenxun" :key="index">
-            <img src alt>
+          <li v-for="(item,index) in tenxun"
+              :key="index">
+            <img src
+                 alt>
             <span class="title">{{item.title}}</span>
             <button>添加</button>
           </li>
@@ -22,21 +26,24 @@
       <div class="bottom">
         <h3>更多精选</h3>
         <ul>
-          <li v-for="(item,index) in server" :key="index">
-            <img src alt>
+          <li v-for="(item,index) in server"
+              :key="index">
+            <img src
+                 alt>
             <span class="title">{{item.title}}</span>
             <button>添加</button>
           </li>
         </ul>
       </div>
     </div>
-  </CommonPage>
+  </div>
 </template>
 
 <script>
-import CommonPage from "@/public_components/CommonPage";
+
+import { mapState, mapMutations } from 'vuex'
 export default {
-  data() {
+  data () {
     return {
       opPage: {
         class: "find",
@@ -67,8 +74,24 @@ export default {
       ]
     };
   },
-  components: {
-    CommonPage
+  computed: {
+    ...mapState(['isShowHeader', 'isShowFooter']),
+    ...mapState('store_me_emoji_modules', ['emojiHeader'])
+  },
+  methods: {
+    ...mapMutations({
+      setShowOrHideHeader: 'SHOW_OR_HIDE_HEADER',
+      setShowOrHideFooter: 'SHOW_OR_HIDE_FOOTER',
+      setHeaderConfig: "HEADER_CONFIG"
+    }),
+    init () {
+      this.setShowOrHideFooter(true)
+      this.setShowOrHideFooter(false)
+      this.setHeaderConfig(this.emojiHeader)
+    }
+  },
+  created () {
+    this.init()
   }
 };
 </script>

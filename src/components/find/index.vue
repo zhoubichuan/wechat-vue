@@ -1,38 +1,35 @@
 <template>
-  <CommonPage :op="opPage">
-    <CommonUl :op="dataOp"/>
-    <transition name="transitionRouter" mode="out-in">
-      <router-view/>
-    </transition>
-  </CommonPage>
+ <div>
+    <CommonUl :op="dataOp" />
+  </div>
 </template>
 <script>
-import CommonPage from "@/public_components/CommonPage";
+
 import CommonUl from "@/public_components/find/CommonUl";
-import {mapState,mapMutations} from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 
 export default {
   components: {
-    CommonPage,
+   
     CommonUl
   },
-  data() {
+  data () {
     return {
-      
+
     };
   },
-  computed:{
-    ...mapState('storeFindModules',['opPage','dataOp','findHeader'])
+  computed: {
+    ...mapState('store_find_modules', ['opPage', 'dataOp', 'findHeader'])
   },
-    methods: {
+  methods: {
     ...mapMutations({
-      setHeaderConfig:"HEADER_CONFIG"
+      setHeaderConfig: "HEADER_CONFIG"
     }),
-    init(){
+    init () {
       this.setHeaderConfig(this.findHeader)
     }
   },
-  created(){
+  created () {
     this.init()
   }
 };

@@ -1,9 +1,8 @@
 <template>
-  <CommonPage :op="opPage">我的地址</CommonPage>
+  <div>我的地址</div>
 </template>
 
 <script>
-import CommonPage from "@/public_components/CommonPage";
 import { mapState, mapMutations } from 'vuex'
 export default {
   data () {
@@ -11,12 +10,8 @@ export default {
       opPage: {
         class: "address",
         header: true,
-
       }
     };
-  },
-  components: {
-    CommonPage
   },
   computed: {
     ...mapState('storeMeModules/storeInformationModules', ['addressHeader'])

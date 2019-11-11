@@ -2,22 +2,43 @@
   <div class="weChatePlugin">
     <h1>欢迎使用微信插件</h1>
     <p>这里有微信的新功能，你可以打开来使用</p>
-      <ul>
-          <li v-for="(item,index) in accountSafe" :key="index">
-              <span>{{item.name}}</span>
-              <span>{{item.text}}</span>
-              <span>{{item.ico}}</span>
-          </li>
-      </ul>
+    <ul>
+      <li v-for="(item,index) in accountSafe"
+          :key="index">
+        <span>{{item.name}}</span>
+        <span>{{item.text}}</span>
+        <span>{{item.ico}}</span>
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
+import { mapState, mapMutations } from 'vuex'
 export default {
-  data() {
+  data () {
     return {
       accountSafe: []
     };
+  },
+  computed: {
+    ...mapState(['isShowHeader', 'isShowFooter']),
+    ...mapState('store_me_setting_modules', ['settingWeChatePluginHeader'])
+  },
+  methods: {
+    ...mapMutations({
+      setShowOrHideHeader: 'SHOW_OR_HIDE_HEADER',
+      setShowOrHideFooter: 'SHOW_OR_HIDE_FOOTER',
+      setHeaderConfig: "HEADER_CONFIG"
+    }),
+    init () {
+      this.setShowOrHideFooter(true)
+      this.setShowOrHideFooter(false)
+      this.setHeaderConfig(this.settingWeChatePluginHeader)
+    }
+  },
+  created () {
+    this.init()
   }
 };
 </script>

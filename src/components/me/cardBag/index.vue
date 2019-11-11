@@ -1,10 +1,12 @@
 <template>
-  <CommonPage :op="opPage">
+  <div>
     <div class="cardBag">
       <ul>
-        <li v-for="(item,index) in cardBag" :key="index">
+        <li v-for="(item,index) in cardBag"
+            :key="index">
           <div class="left">
-            <img :src="item.ico" alt>
+            <img :src="item.ico"
+                 alt>
           </div>
           <div class="right">
             <h3 class="title">{{item.title}}</h3>
@@ -17,13 +19,14 @@
         </li>
       </ul>
     </div>
-  </CommonPage>
+  </div>
 </template>
 
 <script>
-import CommonPage from "@/public_components/CommonPage";
+
+import { mapState, mapMutations } from 'vuex'
 export default {
-  data() {
+  data () {
     return {
       cardBag: [
         {
@@ -58,9 +61,26 @@ export default {
       }
     };
   },
-  components: {
-    CommonPage
+  computed: {
+    ...mapState(['isShowHeader', 'isShowFooter']),
+    ...mapState('store_me_cardBag_modules', ['cardBagHeader'])
+  },
+  methods: {
+    ...mapMutations({
+      setShowOrHideHeader: 'SHOW_OR_HIDE_HEADER',
+      setShowOrHideFooter: 'SHOW_OR_HIDE_FOOTER',
+      setHeaderConfig: "HEADER_CONFIG"
+    }),
+    init () {
+      this.setShowOrHideFooter(true)
+      this.setShowOrHideFooter(false)
+      this.setHeaderConfig(this.cardBagHeader)
+    }
+  },
+  created () {
+    this.init()
   }
+
 };
 </script>
 <style lang='less' scoped>

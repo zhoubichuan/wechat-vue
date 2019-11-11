@@ -1,25 +1,32 @@
 <template>
-  <CommonPage :op="opPage">
+ <div>
     <div class="moneyBag">
       <div class="top">
         <ul>
-          <li v-for="(item,index) in money" :key="index">
-            <img src alt>
+          <li v-for="(item,index) in money"
+              :key="index">
+            <img src
+                 alt>
             <p class="title">{{item.title}}</p>
           </li>
         </ul>
       </div>
-      <Card :op="op"/>
-      <Card :op="op2"/>
+      <Card :op="op" />
+      <Card :op="op2" />
     </div>
-  </CommonPage>
+  </div>
 </template>
 
 <script>
-import CommonPage from "@/public_components/CommonPage";
+
 import Card from "@/public_components/me/Card";
+import { mapState, mapMutations } from 'vuex'
 export default {
-  data() {
+  components: {
+   
+    Card
+  },
+  data () {
     return {
       opPage: {
         class: "find",
@@ -61,9 +68,25 @@ export default {
       }
     };
   },
-  components: {
-    CommonPage,
-    Card
+
+  computed: {
+    ...mapState(['isShowHeader', 'isShowFooter']),
+    ...mapState('store_me_moneyBag_modules', ['moneyBagHeader'])
+  },
+  methods: {
+    ...mapMutations({
+      setShowOrHideHeader: 'SHOW_OR_HIDE_HEADER',
+      setShowOrHideFooter: 'SHOW_OR_HIDE_FOOTER',
+      setHeaderConfig: "HEADER_CONFIG"
+    }),
+    init () {
+      this.setShowOrHideFooter(true)
+      this.setShowOrHideFooter(false)
+      this.setHeaderConfig(this.moneyBagHeader)
+    }
+  },
+  created () {
+    this.init()
   }
 };
 </script>

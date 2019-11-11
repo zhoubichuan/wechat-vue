@@ -1,5 +1,5 @@
 <template>
-  <CommonPage :op="opPage">
+ <div>
     <div v-show="!informationIsShow">
       <Search />
       <LoginTip />
@@ -8,11 +8,11 @@
     <transition name="transitionRouter" mode="out-in">
       <router-view />
     </transition>
-  </CommonPage>
+  </div>
 </template>
 
 <script>
-import CommonPage from "@/public_components/CommonPage";
+
 import Search from "@/public_components/Search";
 import LoginTip from "@/public_components/message/LoginTip";
 import People from "@/public_components/message/People";
@@ -20,7 +20,7 @@ import { mapState } from "vuex";
 
 export default {
   components: {
-    CommonPage,
+   
     Search,
     LoginTip,
     People

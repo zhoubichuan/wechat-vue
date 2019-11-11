@@ -5,9 +5,9 @@ Vue.use(Router);
 
 export default new Router({
   routes: [{
-      path: "//",
+      path: "/",
       redirect: {
-        path: "//message"
+        path: "/message"
       }
     },
     {
@@ -16,17 +16,17 @@ export default new Router({
       component: () => import("@/components/message"),
     },
     {
-      path: "/people:id",
-      name: "people",
+      path: "/messagePeople:id",
+      name: "messagePeople",
       component: () => import("@/components/message/people"),
     },
     {
-      path: "/setting:id",
-      name: "setting",
+      path: "/messageSetting:id",
+      name: "messageSetting",
       component: () => import("@/components/message/setting")
     },
     {
-      path: "/people:id",
+      path: "/messagePeople:id",
       name: "people",
       component: () => import("@/components/message/people")
     }, {
@@ -44,49 +44,49 @@ export default new Router({
       component: () => import("@/components/address"),
     },
     {
-      path: "/friends",
+      path: "/addressFriends",
       name: "friends",
       component: () => import("@/components/address/newfriend")
     },
     {
-      path: "/number",
+      path: "/addressNumber",
       name: "number",
       component: () => import("@/components/address/number")
     },
     {
-      path: "/talk",
+      path: "/addressTalk",
       name: "talk",
       component: () => import("@/components/address/talk")
     },
     {
-      path: "/tips",
+      path: "/addressTips",
       name: "tips",
       component: () => import("@/components/address/tips")
     },
     {
-      path: "/people:id",
+      path: "/addressPeople:id",
       name: "people",
       component: () => import("@/components/address/people"),
     },
     {
-      path: "/settingAndTips",
+      path: "/addressPeopleSettingAndTips",
       name: "settingAndTips",
       component: () => import("@/components/address/people/settingAndTips")
     },
     {
-      path: "/friend",
+      path: "/addressPeopleFriend",
       name: "friend",
       component: () => import("@/components/address/people/friend")
     },
     {
-      path: "/moreInformation",
+      path: "/addressPeopleMoreInformation",
       name: "moreInformation",
       component: () => import("@/components/address/people/moreInformation")
     },
     {
       path: "/sendInformation",
       redirect: {
-        path: "//message/people:id"
+        path: "/message/people:id"
       }
     },
     {
@@ -95,43 +95,43 @@ export default new Router({
       component: () => import("@/components/find"),
     },
     {
-      path: "/friend",
-      name: "friend",
+      path: "/findFriend",
+      name: "findFriend",
       component: () => import("@/components/find/friend")
     },
     {
-      path: "/game",
-      name: "game",
+      path: "/findGame",
+      name: "findGame",
       component: () => import("@/components/find/game")
     },
     {
-      path: "/nearby",
-      name: "nearby",
+      path: "/findNearby",
+      name: "findNearby",
       component: () => import("@/components/find/nearby")
     },
     {
-      path: "/program",
-      name: "program",
+      path: "/findProgram",
+      name: "findProgram",
       component: () => import("@/components/find/program")
     },
     {
-      path: "/scan",
-      name: "scan",
+      path: "/findScan",
+      name: "findScan",
       component: () => import("@/components/find/scan")
     },
     {
-      path: "/search",
-      name: "search",
+      path: "/findSearch",
+      name: "findSearch",
       component: () => import("@/components/find/search")
     },
     {
-      path: "/shake",
-      name: "shake",
+      path: "/findShake",
+      name: "findShake",
       component: () => import("@/components/find/shake")
     },
     {
-      path: "/shop",
-      name: "shop",
+      path: "/findShop",
+      name: "findShop",
       component: () => import("@/components/find/shop")
     },
     {
@@ -140,94 +140,109 @@ export default new Router({
       component: () => import("@/components/me"),
     },
     {
-      path: "/information",
-      name: "information",
+      path: "/meInformation",
+      name: "meInformation",
       component: () => import("@/components/me/information"),
     },
     {
-      path: "/address",
-      name: "meaddress",
+      path: "/meInformationAddress",
+      name: "meInformationAddress",
       component: () => import("@/components/me/information/address")
     },
     {
-      path: "/code",
-      name: "code",
+      path: "/meInformationCode",
+      name: "meInformationCode",
       component: () => import("@/components/me/information/code")
     },
     {
-      path: "/more",
-      name: "meaddress",
+      path: "/meInformationMore",
+      name: "meInformationMore",
       component: () => import("@/components/me/information/more")
     },
     {
-      path: "/name",
-      name: "meaddress",
+      path: "/meInformationName",
+      name: "meInformationName",
       component: () => import("@/components/me/information/name")
     },
     {
-      path: "/photo",
-      name: "meaddress",
+      path: "/meInformationPhoto",
+      name: "meInformationPhoto",
       component: () => import("@/components/me/information/photo")
     },
     {
-      path: "/album",
+      path: "/meAlbum",
+      name: "meAlbum",
       component: () => import("@/components/me/album")
     },
     {
-      path: "/cardBag",
+      path: "/meCardBag",
+      name: "meCardBag",
       component: () => import("@/components/me/cardBag")
     },
     {
-      path: "/collection",
+      path: "/meCollection",
+      name: "meCollection",
       component: () => import("@/components/me/collection")
     },
     {
-      path: "/emoji",
+      path: "/meMmoji",
+      name: "meMmoji",
       component: () => import("@/components/me/emoji")
     },
     {
-      path: "/moneyBag",
+      path: "/meMoneyBag",
+      name: "meMoneyBag",
       component: () => import("@/components/me/moneyBag")
     },
     {
-      path: "/setting",
+      path: "/meSetting",
+      name: "meSetting",
       component: () => import("@/components/me/setting"),
     },
     {
-      path: "/accountSafe",
+      path: "/meSettingAccountSafe",
+      name: "meSettingAccountSafe",
       component: () => import("@/components/me/setting/accountSafe")
     },
     {
-      path: "/newMessageNote",
+      path: "/meSettingNewMessageNote",
+      name: "meSettingNewMessageNote",
       component: () => import("@/components/me/setting/newMessageNote")
     },
     {
-      path: "/privacy",
+      path: "/meSettingPrivacy",
+      name: "meSettingPrivacy",
       component: () => import("@/components/me/setting/privacy")
     },
     {
-      path: "/common",
+      path: "/meSettingCommon",
+      name: "meSettingCommon",
       component: () => import("@/components/me/setting/common")
     },
     {
-      path: "/helpAndFeedback",
+      path: "/meSettingHelpAndFeedback",
+      name: "meSettingHelpAndFeedback",
       component: () =>
         import("@/components/me/setting/helpAndFeedback")
     },
     {
-      path: "/aboutWeChate",
+      path: "/meSettingAboutWeChate",
+      name: "meSettingAboutWeChate",
       component: () => import("@/components/me/setting/aboutWeChate")
     },
     {
-      path: "/weChatePlugin",
+      path: "/meSettingWeChatePlugin",
+      name: "meSettingWeChatePlugin",
       component: () => import("@/components/me/setting/weChatePlugin")
     },
     {
-      path: "/changeAcount",
+      path: "/meSettingChangeAcount",
+      name: "meSettingChangeAcount",
       component: () => import("@/components/me/setting/changeAcount")
     },
     {
-      path: "/outLogin",
+      path: "/meSettingOutLogin",
+      name: "meSettingOutLogin",
       component: () => import("@/components/me/setting/outLogin")
     }
   ]

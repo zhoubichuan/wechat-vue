@@ -1,17 +1,19 @@
 <template>
   <div class="privacy">
-      <ul>
-          <li v-for="(item,index) in accountSafe" :key="index">
-              <span>{{item.name}}</span>
-              <span :class="item.onoff"></span>
-          </li>
-      </ul>
+    <ul>
+      <li v-for="(item,index) in accountSafe"
+          :key="index">
+        <span>{{item.name}}</span>
+        <span :class="item.onoff"></span>
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
+import { mapState, mapMutations } from 'vuex'
 export default {
-  data() {
+  data () {
     return {
       accountSafe: [
         { name: "加我为朋友时需要验证", onoff: "open" },
@@ -26,6 +28,25 @@ export default {
         { name: "授权管理", onoff: "open" }
       ]
     };
+  },
+  computed: {
+    ...mapState(['isShowHeader', 'isShowFooter']),
+    ...mapState('store_me_setting_modules', ['settingPrivacyHeader'])
+  },
+  methods: {
+    ...mapMutations({
+      setShowOrHideHeader: 'SHOW_OR_HIDE_HEADER',
+      setShowOrHideFooter: 'SHOW_OR_HIDE_FOOTER',
+      setHeaderConfig: "HEADER_CONFIG"
+    }),
+    init () {
+      this.setShowOrHideFooter(true)
+      this.setShowOrHideFooter(false)
+      this.setHeaderConfig(this.settingPrivacyHeader)
+    }
+  },
+  created () {
+    this.init()
   }
 };
 </script>

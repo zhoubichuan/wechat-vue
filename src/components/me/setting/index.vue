@@ -1,10 +1,11 @@
 <template>
-  <CommonPage :op="opPage">
+  <div>
     <div class="setting-part">
       <div class="setting">
         <ul>
-          <li v-for="(item,index) in setting" :key="index">
-            <router-link :to="'/me/setting/' + item.route">
+          <li v-for="(item,index) in setting"
+              :key="index">
+            <router-link :to="'/' + item.route">
               <span>{{item.title}}</span>
               <span v-if="item.img">{{item.img}}</span>
             </router-link>
@@ -13,13 +14,14 @@
       </div>
       <router-view></router-view>
     </div>
-  </CommonPage>
+  </div>
 </template>
 
 <script>
-import CommonPage from "@/public_components/CommonPage";
+
+import { mapState, mapMutations } from 'vuex'
 export default {
-  data() {
+  data () {
     return {
       opPage: {
         class: "find",
@@ -30,20 +32,37 @@ export default {
         }
       },
       setting: [
-        { title: "账号安全", img: ">", route: "accountSafe" },
-        { title: "新消息通知", img: ">", route: "newMessageNote" },
-        { title: "隐私", img: ">", route: "privacy" },
-        { title: "通用", img: ">", route: "common" },
-        { title: "帮助与反馈", img: ">", route: "helpAndFeedback" },
-        { title: "关于微信", img: ">", route: "aboutWeChate" },
-        { title: "插件", img: ">", route: "weChatePlugin" },
-        { title: "切换账号", route: "changeAcount" },
-        { title: "退出登录", route: "outLogin" }
+        { title: "账号安全", img: ">", route: "meSettingAccountSafe" },
+        { title: "新消息通知", img: ">", route: "meSettingNewMessageNote" },
+        { title: "隐私", img: ">", route: "meSettingPrivacy" },
+        { title: "通用", img: ">", route: "meSettingCommon" },
+        { title: "帮助与反馈", img: ">", route: "meSettingHelpAndFeedback" },
+        { title: "关于微信", img: ">", route: "meSettingAboutWeChate" },
+        { title: "插件", img: ">", route: "meSettingWeChatePlugin" },
+        { title: "切换账号", route: "meSettingChangeAcount" },
+        { title: "退出登录", route: "meSettingOutLogin" }
       ]
     };
   },
-  components: {
-    CommonPage
+
+  computed: {
+    ...mapState(['isShowHeader', 'isShowFooter']),
+    ...mapState('store_me_setting_modules', ['settingHeader'])
+  },
+  methods: {
+    ...mapMutations({
+      setShowOrHideHeader: 'SHOW_OR_HIDE_HEADER',
+      setShowOrHideFooter: 'SHOW_OR_HIDE_FOOTER',
+      setHeaderConfig: "HEADER_CONFIG"
+    }),
+    init () {
+      this.setShowOrHideFooter(true)
+      this.setShowOrHideFooter(false)
+      this.setHeaderConfig(this.settingHeader)
+    }
+  },
+  created () {
+    this.init()
   }
 };
 </script>

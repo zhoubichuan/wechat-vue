@@ -1,11 +1,11 @@
 <template>
-  <CommonPage :op="opPage">
+ <div>
     <ImgCard :op="op"/>
-  </CommonPage>
+  </div>
 </template>
 
 <script>
-import CommonPage from "@/public_components/CommonPage";
+
 import ImgCard from "@/public_components/me/ImgCard";
 export default {
   data() {
@@ -22,7 +22,7 @@ export default {
     };
   },
   components: {
-    CommonPage,
+   
     ImgCard
   }
 };

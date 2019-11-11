@@ -1,26 +1,34 @@
 <template>
-  <CommonPage :op="opPage">
+  <div>
     <div class="me-part">
       <div class="me-component">
         <div class="me">
           <div class="me-application">
             <ul>
-              <li v-for="(item,index) in application" :key="index">
-                <router-link v-if="item.content" class="me-information" :to="'/me/' + item.route">
+              <li v-for="(item,index) in application"
+                  :key="index">
+                <router-link v-if="item.content"
+                             class="me-information"
+                             :to="'/me/' + item.route">
                   <div class="left">
-                    <img :src="require(`@/assets/image/me/${item.ico}.png`)" alt>
+                    <img :src="require(`@/assets/image/me/${item.ico}.png`)"
+                         alt>
                     <div>
                       <p>{{item.title}}</p>
                       <p>{{item.content}}</p>
                     </div>
                   </div>
                   <div class="right">
-                    <img src alt>
-                    <img src alt>
+                    <img src
+                         alt>
+                    <img src
+                         alt>
                   </div>
                 </router-link>
-                <router-link v-else :to="'/me/' + item.route">
-                  <img :src="require(`@/assets/image/me/${item.ico}.png`)" alt>
+                <router-link v-else
+                             :to="'/me/' + item.route">
+                  <img :src="require(`@/assets/image/me/${item.ico}.png`)"
+                       alt>
                   <p>{{item.title}}</p>
                 </router-link>
               </li>
@@ -28,16 +36,17 @@
           </div>
         </div>
       </div>
-      <transition name="transitionRouter" mode="out-in">
-        <router-view/>
+      <transition name="transitionRouter"
+                  mode="out-in">
+        <router-view />
       </transition>
     </div>
-  </CommonPage>
+  </div>
 </template>
 <script>
-import CommonPage from "@/public_components/CommonPage";
+
 export default {
-  data() {
+  data () {
     return {
       opPage: {
         class: "me",
@@ -89,11 +98,9 @@ export default {
       ]
     };
   },
-  components: {
-    CommonPage
-  },
+
   methods: {
-    go() {
+    go () {
       history.go(-1);
     }
   }

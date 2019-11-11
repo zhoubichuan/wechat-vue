@@ -1,8 +1,9 @@
 <template>
-  <CommonPage :op="opPage">
+  <div>
     <div class="popple">
       <div class="photo">
-        <img :src="require(`@/assets/image/message/p1.svg`)" alt />
+        <img :src="require(`@/assets/image/message/p1.svg`)"
+             alt />
       </div>
       <div class="card">
         <h3>{{this.$route.params.id.slice(1)}}</h3>
@@ -18,14 +19,14 @@
     </div>
     <CommonUl :op="dataOp" />
     <router-view />
-  </CommonPage>
+  </div>
 </template>
 
 <script>
-import CommonPage from "@/public_components/CommonPage";
+
 import CommonUl from "@/public_components/find/CommonUl";
 export default {
-  data() {
+  data () {
     return {
       dataOp: {
         data: [
@@ -33,7 +34,7 @@ export default {
             title: "设置备注和标签",
             img: "friend",
             route:
-              "/address/people:" +
+              "/addressPeople:" +
               this.$route.params.id.slice(1) +
               "/settingAndTips"
           },
@@ -41,14 +42,14 @@ export default {
             title: "朋友圈",
             img: "scan",
             route:
-              "/address/people:" + this.$route.params.id.slice(1) + "/friend",
+              "/addressPeople:" + this.$route.params.id.slice(1) + "/friend",
             active: true
           },
           {
             title: "更多信息",
             img: "shake",
             route:
-              "/address/people:" +
+              "/addressPeople:" +
               this.$route.params.id.slice(1) +
               "/moreInformation"
           },
@@ -56,7 +57,7 @@ export default {
             title: "发消息",
             img: "shake",
             route:
-              "/address/people:" +
+              "/addressPeople:" +
               this.$route.params.id.slice(1) +
               "/sendInformation"
           },
@@ -64,7 +65,7 @@ export default {
             title: "音视频通话",
             img: "shake",
             route:
-              "/address/people:" +
+              "/addressPeople:" +
               this.$route.params.id.slice(1) +
               "/audioVideoTalk"
           }
@@ -81,7 +82,7 @@ export default {
     };
   },
   components: {
-    CommonPage,
+
     CommonUl
   }
 };

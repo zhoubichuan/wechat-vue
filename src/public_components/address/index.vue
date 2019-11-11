@@ -1,20 +1,21 @@
 <template>
-  <CommonPage :op="opPage">
-    <Search @click="popShow"/>
-    <ClassList/>
-    <NameList/>
-    <transition name="transitionRouter" mode="out-in">
-      <router-view/>
+  <div>
+    <Search @click="popShow" />
+    <ClassList />
+    <NameList />
+    <transition name="transitionRouter"
+                mode="out-in">
+      <router-view />
     </transition>
-  </CommonPage>
+  </div>
 </template>
 <script>
-import CommonPage from "@/public_components/CommonPage";
+
 import Search from "@/public_components/Search";
 import ClassList from "@/public_components/address/ClassList";
 import NameList from "@/public_components/address/NameList";
 export default {
-  data() {
+  data () {
     return {
       opPage: {
         class: "address",
@@ -30,13 +31,13 @@ export default {
     };
   },
   components: {
-    CommonPage,
+
     Search,
     ClassList,
     NameList
   },
   methods: {
-    popShow() {
+    popShow () {
       this.opPage.popshow = true;
     }
   }

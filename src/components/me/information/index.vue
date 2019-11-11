@@ -1,17 +1,17 @@
 <template>
-  <CommonPage :op="opPage">
+  <div>
     <CommonUl :op="dataOp" />
-  </CommonPage>
+  </div>
 </template>
 
 <script>
-import CommonPage from "@/public_components/CommonPage";
+
 import { mapState, mapMutations } from 'vuex'
 import CommonUl from "@/public_components/find/CommonUl";
 
 export default {
   components: {
-    CommonPage,
+
     CommonUl
   },
   data () {
@@ -22,24 +22,30 @@ export default {
       },
       dataOp: {
         data: [
-          { title: "头像", image: "", link: "photo", ico: 'photo' },
-          { title: "名字", image: "", link: "name" },
+          { title: "头像", image: "", link: "meInformationPhoto", ico: 'photo' },
+          { title: "名字", image: "", link: "meInformationName" },
           { title: "微信号", tips: 'zbc159x', image: "" },
-          { title: "我的二维码", image: "", link: "code", ico: 'photo' },
-          { title: "更多", image: "", link: "more" },
-          { title: "我的地址", image: "", link: "address" }
+          { title: "我的二维码", image: "", link: "meInformationCode", ico: 'photo' },
+          { title: "更多", image: "", link: "meInformationMore" },
+          { title: "我的地址", image: "", link: "meInformationAddress" }
         ]
       }
     };
   },
   computed: {
-    ...mapState('storeMeModules/storeInformationModules', ['informationHeader'])
+
+    ...mapState('store_me_information_modules', ['informationHeader']),
+    ...mapState(['isShowHeader', 'isShowFooter'])
   },
   methods: {
     ...mapMutations({
+      setShowOrHideHeader: 'SHOW_OR_HIDE_HEADER',
+      setShowOrHideFooter: 'SHOW_OR_HIDE_FOOTER',
       setHeaderConfig: 'HEADER_CONFIG'
     }),
     init () {
+      this.setShowOrHideFooter(false)
+      this.setShowOrHideFooter(false)
       this.setHeaderConfig(this.informationHeader)
     }
   },

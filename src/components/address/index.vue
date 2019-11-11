@@ -1,47 +1,44 @@
 <template>
-  <CommonPage :op="opPage">
-    <Search @click="popShow"/>
-    <ClassList/>
-    <NameList/>
-    <transition name="transitionRouter" mode="out-in">
-      <router-view/>
-    </transition>
-  </CommonPage>
+  <div>
+    <Search @click="popShow" />
+    <ClassList />
+    <NameList />
+  </div>
 </template>
 <script>
-import CommonPage from "@/public_components/CommonPage";
+
 import Search from "@/public_components/Search";
 import ClassList from "@/public_components/address/ClassList";
 import NameList from "@/public_components/address/NameList";
-import {mapState,mapMutations} from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 
 export default {
   components: {
-    CommonPage,
+
     Search,
     ClassList,
     NameList
   },
-  data() {
+  data () {
     return {
-      
+
     };
   },
-   computed:{
-    ...mapState('storeAddressModules',['opPage','addressHeader'])
+  computed: {
+    ...mapState('store_address_modules', ['opPage', 'addressHeader']),
   },
   methods: {
     ...mapMutations({
-      setHeaderConfig:"HEADER_CONFIG"
+      setHeaderConfig: 'HEADER_CONFIG'
     }),
-    init(){
+    init () {
       this.setHeaderConfig(this.addressHeader)
     },
-    popShow() {
+    popShow () {
       this.opPage.popshow = true;
     }
   },
-  created(){
+  created () {
     this.init()
   }
 };

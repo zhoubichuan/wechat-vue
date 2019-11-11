@@ -1,18 +1,20 @@
 <template>
   <div class="account-safe">
-      <ul>
-          <li v-for="(item,index) in accountSafe" :key="index">
-              <span>{{item.name}}</span>
-              <span>{{item.text}}</span>
-              <span>{{item.ico}}</span>
-          </li>
-      </ul>
+    <ul>
+      <li v-for="(item,index) in accountSafe"
+          :key="index">
+        <span>{{item.name}}</span>
+        <span>{{item.text}}</span>
+        <span>{{item.ico}}</span>
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
+import { mapState, mapMutations } from 'vuex'
 export default {
-  data() {
+  data () {
     return {
       accountSafe: [
         {
@@ -29,6 +31,24 @@ export default {
         { name: "版本更新", text: "", ico: ">" }
       ]
     };
+  }, computed: {
+    ...mapState(['isShowHeader', 'isShowFooter']),
+    ...mapState('store_me_collection_modules', ['settingAboutWeChateHeader'])
+  },
+  methods: {
+    ...mapMutations({
+      setShowOrHideHeader: 'SHOW_OR_HIDE_HEADER',
+      setShowOrHideFooter: 'SHOW_OR_HIDE_FOOTER',
+      setHeaderConfig: "HEADER_CONFIG"
+    }),
+    init () {
+      this.setShowOrHideFooter(true)
+      this.setShowOrHideFooter(false)
+      this.setHeaderConfig(this.settingAboutWeChateHeader)
+    }
+  },
+  created () {
+    this.init()
   }
 };
 </script>

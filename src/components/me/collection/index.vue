@@ -1,15 +1,18 @@
 <template>
-  <CommonPage :op="opPage">
+  <div>
     <div class="collection">
       <div class="top">
         <ul>
-          <li v-for="(item,index) in collection" :key="index">{{item}}</li>
+          <li v-for="(item,index) in collection"
+              :key="index">{{item}}</li>
         </ul>
       </div>
       <div class="other">
         <ul>
-          <li v-for="(item,index) in other" :key="index">
-            <img :src="item.img" alt>
+          <li v-for="(item,index) in other"
+              :key="index">
+            <img :src="item.img"
+                 alt>
             <p>
               {{item.title}}
               <span>{{item.time}}</span>
@@ -18,13 +21,15 @@
         </ul>
       </div>
     </div>
-  </CommonPage>
+  </div>
 </template>
 
 <script>
-import CommonPage from "@/public_components/CommonPage";
+
+import { mapState, mapMutations } from 'vuex'
+
 export default {
-  data() {
+  data () {
     return {
       opPage: {
         class: "find",
@@ -73,8 +78,25 @@ export default {
       ]
     };
   },
-  components: {
-    CommonPage
+
+  computed: {
+    ...mapState(['isShowHeader', 'isShowFooter']),
+    ...mapState('store_me_collection_modules', ['collectionHeader'])
+  },
+  methods: {
+    ...mapMutations({
+      setShowOrHideHeader: 'SHOW_OR_HIDE_HEADER',
+      setShowOrHideFooter: 'SHOW_OR_HIDE_FOOTER',
+      setHeaderConfig: "HEADER_CONFIG"
+    }),
+    init () {
+      this.setShowOrHideFooter(true)
+      this.setShowOrHideFooter(false)
+      this.setHeaderConfig(this.collectionHeader)
+    }
+  },
+  created () {
+    this.init()
   }
 };
 </script>

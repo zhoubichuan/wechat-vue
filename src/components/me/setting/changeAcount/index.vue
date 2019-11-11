@@ -1,19 +1,21 @@
 <template>
   <div class="changeAcount">
     <h1>轻触头像以切换账号</h1>
-      <ul>
-          <li v-for="(item,index) in accountSafe" :key="index">
-              <span>{{item.ico}}</span>
-              <p>{{item.name}}</p>
-              <p>{{item.tips}}</p>
-          </li>
-      </ul>
+    <ul>
+      <li v-for="(item,index) in accountSafe"
+          :key="index">
+        <span>{{item.ico}}</span>
+        <p>{{item.name}}</p>
+        <p>{{item.tips}}</p>
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
+import { mapState, mapMutations } from 'vuex'
 export default {
-  data() {
+  data () {
     return {
       accountSafe: [
         { ico: "", name: "zbc159x", tips: "当前使用" },
@@ -22,6 +24,25 @@ export default {
         { ico: "", name: "zbc159x4", tips: "未使用" }
       ]
     };
+  },
+  computed: {
+    ...mapState(['isShowHeader', 'isShowFooter']),
+    ...mapState('store_me_setting_modules', ['settingChangeAcountHeader'])
+  },
+  methods: {
+    ...mapMutations({
+      setShowOrHideHeader: 'SHOW_OR_HIDE_HEADER',
+      setShowOrHideFooter: 'SHOW_OR_HIDE_FOOTER',
+      setHeaderConfig: "HEADER_CONFIG"
+    }),
+    init () {
+      this.setShowOrHideFooter(true)
+      this.setShowOrHideFooter(false)
+      this.setHeaderConfig(this.settingChangeAcountHeader)
+    }
+  },
+  created () {
+    this.init()
   }
 };
 </script>

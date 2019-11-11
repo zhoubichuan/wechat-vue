@@ -1,33 +1,37 @@
 <template>
-  <CommonPage :op="opPage">
+  <div>
     <div class="setting-and-tips">
       <ul>
         <li>
           <label for="备注名">备注名</label>
-          <input type="text" value="123412341" />
+          <input type="text"
+                 value="123412341" />
         </li>
         <li>
           <label for="标签">标签</label>
-          <input type="text" value="123412341" />
+          <input type="text"
+                 value="123412341" />
         </li>
         <li>
           <label for="电话号码">电话号码</label>
-          <input type="text" value="123412341" />
+          <input type="text"
+                 value="123412341" />
         </li>
         <li>
           <label for="描述">描述</label>
-          <input type="text" value="123412341" />
+          <input type="text"
+                 value="123412341" />
         </li>
       </ul>
     </div>
-  </CommonPage>
+  </div>
 </template>
 
 <script>
-import CommonPage from "@/public_components/CommonPage";
+
 import Search from "@/public_components/Search";
 export default {
-  data() {
+  data () {
     return {
       settingAndTipsData: [
         { time: "1月", img: ["", "", ""] },
@@ -50,7 +54,6 @@ export default {
     };
   },
   components: {
-    CommonPage,
     Search
   }
 };

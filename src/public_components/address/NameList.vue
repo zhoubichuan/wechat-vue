@@ -2,13 +2,18 @@
   <div class="top">
     <ul>
       <template v-for="(item) in pySegSort.segs">
-        <li class="no-people" v-if="item.initial" :key="item.id">
+        <li class="no-people"
+            v-if="item.initial"
+            :key="item.id">
           <span>{{item.initial}}</span>
         </li>
         <template>
-          <li class="people" v-for="(item2) in item.data" :key="item2.id">
-            <router-link :to="'/address/people:'+item2.name">
-              <img :src="require(`@/assets/image/message/p1.svg`)" alt />
+          <li class="people"
+              v-for="(item2) in item.data"
+              :key="item2.id">
+            <router-link :to="'/addressPeople:'+item2.name">
+              <img :src="require(`@/assets/image/message/p1.svg`)"
+                   alt />
               {{item2.name}}
             </router-link>
           </li>
@@ -20,11 +25,11 @@
 </template>
 
 <script>
-import { mapMutations, mapGetters } from "vuex";
+import { mapGetters } from "vuex";
 export default {
   computed: {
     ...mapGetters(["nameList"]),
-    pySegSort() {
+    pySegSort () {
       if (this.nameList.length == 0) return;
       if (!String.prototype.localeCompare) return null;
       var letters = "*ABCDEFGHJKLMNOPQRSTWXYZ".split("");
@@ -78,7 +83,6 @@ export default {
         }
       });
       res.segs = Array.from(new Set(segs)); //去重
-      console.log(res);
       return res;
     }
   }

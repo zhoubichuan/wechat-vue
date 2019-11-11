@@ -1,5 +1,5 @@
 <template>
-  <CommonPage :op="opPage">
+ <div>
     <Search/>
     <div class="album">
       <ul>
@@ -11,11 +11,11 @@
         </li>
       </ul>
     </div>
-  </CommonPage>
+  </div>
 </template>
 
 <script>
-import CommonPage from "@/public_components/CommonPage";
+
 import Search from "@/public_components/Search";
 export default {
   data() {
@@ -41,7 +41,7 @@ export default {
     };
   },
   components: {
-    CommonPage,
+   
     Search
   }
 };
