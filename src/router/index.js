@@ -185,8 +185,8 @@ export default new Router({
       component: () => import("@/components/me/collection")
     },
     {
-      path: "/meMmoji",
-      name: "meMmoji",
+      path: "/meEmoji",
+      name: "meEmoji",
       component: () => import("@/components/me/emoji")
     },
     {

@@ -24,8 +24,12 @@
 
 <script>
 
-import CommonUl from "@/public_components/find/CommonUl";
+import CommonUl from "@/public_components/CommonUl";
+import { mapState, mapMutations } from 'vuex'
 export default {
+  components: {
+    CommonUl
+  },
   data () {
     return {
       dataOp: {
@@ -81,10 +85,26 @@ export default {
       }
     };
   },
-  components: {
-
-    CommonUl
+  computed: {
+    ...mapState(['isShowHeader', 'isShowFooter']),
+    ...mapState('store_address_modules', ['peopleHeader'])
+  },
+  methods: {
+    ...mapMutations({
+      setShowOrHideHeader: 'SHOW_OR_HIDE_HEADER',
+      setShowOrHideFooter: 'SHOW_OR_HIDE_FOOTER',
+      setHeaderConfig: "HEADER_CONFIG"
+    }),
+    init () {
+      this.setShowOrHideHeader(true)
+      this.setShowOrHideFooter(true)
+      this.setHeaderConfig(this.peopleHeader)
+    }
+  },
+  created () {
+    this.init()
   }
+
 };
 </script>
 <style lang='less' scoped>

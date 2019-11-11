@@ -11,8 +11,8 @@
 <script>
 
 import Search from "@/public_components/Search";
-import LoginTip from "@/public_components/message/LoginTip";
-import People from "@/public_components/message/People";
+import LoginTip from "@/public_components/LoginTip";
+import People from "@/public_components/People";
 import { mapState, mapMutations } from "vuex";
 
 export default {

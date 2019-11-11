@@ -59,7 +59,7 @@ export default {
       setHeaderConfig: "HEADER_CONFIG"
     }),
     init () {
-      this.setShowOrHideFooter(true)
+      this.setShowOrHideHeader(true)
       this.setShowOrHideFooter(true)
       this.setHeaderConfig(this.meHeader)
     }

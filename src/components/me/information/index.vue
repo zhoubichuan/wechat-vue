@@ -7,11 +7,10 @@
 <script>
 
 import { mapState, mapMutations } from 'vuex'
-import CommonUl from "@/public_components/find/CommonUl";
+import CommonUl from "@/public_components/CommonUl";
 
 export default {
   components: {
-
     CommonUl
   },
   data () {

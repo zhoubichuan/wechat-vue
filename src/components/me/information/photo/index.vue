@@ -6,7 +6,7 @@
 
 <script>
 
-import ImgCard from "@/public_components/me/ImgCard";
+import ImgCard from "@/public_components/ImgCard";
 import { mapState, mapMutations } from 'vuex'
 export default {
   data () {

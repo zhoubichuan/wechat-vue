@@ -1,14 +1,14 @@
 <template>
- <div>
-    <ImgCard :op="op"/>
+  <div>
+    <ImgCard :op="op" />
   </div>
 </template>
 
 <script>
 
-import ImgCard from "@/public_components/me/ImgCard";
+import ImgCard from "@/public_components/ImgCard";
 export default {
-  data() {
+  data () {
     return {
       op: { img: require("@/assets/image/me/flower.png") },
       opPage: {
@@ -23,7 +23,7 @@ export default {
     };
   },
   components: {
-   
+
     ImgCard
   }
 };

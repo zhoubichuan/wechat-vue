@@ -6,7 +6,7 @@
 
 <script>
 
-import ImgCard from "@/public_components/me/ImgCard";
+import ImgCard from "@/public_components/ImgCard";
 export default {
   data() {
     return {

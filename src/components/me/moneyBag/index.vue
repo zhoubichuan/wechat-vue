@@ -1,5 +1,5 @@
 <template>
- <div>
+  <div>
     <div class="moneyBag">
       <div class="top">
         <ul>
@@ -19,11 +19,11 @@
 
 <script>
 
-import Card from "@/public_components/me/Card";
+import Card from "@/public_components/Card";
 import { mapState, mapMutations } from 'vuex'
 export default {
   components: {
-   
+
     Card
   },
   data () {

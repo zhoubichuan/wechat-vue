@@ -7,7 +7,7 @@
 <script>
 import { mapState, mapMutations } from 'vuex'
 import Search from "@/public_components/Search";
-import NameList from "@/public_components/address/NameList";
+import NameList from "@/public_components/NameList";
 export default {
   components: {
     Search,

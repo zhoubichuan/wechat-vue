@@ -8,8 +8,8 @@
 <script>
 
 import Search from "@/public_components/Search";
-import ClassList from "@/public_components/address/ClassList";
-import NameList from "@/public_components/address/NameList";
+import ClassList from "@/public_components/ClassList";
+import NameList from "@/public_components/NameList";
 import { mapState, mapMutations } from 'vuex'
 
 export default {
@@ -25,13 +25,18 @@ export default {
     };
   },
   computed: {
+    ...mapState(['isShowHeader', 'isShowFooter']),
     ...mapState('store_address_modules', ['opPage', 'addressHeader']),
   },
   methods: {
     ...mapMutations({
+      setShowOrHideHeader: 'SHOW_OR_HIDE_HEADER',
+      setShowOrHideFooter: 'SHOW_OR_HIDE_FOOTER',
       setHeaderConfig: 'HEADER_CONFIG'
     }),
     init () {
+      this.setShowOrHideHeader(true)
+      this.setShowOrHideFooter(true)
       this.setHeaderConfig(this.addressHeader)
     },
     popShow () {
