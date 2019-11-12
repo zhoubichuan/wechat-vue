@@ -24,7 +24,7 @@ export default {
   },
   computed: {
     ...mapState(['isShowHeader', 'isShowFooter', "message2"]),
-    ...mapState('store_message_modules', ['messageHeader'])
+    ...mapState('store_message_people_modules', ['messagePeopleHeader'])
   },
   methods: {
     ...mapMutations({
@@ -35,7 +35,7 @@ export default {
     init () {
       this.setShowOrHideHeader(true)
       this.setShowOrHideFooter(false)
-      this.setHeaderConfig(this.messageHeader)
+      this.setHeaderConfig(this.messagePeopleHeader)
     }
   },
   created () {

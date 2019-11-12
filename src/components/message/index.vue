@@ -1,5 +1,5 @@
 <template>
- <div>
+  <div>
     <div v-show="!informationIsShow">
       <Search />
       <LoginTip />
@@ -17,19 +17,24 @@ import { mapState, mapMutations } from "vuex";
 
 export default {
   components: {
-   
+
     Search,
     LoginTip,
     People
   },
   computed: {
+    ...mapState(['isShowHeader', 'isShowFooter']),
     ...mapState("store_message_modules", ["opPage", "titleData", "informationIsShow", 'messageHeader'])
   },
   methods: {
     ...mapMutations({
+      setShowOrHideHeader: 'SHOW_OR_HIDE_HEADER',
+      setShowOrHideFooter: 'SHOW_OR_HIDE_FOOTER',
       setHeaderConfig: "HEADER_CONFIG"
     }),
     init () {
+       this.setShowOrHideHeader(true)
+      this.setShowOrHideFooter(true)
       this.setHeaderConfig(this.messageHeader)
     }
   },

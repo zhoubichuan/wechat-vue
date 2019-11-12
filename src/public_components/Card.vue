@@ -2,8 +2,10 @@
   <div class="card">
     <h3>{{op.title}}</h3>
     <ul>
-      <li v-for="(item,index) in op.content" :key="index">
-        <img :src="require(`../../assets/image/me/didi.png`)" alt>
+      <li v-for="(item,index) in op.content"
+          :key="index">
+        <img :src="require(`../assets/image/me/didi.png`)"
+             alt>
         <p class="title">{{item.title}}</p>
       </li>
     </ul>
