@@ -1,5 +1,5 @@
 <template>
- <div>
+  <div>
     <CommonUl :op="dataOp" />
     <transition name="transitionRouter"
                 mode="out-in">
@@ -15,7 +15,7 @@ import { mapState, mapMutations } from 'vuex'
 
 export default {
   components: {
-   
+
     CommonUl
   },
   data () {
@@ -35,7 +35,7 @@ export default {
   },
 
   computed: {
-    ...mapState('storeMeModules/storeInformationModules', ['moreHeader'])
+    ...mapState('store_me_information_modules', ['moreHeader'])
   },
   methods: {
     ...mapMutations({

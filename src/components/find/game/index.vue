@@ -18,31 +18,34 @@
 </template>
 
 <script>
-
+import { mapState, mapMutations } from 'vuex'
 export default {
   data () {
     return {
-      album: [
-        { time: "1月", img: ["", "", ""] },
-        { time: "2月", img: ["", "", ""] },
-        { time: "3月", img: ["", "", ""] },
-        { time: "4月", img: ["", "", ""] },
-        { time: "5月", img: ["", "", ""] },
-        { time: "6月", img: ["", "", ""] },
-        { time: "7月", img: ["", "", ""] }
-      ],
-      opPage: {
-        class: "find",
-        header: true,
-        headContent: {
-          left: "<",
-          middle: "微信游戏"
-        }
-      }
+
     };
   },
   components: {
 
+  },
+  computed: {
+    ...mapState(['isShowHeader', 'isShowFooter']),
+    ...mapState('store_find_game_modules', ['findGameHeader', 'findGameData'])
+  },
+  methods: {
+    ...mapMutations({
+      setShowOrHideHeader: 'SHOW_OR_HIDE_HEADER',
+      setShowOrHideFooter: 'SHOW_OR_HIDE_FOOTER',
+      setHeaderConfig: "HEADER_CONFIG"
+    }),
+    init () {
+      this.setShowOrHideHeader(true)
+      this.setShowOrHideFooter(false)
+      this.setHeaderConfig(this.findGameHeader)
+    }
+  },
+  created () {
+    this.init()
   }
 };
 </script>

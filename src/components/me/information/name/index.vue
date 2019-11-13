@@ -22,7 +22,7 @@ export default {
     };
   },
   computed: {
-    ...mapState('storeMeModules/storeInformationModules', ['nameHeader'])
+    ...mapState('store_me_information_modules', ['nameHeader'])
   },
   methods: {
     ...mapMutations({

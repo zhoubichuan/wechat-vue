@@ -2,7 +2,7 @@
   <div>
     <div class="album">
       <ul>
-        <li v-for="(item,index) in album"
+        <li v-for="(item,index) in findProgramData"
             :key="index">
           <h3>{{item.time}}</h3>
           <div>
@@ -18,31 +18,34 @@
 </template>
 
 <script>
-
+import { mapState, mapMutations } from 'vuex'
 export default {
   data () {
     return {
-      album: [
-        { time: "1月", img: ["", "", ""] },
-        { time: "2月", img: ["", "", ""] },
-        { time: "3月", img: ["", "", ""] },
-        { time: "4月", img: ["", "", ""] },
-        { time: "5月", img: ["", "", ""] },
-        { time: "6月", img: ["", "", ""] },
-        { time: "7月", img: ["", "", ""] }
-      ],
-      opPage: {
-        class: "find",
-        header: true,
-        headContent: {
-          left: "<",
-          middle: "小程序"
-        }
-      }
+
     };
   },
   components: {
 
+  },
+  computed: {
+    ...mapState(['isShowHeader', 'isShowFooter']),
+    ...mapState('store_find_friend_modules', ['findProgramHeader', 'findProgramData'])
+  },
+  methods: {
+    ...mapMutations({
+      setShowOrHideHeader: 'SHOW_OR_HIDE_HEADER',
+      setShowOrHideFooter: 'SHOW_OR_HIDE_FOOTER',
+      setHeaderConfig: "HEADER_CONFIG"
+    }),
+    init () {
+      this.setShowOrHideHeader(true)
+      this.setShowOrHideFooter(false)
+      this.setHeaderConfig(this.findProgramHeader)
+    }
+  },
+  created () {
+    this.init()
   }
 };
 </script>

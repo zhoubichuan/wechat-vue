@@ -1,5 +1,5 @@
 <template>
- <div>
+  <div>
     <ImgCard :op="op" />
   </div>
 </template>
@@ -10,7 +10,7 @@ import ImgCard from "@/public_components/ImgCard";
 import { mapState, mapMutations } from 'vuex'
 export default {
   components: {
-   
+
     ImgCard
   },
   data () {
@@ -23,7 +23,7 @@ export default {
     };
   },
   computed: {
-    ...mapState('storeMeModules/storeInformationModules', ['codeHeader'])
+    ...mapState('store_me_information_modules', ['codeHeader'])
   },
   methods: {
     ...mapMutations({

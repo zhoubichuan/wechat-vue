@@ -1,5 +1,5 @@
 <template>
- <div>
+  <div>
     <CommonUl :op="dataOp" />
   </div>
 </template>
@@ -10,7 +10,7 @@ import { mapState, mapMutations } from 'vuex'
 
 export default {
   components: {
-   
+
     CommonUl
   },
   data () {
@@ -19,13 +19,18 @@ export default {
     };
   },
   computed: {
+    ...mapState(['isShowHeader', 'isShowFooter']),
     ...mapState('store_find_modules', ['opPage', 'dataOp', 'findHeader'])
   },
   methods: {
     ...mapMutations({
+      setShowOrHideHeader: 'SHOW_OR_HIDE_HEADER',
+      setShowOrHideFooter: 'SHOW_OR_HIDE_FOOTER',
       setHeaderConfig: "HEADER_CONFIG"
     }),
     init () {
+      this.setShowOrHideHeader(true)
+      this.setShowOrHideFooter(true)
       this.setHeaderConfig(this.findHeader)
     }
   },

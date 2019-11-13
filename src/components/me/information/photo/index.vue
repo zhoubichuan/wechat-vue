@@ -1,5 +1,5 @@
 <template>
- <div>
+  <div>
     <ImgCard :op="op" />
   </div>
 </template>
@@ -20,11 +20,11 @@ export default {
     };
   },
   components: {
-   
+
     ImgCard
   },
   computed: {
-    ...mapState('storeMeModules/storeInformationModules', ['photoHeader'])
+    ...mapState('store_me_information_modules', ['photoHeader'])
   },
   methods: {
     ...mapMutations({

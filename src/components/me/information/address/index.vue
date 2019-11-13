@@ -14,7 +14,7 @@ export default {
     };
   },
   computed: {
-    ...mapState('storeMeModules/storeInformationModules', ['addressHeader'])
+    ...mapState('store_me_information_modules', ['addressHeader'])
   },
   methods: {
     ...mapMutations({

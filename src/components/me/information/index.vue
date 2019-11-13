@@ -1,6 +1,6 @@
 <template>
   <div>
-    <CommonUl :op="dataOp" />
+    <CommonUl :op="meInformationData" />
   </div>
 </template>
 
@@ -15,25 +15,10 @@ export default {
   },
   data () {
     return {
-      opPage: {
-        class: "setting",
-        header: true,
-      },
-      dataOp: {
-        data: [
-          { title: "头像", image: "", link: "meInformationPhoto", ico: 'photo' },
-          { title: "名字", image: "", link: "meInformationName" },
-          { title: "微信号", tips: 'zbc159x', image: "" },
-          { title: "我的二维码", image: "", link: "meInformationCode", ico: 'photo' },
-          { title: "更多", image: "", link: "meInformationMore" },
-          { title: "我的地址", image: "", link: "meInformationAddress" }
-        ]
-      }
     };
   },
   computed: {
-
-    ...mapState('store_me_information_modules', ['informationHeader']),
+    ...mapState('store_me_information_modules', ['meInformationHeader', 'meInformationData']),
     ...mapState(['isShowHeader', 'isShowFooter'])
   },
   methods: {
@@ -45,7 +30,7 @@ export default {
     init () {
       this.setShowOrHideFooter(false)
       this.setShowOrHideFooter(false)
-      this.setHeaderConfig(this.informationHeader)
+      this.setHeaderConfig(this.meInformationHeader)
     }
   },
   created () {
