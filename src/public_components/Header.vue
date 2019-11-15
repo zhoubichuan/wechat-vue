@@ -1,7 +1,7 @@
 <template>
-  <div class="header-component"
-       :style="header.style">
-    <div class="header">
+  <div class="header-component">
+    <div class="header"
+         :style="header.style">
       <div @click="$listeners.handleLeft()">
         <img :src="require(`@/assets/image/header/back.svg`)"
              class="back"

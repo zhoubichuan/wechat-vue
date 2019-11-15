@@ -1,7 +1,10 @@
 export default {
   namespaced: true,
   state: {
-    meInformationHeader: {
+    meInformationPhotoHeader: {
+      style: {
+        background: 'black'
+      },
       left: '<',
       middle: '个人信息'
     },
@@ -15,7 +18,8 @@ export default {
         {
           title: "名字",
           image: "",
-          link: "meInformationName"
+          link: "meInformationName",
+          tips: '会跑的鸡腿'
         },
         {
           title: "微信号",

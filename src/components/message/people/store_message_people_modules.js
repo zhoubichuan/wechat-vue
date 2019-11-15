@@ -10,7 +10,7 @@ export default {
     informationIsShow: false,
     messagePeopleHeader: {
       left: "<",
-      middle: "微信(18)",
+      middle: decodeURIComponent(location.href.split(":")[3]),
       right: {
         text: "..."
       }

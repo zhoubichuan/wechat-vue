@@ -1,41 +1,35 @@
 <template>
-  <div>
-    <div class="me-part">
-      <div class="me-component">
-        <div class="me">
-          <div class="me-application">
-            <ul>
-              <li v-for="(item,index) in application"
-                  :key="index">
-                <router-link v-if="item.content"
-                             class="me-information"
-                             :to="item.link">
-                  <div class="left">
-                    <img :src="require(`@/assets/image/me/${item.ico}.png`)"
-                         alt>
-                    <div>
-                      <p>{{item.title}}</p>
-                      <p>{{item.content}}</p>
-                    </div>
-                  </div>
-                  <div class="right">
-                    <img src
-                         alt>
-                    <img src
-                         alt>
-                  </div>
-                </router-link>
-                <router-link v-else
-                             :to="item.link">
-                  <img :src="require(`@/assets/image/me/${item.ico}.png`)"
-                       alt>
-                  <p>{{item.title}}</p>
-                </router-link>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
+  <div class="me">
+    <div class="me-application">
+      <ul>
+        <li v-for="(item,index) in application"
+            :key="index">
+          <router-link v-if="item.content"
+                       class="me-information"
+                       :to="item.link">
+            <div class="left">
+              <img :src="require(`@/assets/image/me/${item.ico}.png`)"
+                   alt>
+              <div>
+                <p>{{item.title}}</p>
+                <p>{{item.content}}</p>
+              </div>
+            </div>
+            <div class="right">
+              <img src
+                   alt>
+              <img src
+                   alt>
+            </div>
+          </router-link>
+          <router-link v-else
+                       :to="item.link">
+            <img :src="require(`@/assets/image/me/${item.ico}.png`)"
+                 alt>
+            <p>{{item.title}}</p>
+          </router-link>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -50,7 +44,7 @@ export default {
   },
   computed: {
     ...mapState(['isShowHeader', 'isShowFooter']),
-    ...mapState('store_me_modules', ['opPage', 'application', 'meHeader'])
+    ...mapState('store_me_modules', ['application', 'meHeader'])
   },
   methods: {
     ...mapMutations({
@@ -71,13 +65,9 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.me-part {
-  position: relative;
-}
 .me {
   background-color: #efeff4;
   overflow-y: auto;
-
   ul {
     margin-top: 15px;
     li {
@@ -85,7 +75,7 @@ export default {
         border: none;
         margin-bottom: 15px;
       }
-      padding: 5px 15px;
+      padding: 10px 15px;
       background-color: #ffffff;
       border-bottom: 1px solid #f2f2f2;
       a {
@@ -104,10 +94,9 @@ export default {
   }
   &:nth-last-child(2) {
     border: none;
-    &:last-child {
-      border: none;
-      margin-top: 15px;
-    }
+  }
+  &:last-child {
+    border: none;
   }
   .me-information {
     background-color: #ffffff;
@@ -133,14 +122,6 @@ export default {
     .rigth {
     }
   }
-}
-.transitionRouter-enter-active,
-.transitionRouter-leave-active {
-  transition: all 0.4s;
-}
-.transitionRouter-enter,
-.transitionRouter-leave {
-  transform: translate3d(100%, 0, 0);
 }
 </style>
 

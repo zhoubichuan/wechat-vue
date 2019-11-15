@@ -1,11 +1,6 @@
 export default {
   namespaced: true,
   state: {
-    opPage: {
-      class: "me",
-      header: true,
-      footer: true
-    },
     application: [{
         ico: "photo",
         title: "会跑的鸡腿",

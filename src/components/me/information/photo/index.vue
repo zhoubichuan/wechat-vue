@@ -1,6 +1,7 @@
 <template>
   <div>
-    <ImgCard :op="op" />
+    <ImgCard :op="op"
+             background="black" />
   </div>
 </template>
 
@@ -24,14 +25,19 @@ export default {
     ImgCard
   },
   computed: {
-    ...mapState('store_me_information_modules', ['photoHeader'])
+    ...mapState(['isShowHeader', 'isShowFooter']),
+    ...mapState('store_me_information_modules', ['meInformationPhotoHeader'])
   },
   methods: {
     ...mapMutations({
+      setShowOrHideHeader: 'SHOW_OR_HIDE_HEADER',
+      setShowOrHideFooter: 'SHOW_OR_HIDE_FOOTER',
       setHeaderConfig: 'HEADER_CONFIG'
     }),
     init () {
-      this.setHeaderConfig(this.photoHeader)
+      this.setShowOrHideHeader(true)
+      this.setShowOrHideFooter(false)
+      this.setHeaderConfig(this.meInformationPhotoHeader)
     }
   },
   created () {

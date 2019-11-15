@@ -1,5 +1,6 @@
 <template>
-  <div id="CommonPage" :class="['common-page',op.class]">
+  <div id="CommonPage"
+       :class="['common-page',op.class]">
     <div class="common-content">
       <slot></slot>
     </div>
@@ -11,7 +12,7 @@ export default {
   props: {
     op: {
       type: Object,
-      default: function() {
+      default: function () {
         return {
           class: "page"
         };
@@ -23,6 +24,7 @@ export default {
 <style lang="less" scoped>
 .common-page {
   position: relative;
+  background-color: #f2f2f2;
   .common-content {
     min-height: calc(100vh - 80px);
     margin-bottom: 40px;
