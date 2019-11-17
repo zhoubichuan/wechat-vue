@@ -1,10 +1,6 @@
 <template>
   <div>
     <CommonUl :op="dataOp" />
-    <transition name="transitionRouter"
-                mode="out-in">
-      <router-view />
-    </transition>
   </div>
 </template>
 

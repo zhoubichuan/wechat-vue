@@ -22,8 +22,7 @@ export default {
       data: [{
           title: "设置备注和标签",
           img: "friend",
-          link: "/addressPeopleSettingAndTips:" +
-            decodeURIComponent(location.href.split(":")[3])
+          link: "/addressPeopleSettingAndTips"
         },
         {
           title: "朋友圈",

@@ -199,43 +199,7 @@ export default {
       }
     ]
   },
-  nameList: [{
-      name: "曹操",
-      img: ""
-    },
-    {
-      name: "孙权",
-      img: ""
-    },
-    {
-      name: "周瑜",
-      img: ""
-    },
-    {
-      name: "黄盖",
-      img: ""
-    },
-    {
-      name: "刘备",
-      img: ""
-    },
-    {
-      name: "诸葛亮",
-      img: ""
-    },
-    {
-      name: "张飞",
-      img: ""
-    },
-    {
-      name: "关羽",
-      img: ""
-    },
-    {
-      name: "魏延",
-      img: ""
-    }
-  ],
+
   commonPageData: {
     class: "page",
     header: true,

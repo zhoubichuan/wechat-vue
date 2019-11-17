@@ -27,6 +27,7 @@
             <img :src="require(`@/assets/image/me/${item.ico}.png`)"
                  alt>
             <p>{{item.title}}</p>
+            <p class="row">></p>
           </router-link>
         </li>
       </ul>
@@ -82,12 +83,17 @@ export default {
         display: flex;
         flex-direction: row;
         align-items: center;
+        position: relative;
         img {
           width: 20px;
           height: 20px;
         }
         p {
           margin-left: 10px;
+        }
+        .row {
+          position: absolute;
+          right: 0;
         }
       }
     }

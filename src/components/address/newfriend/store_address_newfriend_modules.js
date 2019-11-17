@@ -1,21 +1,11 @@
 export default {
   namespaced: true,
   state: {
-    opPage: {
-      class: "addressComponents",
-      header: true,
-      footer: true
-    },
-    addressHeader: {
-      middle: "通讯录",
+    addressNewfriendHeader: {
+      left: '<',
+      middle: "新的朋友",
       right: {
-        ico: "add-friend"
-      }
-    },
-    peopleHeader: {
-      left: ">",
-      right: {
-        text: "..."
+        text: "添加朋友"
       }
     }
   }

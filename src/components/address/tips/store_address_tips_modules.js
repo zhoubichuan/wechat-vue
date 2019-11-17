@@ -1,22 +1,31 @@
 export default {
   namespaced: true,
   state: {
-    opPage: {
-      class: "addressComponents",
-      header: true,
-      footer: true
+    addressTipsHeader: {
+      left: '<',
+      middle: "标签"
     },
-    addressHeader: {
-      middle: "通讯录",
-      right: {
-        ico: "add-friend"
-      }
-    },
-    peopleHeader: {
-      left: ">",
-      right: {
-        text: "..."
-      }
-    }
+    addressTipsData: [{
+      title: '标签1',
+      content: ['aasdfas', 'asdfasd', 'asdfasd', 'asdfasd', 'asdfasd']
+    }, {
+      title: '标签2',
+      content: ['aasdfas', 'asdfasd', 'asdfasd', 'asdfasd', 'asdfasd', 'aasdfas', 'asdfasd', 'asdfasd', 'asdfasd', 'asdfasd']
+    }, {
+      title: '标签3',
+      content: ['aasdfas', 'asdfasd', 'asdfasd', 'asdfasd', 'asdfasd']
+    }, {
+      title: '标签4',
+      content: ['aasdfas', 'asdfasd', 'asdfasd', 'asdfasd', 'asdfasd']
+    }, {
+      title: '标签5',
+      content: ['aasdfas', 'asdfasd', 'asdfasd', 'asdfasd', 'asdfasd']
+    }, {
+      title: '标签6',
+      content: ['aasdfas', 'asdfasd', 'asdfasd', 'asdfasd', 'asdfasd']
+    }, {
+      title: '标签7',
+      content: ['aasdfas', 'asdfasd', 'asdfasd', 'asdfasd', 'asdfasd']
+    }, ]
   }
 };

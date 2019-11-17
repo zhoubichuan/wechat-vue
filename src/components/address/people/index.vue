@@ -6,7 +6,7 @@
              alt />
       </div>
       <div class="card">
-        <h3>{{this.$route.params.id.slice(1)}}</h3>
+        <h3>{{decodeURIComponent(this.$route.params.id.slice(1).split(":")[1])}}</h3>
         <div class="number">
           <span>微信号：</span>
           <span>2323</span>
@@ -18,7 +18,6 @@
       </div>
     </div>
     <CommonUl :op="addressPeopleData" />
-    <router-view />
   </div>
 </template>
 

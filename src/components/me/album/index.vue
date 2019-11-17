@@ -1,49 +1,35 @@
 <template>
   <div>
     <div class="album">
-      <ul>
-        <li v-for="(item,index) in album"
+      <ul class="album-content">
+        <li class="item"
+            v-for="(item,index) in meAlbumData"
             :key="index">
-          <h3>{{item.time}}</h3>
-          <div>
-            <img v-for="(_item,_index) in item.img"
-                 :key="_index"
-                 :src="_item"
-                 alt>
+          <h3 class="text">{{item.time}}</h3>
+          <div class="image-box">
+            <div class="image"
+                 v-for="(_item,_index) in item.img"
+                 :key="_index">
+              <img :src="_item.img"
+                   alt>
+            </div>
           </div>
         </li>
       </ul>
     </div>
   </div>
 </template>
-
 <script>
 
 import { mapState, mapMutations } from 'vuex'
 export default {
   data () {
     return {
-      album: [
-        { time: "1月", img: ["", "", ""] },
-        { time: "2月", img: ["", "", ""] },
-        { time: "3月", img: ["", "", ""] },
-        { time: "4月", img: ["", "", ""] },
-        { time: "5月", img: ["", "", ""] },
-        { time: "6月", img: ["", "", ""] },
-        { time: "7月", img: ["", "", ""] }
-      ],
-      opPage: {
-        class: "me",
-        header: true,
-        headContent: {
-          left: "<",
-          middle: "支付"
-        }
-      }
+
     };
   },
   computed: {
-    ...mapState('store_me_album_modules', ['albumHeader'])
+    ...mapState('store_me_album_modules', ['meAlbumHeader', 'meAlbumData'])
   },
   methods: {
     ...mapMutations({
@@ -51,7 +37,7 @@ export default {
     }),
     init () {
       let initPageConfig = {
-        header: this.albumHeader,
+        header: this.meAlbumHeader,
       }
       this.setInitPageConfig(initPageConfig)
     }
@@ -70,6 +56,27 @@ export default {
   left: 0;
   background-color: white;
   z-index: 1000;
+  .album-content {
+    padding: 0 20px;
+    .item {
+      display: inline-block;
+      .text {
+        float: left;
+      }
+      .image-box {
+        float: right;
+        width: calc(100% - 40px);
+        .image {
+          width: calc(33% - 10px);
+          float: left;
+          padding: 0 5px;
+          img {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
 }
 </style>
 

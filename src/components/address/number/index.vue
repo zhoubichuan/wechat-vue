@@ -1,76 +1,45 @@
 <template>
   <div>
-    <Search />
-    <div class="album">
-      <ul>
-        <li v-for="(item,index) in album"
-            :key="index">
-          <h3>{{item.time}}</h3>
-          <div>
-            <img v-for="(_item,_index) in item.img"
-                 :key="_index"
-                 :src="_item"
-                 alt>
-          </div>
-        </li>
-      </ul>
+    <div class="number">
+      <NameList />
     </div>
   </div>
 </template>
 
 <script>
+import NameList from "@/public_components/NameList";
 import { mapState, mapMutations } from 'vuex'
-import Search from "@/public_components/Search";
 export default {
   components: {
-    Search
+    NameList
   },
   data () {
     return {
-      album: [
-        { time: "1月", img: ["", "", ""] },
-        { time: "2月", img: ["", "", ""] },
-        { time: "3月", img: ["", "", ""] },
-        { time: "4月", img: ["", "", ""] },
-        { time: "5月", img: ["", "", ""] },
-        { time: "6月", img: ["", "", ""] },
-        { time: "7月", img: ["", "", ""] }
-      ],
-      opPage: {
-        class: "find",
-        header: true,
-        headContent: {
-          left: "<",
-          middle: "公众号",
-          right: "+"
-        }
-      }
+
     };
   },
   computed: {
-    ...mapState(['isShowHeader', 'isShowFooter']),
-    ...mapState('store_me_album_modules', ['albumHeader'])
+    ...mapState('store_address_number_modules', ['addressNumberHeader'])
   },
   methods: {
     ...mapMutations({
-      setShowOrHideHeader: 'SHOW_OR_HIDE_HEADER',
-      setShowOrHideFooter: 'SHOW_OR_HIDE_FOOTER',
-      setHeaderConfig: "HEADER_CONFIG"
+      setInitPageConfig: 'INIT_PAGE_CONFIG'
     }),
     init () {
-      this.setShowOrHideHeader(true)
-      this.setShowOrHideFooter(false)
-      this.setHeaderConfig(this.albumHeader)
+      let initPageConfig = {
+        header: this.addressNumberHeader,
+        isShowSearch: true,
+      }
+      this.setInitPageConfig(initPageConfig)
     }
   },
   created () {
     this.init()
   }
-
 };
 </script>
 <style lang='less' scoped>
-.album {
+.number {
   top: 40px;
   width: 100%;
   left: 0;

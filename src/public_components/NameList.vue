@@ -20,15 +20,13 @@
         </template>
       </template>
     </ul>
-    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
 export default {
+  props: ["nameList"],
   computed: {
-    ...mapGetters(["nameList"]),
     pySegSort () {
       if (this.nameList.length == 0) return;
       if (!String.prototype.localeCompare) return null;

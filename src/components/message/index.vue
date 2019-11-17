@@ -19,7 +19,6 @@ export default {
     People
   },
   computed: {
-    ...mapState(['isShowHeader', 'isShowFooter']),
     ...mapState("store_message_modules", ["opPage", "titleData", "informationIsShow", 'messageHeader'])
   },
   methods: {

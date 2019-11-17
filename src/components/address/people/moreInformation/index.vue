@@ -1,12 +1,16 @@
 <template>
- <div>
-    <Search/>
+  <div>
+    <Search />
     <div class="album">
       <ul>
-        <li v-for="(item,index) in album" :key="index">
+        <li v-for="(item,index) in album"
+            :key="index">
           <h3>{{item.time}}</h3>
           <div>
-            <img v-for="(_item,_index) in item.img" :key="_index" :src="_item" alt>
+            <img v-for="(_item,_index) in item.img"
+                 :key="_index"
+                 :src="_item"
+                 alt>
           </div>
         </li>
       </ul>
@@ -18,7 +22,7 @@
 
 import Search from "@/public_components/Search";
 export default {
-  data() {
+  data () {
     return {
       album: [
         { time: "1月", img: ["", "", ""] },
@@ -41,7 +45,7 @@ export default {
     };
   },
   components: {
-   
+
     Search
   }
 };

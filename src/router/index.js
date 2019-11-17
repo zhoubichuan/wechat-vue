@@ -16,11 +16,6 @@ export default new Router({
       component: () => import("@/components/message"),
     },
     {
-      path: "/messagePeople:id",
-      name: "messagePeople",
-      component: () => import("@/components/message/people"),
-    },
-    {
       path: "/messageSetting:id",
       name: "messageSetting",
       component: () => import("@/components/message/setting")
@@ -69,7 +64,7 @@ export default new Router({
       component: () => import("@/components/address/people"),
     },
     {
-      path: "/addressPeopleSettingAndTips:id",
+      path: "/addressPeopleSettingAndTips",
       name: "settingAndTips",
       component: () => import("@/components/address/people/settingAndTips")
     },
@@ -79,7 +74,7 @@ export default new Router({
       component: () => import("@/components/message/people")
     },
     {
-      path: "/addressPeopleMoreInformation",
+      path: "/addressPeopleMoreInformation:id",
       name: "moreInformation",
       component: () => import("@/components/address/people/moreInformation")
     },

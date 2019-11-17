@@ -1,15 +1,11 @@
 export default {
   namespaced: true,
   state: {
-    opPage: {
-      class: "addressComponents",
-      header: true,
-      footer: true
-    },
     addressNumberHeader: {
-      middle: "通讯录",
+      left: '<',
+      middle: "公众号",
       right: {
-        ico: "add-friend"
+        text: "+"
       }
     },
   }
