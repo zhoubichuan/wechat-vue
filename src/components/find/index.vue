@@ -22,14 +22,14 @@ export default {
   },
   methods: {
     ...mapMutations({
-      setShowOrHideHeader: 'SHOW_OR_HIDE_HEADER',
-      setShowOrHideFooter: 'SHOW_OR_HIDE_FOOTER',
-      setHeaderConfig: "HEADER_CONFIG"
+      setInitPageConfig: 'INIT_PAGE_CONFIG'
     }),
     init () {
-      this.setShowOrHideHeader(true)
-      this.setShowOrHideFooter(true)
-      this.setHeaderConfig(this.findHeader)
+      let initPageConfig = {
+        header: this.findHeader,
+        isShowFooter: true,
+      }
+      this.setInitPageConfig(initPageConfig)
     }
   },
   created () {

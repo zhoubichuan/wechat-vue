@@ -1,7 +1,6 @@
 <template>
   <div>
     <div v-show="!informationIsShow">
-      <Search />
       <LoginTip />
       <People />
     </div>
@@ -10,15 +9,12 @@
 
 <script>
 
-import Search from "@/public_components/Search";
 import LoginTip from "@/public_components/LoginTip";
 import People from "@/public_components/People";
 import { mapState, mapMutations } from "vuex";
 
 export default {
   components: {
-
-    Search,
     LoginTip,
     People
   },
@@ -28,14 +24,15 @@ export default {
   },
   methods: {
     ...mapMutations({
-      setShowOrHideHeader: 'SHOW_OR_HIDE_HEADER',
-      setShowOrHideFooter: 'SHOW_OR_HIDE_FOOTER',
-      setHeaderConfig: "HEADER_CONFIG"
+      setInitPageConfig: 'INIT_PAGE_CONFIG'
     }),
     init () {
-       this.setShowOrHideHeader(true)
-      this.setShowOrHideFooter(true)
-      this.setHeaderConfig(this.messageHeader)
+      let initPageConfig = {
+        header: this.messageHeader,
+        isShowSearch: true,
+        isShowFooter: true,
+      }
+      this.setInitPageConfig(initPageConfig)
     }
   },
   created () {

@@ -1,9 +1,11 @@
 <template>
   <div class="footer-component">
     <ul class="footer">
-      <li v-for="(item,index) in value" :key="index">
+      <li v-for="(item,index) in value"
+          :key="index">
         <router-link :to="{name:item.link}">
-          <img :src="require(`@/assets/image/footer/${item.image}.svg`)" alt>
+          <img :src="require(`@/assets/image/footer/${item.image}.svg`)"
+               alt>
           <span>{{item.text}}</span>
         </router-link>
       </li>
@@ -11,9 +13,9 @@
   </div>
 </template>
 <script>
-import {mapMutations} from 'vuex'
+import { mapMutations } from 'vuex'
 export default {
-  data() {
+  data () {
     return {
       value: [
         { image: "message", text: "微信", link: "message" },
@@ -23,9 +25,9 @@ export default {
       ]
     };
   },
-  methods:{
+  methods: {
     ...mapMutations({
-      changeHeaderData:'HEADER_CONFIG'
+      changeHeaderData: 'HEADER_CONFIG'
     })
   }
 };

@@ -1,5 +1,25 @@
 <template>
-  <div>我的地址</div>
+  <div>
+    <ul>
+      <li>
+        <div>
+          <p>周必川</p>
+          <p>xxxx</p>
+        </div>
+        <div>
+          <img src=""
+               alt="">
+        </div>
+      </li>
+    </ul>
+    <div>
+      <img src=""
+           alt="">
+      <span>新增地址</span>
+      <img src=""
+           alt="">
+    </div>
+  </div>
 </template>
 
 <script>
@@ -14,14 +34,17 @@ export default {
     };
   },
   computed: {
-    ...mapState('store_me_information_modules', ['addressHeader'])
+    ...mapState('store_me_information_address_modules', ['meInformationAddressHeader'])
   },
   methods: {
     ...mapMutations({
-      setHeaderConfig: 'HEADER_CONFIG'
+      setInitPageConfig: 'INIT_PAGE_CONFIG'
     }),
     init () {
-      this.setHeaderConfig(this.addressHeader)
+      let initPageConfig = {
+        header: this.meInformationAddressHeader,
+      }
+      this.setInitPageConfig(initPageConfig)
     }
   },
   created () {

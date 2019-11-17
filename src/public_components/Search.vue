@@ -1,6 +1,9 @@
 <template>
-  <div class="search" id="search">
-    <input type="text" :placeholder="op.text" @click="$emit('click')">
+  <div class="search"
+       id="search">
+    <input type="text"
+           :placeholder="op.text"
+           @click="$listeners.handleSearch()">
   </div>
 </template>
 <script>
@@ -8,17 +11,17 @@ export default {
   props: {
     op: {
       type: Object,
-      default: function() {
+      default: function () {
         return {
           text: "搜索"
         };
       }
     }
   },
-  data() {
+  data () {
     return {};
   },
-  mounted() {},
+  mounted () { },
   components: {}
 };
 </script>

@@ -1,7 +1,6 @@
 <template>
   <div>
-    <ImgCard :op="op"
-             background="black" />
+    <ImgCard :op="op" />
   </div>
 </template>
 
@@ -13,15 +12,9 @@ export default {
   data () {
     return {
       op: { img: require("@/assets/image/me/flower.png") },
-      opPage: {
-        class: "me-information-photo",
-        header: true,
-
-      }
     };
   },
   components: {
-
     ImgCard
   },
   computed: {
@@ -30,14 +23,13 @@ export default {
   },
   methods: {
     ...mapMutations({
-      setShowOrHideHeader: 'SHOW_OR_HIDE_HEADER',
-      setShowOrHideFooter: 'SHOW_OR_HIDE_FOOTER',
-      setHeaderConfig: 'HEADER_CONFIG'
+      setInitPageConfig: 'INIT_PAGE_CONFIG'
     }),
     init () {
-      this.setShowOrHideHeader(true)
-      this.setShowOrHideFooter(false)
-      this.setHeaderConfig(this.meInformationPhotoHeader)
+      let initPageConfig = {
+        header: this.meInformationPhotoHeader,
+      }
+      this.setInitPageConfig(initPageConfig)
     }
   },
   created () {

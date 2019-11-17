@@ -1,12 +1,12 @@
 export default {
   namespaced: true,
   state: {
-    meInformationPhotoHeader: {
-      style: {
-        background: 'black'
-      },
+    meInformationHeader: {
       left: '<',
-      middle: '个人信息'
+      middle: '个人信息',
+      right: {
+        text: '...'
+      }
     },
     meInformationData: {
       data: [{
@@ -70,10 +70,6 @@ export default {
     },
     moreHeader: {
       left: '<'
-    },
-    addressHeader: {
-      left: '<',
-      middle: '我的地址'
     }
   }
 }

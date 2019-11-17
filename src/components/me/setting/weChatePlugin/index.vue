@@ -22,19 +22,17 @@ export default {
     };
   },
   computed: {
-    ...mapState(['isShowHeader', 'isShowFooter']),
     ...mapState('store_me_setting_modules', ['settingWeChatePluginHeader'])
   },
   methods: {
     ...mapMutations({
-      setShowOrHideHeader: 'SHOW_OR_HIDE_HEADER',
-      setShowOrHideFooter: 'SHOW_OR_HIDE_FOOTER',
-      setHeaderConfig: "HEADER_CONFIG"
+      setInitPageConfig: 'INIT_PAGE_CONFIG'
     }),
     init () {
-      this.setShowOrHideFooter(true)
-      this.setShowOrHideFooter(false)
-      this.setHeaderConfig(this.settingWeChatePluginHeader)
+      let initPageConfig = {
+        header: this.settingWeChatePluginHeader,
+      }
+      this.setInitPageConfig(initPageConfig)
     }
   },
   created () {

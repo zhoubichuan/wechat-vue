@@ -75,19 +75,17 @@ export default {
     };
   },
   computed: {
-    ...mapState(['isShowHeader', 'isShowFooter']),
     ...mapState('store_me_emoji_modules', ['emojiHeader'])
   },
   methods: {
     ...mapMutations({
-      setShowOrHideHeader: 'SHOW_OR_HIDE_HEADER',
-      setShowOrHideFooter: 'SHOW_OR_HIDE_FOOTER',
-      setHeaderConfig: "HEADER_CONFIG"
+      setInitPageConfig: 'INIT_PAGE_CONFIG'
     }),
     init () {
-      this.setShowOrHideHeader(true)
-      this.setShowOrHideFooter(false)
-      this.setHeaderConfig(this.emojiHeader)
+      let initPageConfig = {
+        header: this.emojiHeader,
+      }
+      this.setInitPageConfig(initPageConfig)
     }
   },
   created () {

@@ -69,14 +69,14 @@ export default new Router({
       component: () => import("@/components/address/people"),
     },
     {
-      path: "/addressPeopleSettingAndTips",
+      path: "/addressPeopleSettingAndTips:id",
       name: "settingAndTips",
       component: () => import("@/components/address/people/settingAndTips")
     },
     {
-      path: "/addressPeopleFriend",
+      path: "/addressPeopleFriend:id",
       name: "friend",
-      component: () => import("@/components/address/people/friend")
+      component: () => import("@/components/message/people")
     },
     {
       path: "/addressPeopleMoreInformation",

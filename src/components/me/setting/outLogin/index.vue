@@ -23,14 +23,11 @@ export default {
     };
   },
   computed: {
-    ...mapState(['isShowHeader', 'isShowFooter']),
     ...mapState('store_me_setting_modules', ['settingOutLoginHeader'])
   },
   methods: {
     ...mapMutations({
-      setShowOrHideHeader: 'SHOW_OR_HIDE_HEADER',
-      setShowOrHideFooter: 'SHOW_OR_HIDE_FOOTER',
-      setHeaderConfig: "HEADER_CONFIG"
+      setInitPageConfig: 'INIT_PAGE_CONFIG'
     }),
     cancel: function (e) {
       if (e.target.textContent == "取消") {
@@ -38,9 +35,10 @@ export default {
       }
     },
     init () {
-      this.setShowOrHideFooter(true)
-      this.setShowOrHideFooter(false)
-      this.setHeaderConfig(this.settingOutLoginHeader)
+      let initPageConfig = {
+        header: this.settingOutLoginHeader,
+      }
+      this.setInitPageConfig(initPageConfig)
     }
   },
   created () {

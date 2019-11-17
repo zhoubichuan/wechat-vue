@@ -19,18 +19,18 @@ export default {
   },
   computed: {
     ...mapState('store_me_information_modules', ['meInformationHeader', 'meInformationData']),
-    ...mapState(['isShowHeader', 'isShowFooter'])
   },
   methods: {
     ...mapMutations({
-      setShowOrHideHeader: 'SHOW_OR_HIDE_HEADER',
-      setShowOrHideFooter: 'SHOW_OR_HIDE_FOOTER',
-      setHeaderConfig: 'HEADER_CONFIG'
+      setInitPageConfig: 'INIT_PAGE_CONFIG'
     }),
     init () {
+      let initPageConfig = {
+        header: this.meInformationHeader,
+      }
+      this.setInitPageConfig(initPageConfig)
       this.setShowOrHideFooter(false)
       this.setShowOrHideFooter(false)
-      this.setHeaderConfig(this.meInformationHeader)
     }
   },
   created () {

@@ -2,21 +2,26 @@
   <div class="information2-component">
     <redBagSend v-show="this.$store.state.pageShow"></redBagSend>
     <div class="get">
-      <RedBagGet :show="isShow" @close="fn" :message="message">
-        <p slot="r-money" class="r-money" v-if="message.money">{{message.redBag.receiveRedBag}}元</p>
+      <RedBagGet :show="isShow"
+                 @close="fn"
+                 :message="message">
+        <p slot="r-money"
+           class="r-money"
+           v-if="message.money">{{message.redBag.receiveRedBag}}元</p>
       </RedBagGet>
       <div>
         <ul class="information2">
-          <li
-            :class="item.redBag.self ? 'right':''"
-            v-for="(item,index) in information2.data"
-            :key="index"
-          >
-            <img class="photo" :src="require(`@/assets/image/message/${item.pho||p1}.svg`)" />
+          <li :class="item.redBag.self ? 'right':''"
+              v-for="(item,index) in information2.data"
+              :key="index">
+            <img class="photo"
+                 :src="require(`@/assets/image/message/${item.pho||p1}.svg`)" />
             <div class="i-content">
               <p class="name">{{item.name}}</p>
               <p v-show="!item.redBag.redBag">{{item.message}}</p>
-              <div v-show="item.redBag.redBag" class="red-bag" @click="stopScroll(item)">
+              <div v-show="item.redBag.redBag"
+                   class="red-bag"
+                   @click="stopScroll(item)">
                 <div class="bag">
                   <span class="ico"></span>
                   <div class="text">
@@ -44,17 +49,17 @@
 </template>
 
 <script type="text/javascript">
-import RedBagGet from "./appliance/red-bag/RedBagGet";
-import RedBagSend from "./appliance/red-bag/RedBagSend";
+import RedBagGet from "@/components/message/people/RedBagGet";
+import RedBagSend from "@/components/message/people/RedBagSend";
 import Bus from "@/public_components/Bus.js";
-import appliance from "./appliance/appliance.vue";
+import appliance from "@/components/message/people/appliance.vue";
 
 export default {
   props: {
     op: Object
   },
-  mounted() {},
-  data() {
+  mounted () { },
+  data () {
     return {
       information2: {},
       message: "",
@@ -70,7 +75,7 @@ export default {
     appliance
   },
   computed: {},
-  created() {
+  created () {
     this.information2 = JSON.parse(JSON.stringify(this.$props.op));
     Bus.$on("hide", val => {
       this.isShow = !val;
@@ -95,13 +100,13 @@ export default {
     });
   },
   methods: {
-    goBack() {
+    goBack () {
       this.$router.history.go(0);
     },
-    fn() {
+    fn () {
       this.isShow = false;
     },
-    stopScroll(val) {
+    stopScroll (val) {
       this.isShow = true;
       this.message = val;
       this.$store.state.pageStopScroll = true;

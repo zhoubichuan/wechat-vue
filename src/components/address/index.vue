@@ -1,21 +1,17 @@
 <template>
   <div>
-    <Search @click="popShow" />
     <ClassList />
     <NameList />
   </div>
 </template>
 <script>
 
-import Search from "@/public_components/Search";
 import ClassList from "@/public_components/ClassList";
 import NameList from "@/public_components/NameList";
 import { mapState, mapMutations } from 'vuex'
 
 export default {
   components: {
-
-    Search,
     ClassList,
     NameList
   },
@@ -25,19 +21,19 @@ export default {
     };
   },
   computed: {
-    ...mapState(['isShowHeader', 'isShowFooter']),
     ...mapState('store_address_modules', ['opPage', 'addressHeader']),
   },
   methods: {
     ...mapMutations({
-      setShowOrHideHeader: 'SHOW_OR_HIDE_HEADER',
-      setShowOrHideFooter: 'SHOW_OR_HIDE_FOOTER',
-      setHeaderConfig: 'HEADER_CONFIG'
+      setInitPageConfig: 'INIT_PAGE_CONFIG'
     }),
     init () {
-      this.setShowOrHideHeader(true)
-      this.setShowOrHideFooter(true)
-      this.setHeaderConfig(this.addressHeader)
+      let initPageConfig = {
+        header: this.addressHeader,
+        isShowSearch: true,
+        isShowFooter: true,
+      }
+      this.setInitPageConfig(initPageConfig)
     },
     popShow () {
       this.opPage.popshow = true;

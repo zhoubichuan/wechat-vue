@@ -1,6 +1,9 @@
 export default {
   isShowHeader: true,
+  isShowCommonPage: true,
   isShowFooter: true,
+  isShowSearch: false,
+  isShowSearchDialog: false,
   header: {},
   redBagTyep: "commonRedBag",
   redBagAmount: "",

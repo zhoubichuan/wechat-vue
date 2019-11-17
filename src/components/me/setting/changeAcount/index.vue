@@ -26,19 +26,17 @@ export default {
     };
   },
   computed: {
-    ...mapState(['isShowHeader', 'isShowFooter']),
     ...mapState('store_me_setting_modules', ['settingChangeAcountHeader'])
   },
   methods: {
     ...mapMutations({
-      setShowOrHideHeader: 'SHOW_OR_HIDE_HEADER',
-      setShowOrHideFooter: 'SHOW_OR_HIDE_FOOTER',
-      setHeaderConfig: "HEADER_CONFIG"
+      setInitPageConfig: 'INIT_PAGE_CONFIG'
     }),
     init () {
-      this.setShowOrHideFooter(true)
-      this.setShowOrHideFooter(false)
-      this.setHeaderConfig(this.settingChangeAcountHeader)
+      let initPageConfig = {
+        header: this.settingChangeAcountHeader,
+      }
+      this.setInitPageConfig(initPageConfig)
     }
   },
   created () {

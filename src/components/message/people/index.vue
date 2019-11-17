@@ -1,11 +1,11 @@
 <template>
   <div>
-    <information :op="message2" />
+    <information :op="informationData" />
   </div>
 </template>
 <script>
 
-import information from "../information";
+import information from "@/components/message/people/information";
 import axios from "axios";
 import { mapState, mapMutations } from "vuex";
 
@@ -15,27 +15,20 @@ export default {
   },
   data () {
     return {
-      informationIsShow: false,
-      opPage: {
-        class: "people",
-        header: true,
-      }
     };
   },
   computed: {
-    ...mapState(['isShowHeader', 'isShowFooter', "message2"]),
-    ...mapState('store_message_people_modules', ['messagePeopleHeader'])
+    ...mapState('store_message_people_modules', ['informationData', 'messagePeopleHeader'])
   },
   methods: {
     ...mapMutations({
-      setShowOrHideHeader: 'SHOW_OR_HIDE_HEADER',
-      setShowOrHideFooter: 'SHOW_OR_HIDE_FOOTER',
-      setHeaderConfig: "HEADER_CONFIG"
+      setInitPageConfig: 'INIT_PAGE_CONFIG'
     }),
     init () {
-      this.setShowOrHideHeader(true)
-      this.setShowOrHideFooter(false)
-      this.setHeaderConfig(this.messagePeopleHeader)
+      let initPageConfig = {
+        header: this.messagePeopleHeader,
+      }
+      this.setInitPageConfig(initPageConfig)
     }
   },
   created () {

@@ -2,25 +2,34 @@
   <div id="app">
     <Header v-show="isShowHeader"
             @handleLeft="goBack()" />
-    <CommonPage :op="opPage">
+    <CommonPage v-show="isShowCommonPage"
+                :op="opPage">
+      <Search v-show="isShowSearch"
+              @handleSearch="handleSearch" />
       <!-- <transition name="transitionRouter" mode="out-in"> -->
       <router-view />
       <!-- </transition> -->
     </CommonPage>
     <Footer v-show="isShowFooter" />
+    <SearchDialog v-show="isShowSearchDialog"
+                  @closeSearchDialog="closeSearchDialog" />
   </div>
 </template>
 
 <script>
+import Search from "@/public_components/Search";
+import SearchDialog from "@/public_components/SearchDialog";
 import CommonPage from "@/public_components/CommonPage";
 import Bus from "@/public_components/Bus.js";
 import Header from "@/public_components/Header";
 import Footer from "@/public_components/Footer";
-import { mapState } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 export default {
   components: {
     Header,
     Footer,
+    Search,
+    SearchDialog,
     CommonPage
   },
   data () {
@@ -32,21 +41,40 @@ export default {
     };
   },
   computed: {
-    ...mapState(['isShowHeader', 'isShowFooter'])
+    ...mapState(['isShowHeader', 'isShowFooter', 'isShowSearch', 'isShowCommonPage', 'isShowSearchDialog'])
   },
   created () {
     Bus.$on("scroll", val => {
       this.stopScroll = val;
     });
   },
-
   methods: {
+    ...mapMutations({
+      setInitPageConfig: 'INIT_PAGE_CONFIG'
+    }),
     goBack () {
       window.history.go(-1);
+    },
+    handleSearch () {
+      let initPageConfig = {
+        isShowHeader: false,
+        isShowSearchDialog: true,
+        isShowCommonPage: false,
+        isShowFooter: false,
+      }
+      this.setInitPageConfig(initPageConfig)
+    },
+    closeSearchDialog () {
+      let initPageConfig = {
+        isShowHeader: true,
+        isShowSearch: true,
+        isShowSearchDialog: false,
+        isShowFooter: true,
+      }
+      this.setInitPageConfig(initPageConfig)
     }
   },
-  mounted () {
-
+  false () {
     // if (!!window.ActiveXObject || "ActiveXObject" in window) {
     //   window.addEventListener(
     //     "hashchange",

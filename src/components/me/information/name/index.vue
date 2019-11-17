@@ -26,10 +26,13 @@ export default {
   },
   methods: {
     ...mapMutations({
-      setHeaderConfig: 'HEADER_CONFIG'
+      setInitPageConfig: 'INIT_PAGE_CONFIG'
     }),
     init () {
-      this.setHeaderConfig(this.nameHeader)
+      let initPageConfig = {
+        header: this.nameHeader,
+      }
+      this.setInitPageConfig(initPageConfig)
     }
   },
   created () {

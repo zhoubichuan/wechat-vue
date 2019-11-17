@@ -5,6 +5,7 @@ import store_message_setting_modules from "@/components/message/setting/store_me
 import store_address_modules from "@/components/address/store_address_modules";
 import store_address_newfriend_modules from "@/components/address/newfriend/store_address_newfriend_modules";
 import store_address_number_modules from "@/components/address/number/store_address_number_modules";
+import store_address_people_modules from "@/components/address/people/store_address_people_modules";
 import store_address_talk_modules from "@/components/address/talk/store_address_talk_modules";
 import store_address_tips_modules from "@/components/address/tips/store_address_tips_modules";
 
@@ -24,6 +25,7 @@ import store_me_cardBag_modules from "@/components/me/cardBag/store_me_cardBag_m
 import store_me_collection_modules from "@/components/me/collection/store_me_collection_modules";
 import store_me_emoji_modules from "@/components/me/emoji/store_me_emoji_modules";
 import store_me_information_modules from "@/components/me/information/store_me_information_modules";
+import store_me_information_address_modules from "@/components/me/information/address/store_me_information_address_modules";
 import store_me_moneyBag_modules from "@/components/me/moneyBag/store_me_moneyBag_modules";
 import store_me_setting_modules from "@/components/me/setting/store_me_setting_modules";
 
@@ -35,6 +37,7 @@ export default {
   store_address_modules,
   store_address_newfriend_modules,
   store_address_number_modules,
+  store_address_people_modules,
   store_address_talk_modules,
   store_address_tips_modules,
 
@@ -54,6 +57,7 @@ export default {
   store_me_collection_modules,
   store_me_emoji_modules,
   store_me_information_modules,
+  store_me_information_address_modules,
   store_me_moneyBag_modules,
   store_me_setting_modules
 };

@@ -17,7 +17,7 @@
         </div>
       </div>
     </div>
-    <CommonUl :op="dataOp" />
+    <CommonUl :op="addressPeopleData" />
     <router-view />
   </div>
 </template>
@@ -32,49 +32,6 @@ export default {
   },
   data () {
     return {
-      dataOp: {
-        data: [
-          {
-            title: "设置备注和标签",
-            img: "friend",
-            route:
-              "/addressPeople:" +
-              this.$route.params.id.slice(1) +
-              "/settingAndTips"
-          },
-          {
-            title: "朋友圈",
-            img: "scan",
-            route:
-              "/addressPeople:" + this.$route.params.id.slice(1) + "/friend",
-            active: true
-          },
-          {
-            title: "更多信息",
-            img: "shake",
-            route:
-              "/addressPeople:" +
-              this.$route.params.id.slice(1) +
-              "/moreInformation"
-          },
-          {
-            title: "发消息",
-            img: "shake",
-            route:
-              "/addressPeople:" +
-              this.$route.params.id.slice(1) +
-              "/sendInformation"
-          },
-          {
-            title: "音视频通话",
-            img: "shake",
-            route:
-              "/addressPeople:" +
-              this.$route.params.id.slice(1) +
-              "/audioVideoTalk"
-          }
-        ]
-      },
       opPage: {
         class: "find",
         header: true,
@@ -86,19 +43,17 @@ export default {
     };
   },
   computed: {
-    ...mapState(['isShowHeader', 'isShowFooter']),
-    ...mapState('store_address_modules', ['peopleHeader'])
+    ...mapState('store_address_people_modules', ['peopleHeader', 'addressPeopleData'])
   },
   methods: {
     ...mapMutations({
-      setShowOrHideHeader: 'SHOW_OR_HIDE_HEADER',
-      setShowOrHideFooter: 'SHOW_OR_HIDE_FOOTER',
-      setHeaderConfig: "HEADER_CONFIG"
+      setInitPageConfig: 'INIT_PAGE_CONFIG'
     }),
     init () {
-      this.setShowOrHideHeader(true)
-      this.setShowOrHideFooter(true)
-      this.setHeaderConfig(this.peopleHeader)
+      let initPageConfig = {
+        header: this.peopleHeader,
+      }
+      this.setInitPageConfig(initPageConfig)
     }
   },
   created () {

@@ -80,19 +80,17 @@ export default {
   },
 
   computed: {
-    ...mapState(['isShowHeader', 'isShowFooter']),
     ...mapState('store_me_collection_modules', ['collectionHeader'])
   },
   methods: {
     ...mapMutations({
-      setShowOrHideHeader: 'SHOW_OR_HIDE_HEADER',
-      setShowOrHideFooter: 'SHOW_OR_HIDE_FOOTER',
-      setHeaderConfig: "HEADER_CONFIG"
+      setInitPageConfig: 'INIT_PAGE_CONFIG'
     }),
     init () {
-      this.setShowOrHideFooter(true)
-      this.setShowOrHideFooter(false)
-      this.setHeaderConfig(this.collectionHeader)
+      let initPageConfig = {
+        header: this.collectionHeader,
+      }
+      this.setInitPageConfig(initPageConfig)
     }
   },
   created () {
