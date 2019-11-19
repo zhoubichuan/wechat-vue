@@ -41,6 +41,7 @@ export default {
       text-align: center;
       img {
         width: 40px;
+        margin-top: 20px;
       }
       p {
         text-align: center;

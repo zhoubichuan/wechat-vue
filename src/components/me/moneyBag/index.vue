@@ -1,71 +1,35 @@
 <template>
   <div>
-    <div class="moneyBag">
-      <div class="top">
+    <div class="pay">
+      <div class="banner">
         <ul>
           <li v-for="(item,index) in money"
               :key="index">
-            <img src
+            <img class="image"
+                 :src="require(`@/assets/image/me/didi.png`)"
                  alt>
-            <p class="title">{{item.title}}</p>
+            <p class="text">{{item.title}}</p>
           </li>
         </ul>
       </div>
-      <Card :op="op" />
-      <Card :op="op2" />
+      <Card :op="tencentPayService" />
+      <Card :op="thirdPartyPayService" />
     </div>
   </div>
 </template>
 
 <script>
-
 import Card from "@/public_components/Card";
-import { mapState, mapMutations } from 'vuex'
+import { mapState, mapMutations, mapActions } from 'vuex'
 export default {
   components: {
-
     Card
   },
   data () {
     return {
-      opPage: {
-        class: "find",
-        header: true,
-        headContent: {
-          left: "<",
-          middle: "支付"
-        }
-      },
       money: [{ img: "", title: "收付款" }, { img: "", title: "钱包" }],
-      op: {
-        title: "腾讯服务",
-        content: [
-          { img: "", title: "行用卡还款" },
-          { img: "", title: "微粒贷借钱" },
-          { img: "", title: "手机充值" },
-          { img: "", title: "理财通" },
-          { img: "", title: "生活缴费" },
-          { img: "", title: "Q币充值" },
-          { img: "", title: "城市服务" },
-          { img: "", title: "腾讯公益" }
-        ]
-      },
-      op2: {
-        title: "第三方服务",
-        content: [
-          { img: "", title: "火车票机票" },
-          { img: "", title: "滴滴出行" },
-          { img: "", title: "京东优选" },
-          { img: "", title: "美团外卖" },
-          { img: "", title: "电影演出赛事" },
-          { img: "", title: "吃喝玩乐" },
-          { img: "", title: "酒店" },
-          { img: "", title: "拼多多" },
-          { img: "", title: "蘑菇街女装" },
-          { img: "", title: "唯品会特卖" },
-          { img: "", title: "转转二手" }
-        ]
-      }
+      tencentPayService: '',
+      thirdPartyPayService: ''
     };
   },
 
@@ -76,13 +40,21 @@ export default {
     ...mapMutations({
       setInitPageConfig: 'INIT_PAGE_CONFIG'
     }),
+    ...mapActions('store_me_moneyBag_modules', {
+      getTencentPayService: 'get_tencentPayService',
+      getThirdPartyPayService: 'get_thirdPartyPayService'
+    }),
     init () {
       let initPageConfig = {
         header: this.moneyBagHeader,
       }
       this.setInitPageConfig(initPageConfig)
-      this.setShowOrHideFooter(true)
-      this.setShowOrHideFooter(false)
+      this.getTencentPayService({ axios: this.axios }).then(res => {
+        this.tencentPayService = res.data
+      })
+      this.getThirdPartyPayService({ axios: this.axios }).then(res => {
+        this.thirdPartyPayService = res.data
+      })
     }
   },
   created () {
@@ -91,26 +63,28 @@ export default {
 };
 </script>
 <style lang='less' scoped>
-.moneyBag {
-  width: 100%;
+.pay {
+  padding: 0 5px;
   left: 0;
   background-color: #efeff4;
   z-index: 1000;
-  .top {
+  .banner {
+    padding-bottom: 5px;
     ul {
-      background-color: green;
+      background-color: #3b9e1e;
       display: flex;
       flex-direction: row;
       justify-content: space-around;
       border-radius: 5px;
+      padding: 30px 0;
       li {
-        img {
-          height: 50px;
+        .image {
+          width: 30px;
         }
-        p {
+        .text {
           color: white;
+          margin-top: 5px;
         }
-        height: 100px;
       }
     }
   }

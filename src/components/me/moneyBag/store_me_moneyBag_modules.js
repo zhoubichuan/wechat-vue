@@ -8,5 +8,38 @@ export default {
         text: '...'
       }
     }
-  }
+  },
+  getters: {},
+  mutations: {},
+  actions: {
+    get_tencentPayService({
+      commit
+    }, {
+      axios,
+      ...data
+    }) {
+      return new Promise((resolve, reject) => {
+        axios.get('api/me/pay/tencentPayService').then(res => {
+          resolve(res)
+        }, rej => {
+          reject(rej)
+        })
+      })
+    },
+    get_thirdPartyPayService({
+      commit
+    }, {
+      axios,
+      ...data
+    }) {
+      return new Promise((resolve, reject) => {
+        axios.get('api/me/pay/thirdPartyPayService').then(res => {
+          resolve(res)
+        }, rej => {
+          reject(rej)
+        })
+      })
+    }
+  },
+
 }
