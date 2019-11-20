@@ -32,7 +32,6 @@ export default {
       thirdPartyPayService: ''
     };
   },
-
   computed: {
     ...mapState('store_me_moneyBag_modules', ['moneyBagHeader'])
   },

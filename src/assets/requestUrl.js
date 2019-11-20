@@ -23,6 +23,7 @@ export default {
     QRcode: rect + 'api/me/information/QRcode',
     moreInformation: rect + 'api/me/information/more',
     address: rect + 'api/me/information/address',
+    weChatMomentAlbum: rect + 'api/me/album/weChatMomentAlbum',
     tencentPayService: rect + 'api/me/pay/tencentPayService',
     thirdPartyPayService: rect + 'api/me/pay/thirdPartyPayService',
   }
