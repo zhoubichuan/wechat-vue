@@ -24,33 +24,11 @@
 
 <script>
 
-import { mapState, mapMutations } from 'vuex'
+import { mapState, mapMutations, mapActions } from 'vuex'
 export default {
   data () {
     return {
-      cardBag: [
-        {
-          ico: "",
-          title: "绝味鸭脖",
-          cardName: "会员卡",
-          content: "绝味鸭脖",
-          tips: ""
-        },
-        {
-          ico: "",
-          title: "绝味鸭脖",
-          cardName: "会员卡",
-          content: "绝味鸭脖",
-          tips: ""
-        },
-        {
-          ico: "",
-          title: "绝味鸭脖",
-          cardName: "会员卡",
-          content: "绝味鸭脖",
-          tips: ""
-        }
-      ],
+      cardBag: '',
       opPage: {
         class: "find",
         header: true,
@@ -69,11 +47,17 @@ export default {
     ...mapMutations({
       setInitPageConfig: 'INIT_PAGE_CONFIG'
     }),
+    ...mapActions('store_me_cardBag_modules', {
+      getCardBagList: 'get_cardBagList'
+    }),
     init () {
       let initPageConfig = {
         header: this.cardBagHeader,
       }
       this.setInitPageConfig(initPageConfig)
+      this.getCardBagList({ axios: this.axios }).then(res => {
+        this.cardBag = res.data
+      })
     }
   },
   created () {

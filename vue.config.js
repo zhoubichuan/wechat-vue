@@ -35,8 +35,18 @@ module.exports = {
       app.get("/api/me/information/address", (req, res) => {
         res.json(require("./mock/me/address.json"));
       });
+
+      app.get("/api/me/carBag/cardBagList", (req, res) => {
+        res.json(require("./mock/me/cardBagList.json"));
+      });
       app.get("/api/me/album/weChatMomentAlbum", (req, res) => {
         res.json(require("./mock/me/weChatMomentAlbum.json"));
+      });
+      app.get("/api/me/emoji/recommendedExpression", (req, res) => {
+        res.json(require("./mock/me/recommendedExpression.json"));
+      });
+      app.get("/api/me/emoji/moreExcitingExpression", (req, res) => {
+        res.json(require("./mock/me/moreExcitingExpression.json"));
       });
       app.get("/api/me/pay/tencentPayService", (req, res) => {
         res.json(require("./mock/me/tencentPayService.json"));

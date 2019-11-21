@@ -10,7 +10,7 @@
             <div class="image"
                  v-for="(_item,_index) in item.img"
                  :key="_index">
-              <img :src="_item.img"
+              <img :src="require(`@/assets/image/me/${_item.img}.png`)"
                    alt>
             </div>
           </div>
@@ -25,11 +25,11 @@ import { mapState, mapMutations, mapActions } from 'vuex'
 export default {
   data () {
     return {
-
+      weChatMomentAlbum: ''
     };
   },
   computed: {
-    ...mapState('store_me_album_modules', ['meAlbumHeader', 'weChatMomentAlbum'])
+    ...mapState('store_me_album_modules', ['meAlbumHeader'])
   },
   methods: {
     ...mapMutations({

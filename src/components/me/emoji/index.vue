@@ -41,7 +41,7 @@
 
 <script>
 
-import { mapState, mapMutations } from 'vuex'
+import { mapState, mapMutations, mapActions } from 'vuex'
 export default {
   data () {
     return {
@@ -54,24 +54,8 @@ export default {
         }
       },
       money: [],
-      tenxun: [
-        { img: "", title: "小刘鸭第七弹" },
-        { img: "", title: "一二第3弹" },
-        { img: "", title: "猪年大吉" }
-      ],
-      server: [
-        { img: "", title: "不二呆7" },
-        { img: "", title: "肥二7情侣骗" },
-        { img: "", title: "阿柴6" },
-        { img: "", title: "小猪萌萌" },
-        { img: "", title: "蠢萌小黄鸭" },
-        { img: "", title: "我叫小可爱3" },
-        { img: "", title: "猫咪格里斯3" },
-        { img: "", title: "幸福快乐每一天" },
-        { img: "", title: "动态泡芙" },
-        { img: "", title: "小酱柒日常第一弹" },
-        { img: "", title: "鱼蛋" }
-      ]
+      tenxun: '',
+      server: ''
     };
   },
   computed: {
@@ -81,11 +65,21 @@ export default {
     ...mapMutations({
       setInitPageConfig: 'INIT_PAGE_CONFIG'
     }),
+    ...mapActions('store_me_emoji_modules', {
+      getMoreExcitingExpression: 'get_moreExcitingExpression',
+      getRecommendedExpression: 'get_recommendedExpression'
+    }),
     init () {
       let initPageConfig = {
         header: this.emojiHeader,
       }
       this.setInitPageConfig(initPageConfig)
+      this.getMoreExcitingExpression({ axios: this.axios }).then(res => {
+        this.server = res.data
+      })
+      this.getRecommendedExpression({ axios: this.axios }).then(res => {
+        this.tenxun = res.data
+      })
     }
   },
   created () {
