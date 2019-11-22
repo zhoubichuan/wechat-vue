@@ -13,16 +13,11 @@ import { mapState, mapMutations } from 'vuex'
 export default {
   data () {
     return {
-      val: "会跑的鸡腿",
-      opPage: {
-        class: "me-information-name",
-        header: true,
-
-      }
+      val: "会跑的鸡腿"
     };
   },
   computed: {
-    ...mapState('store_me_information_modules', ['nameHeader'])
+    ...mapState('store_me_information_name_modules', ['meInformationNameHeader'])
   },
   methods: {
     ...mapMutations({
@@ -30,7 +25,7 @@ export default {
     }),
     init () {
       let initPageConfig = {
-        header: this.nameHeader,
+        header: this.meInformationNameHeader,
       }
       this.setInitPageConfig(initPageConfig)
     }

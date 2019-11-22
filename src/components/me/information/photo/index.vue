@@ -18,8 +18,7 @@ export default {
     ImgCard
   },
   computed: {
-    ...mapState(['isShowHeader', 'isShowFooter']),
-    ...mapState('store_me_information_modules', ['meInformationPhotoHeader'])
+    ...mapState('store_me_information_photo_modules', ['meInformationPhotoHeader'])
   },
   methods: {
     ...mapMutations({

@@ -10,6 +10,10 @@
       <router-view />
       <!-- </transition> -->
     </CommonPage>
+    <ul class="list">
+      <li v-for="(item,index) in data"
+          :key='index'>{{item.text}}</li>
+    </ul>
     <Footer v-show="isShowFooter" />
     <SearchDialog v-show="isShowSearchDialog"
                   @closeSearchDialog="closeSearchDialog" />
@@ -33,7 +37,15 @@ export default {
     CommonPage
   },
   data () {
+    const data = [
+      { text: '拍照' },
+      { text: '从手机相册选择' },
+      { text: '查看上一张头像' },
+      { text: '保存图片' },
+      { text: '取消' },
+    ]
     return {
+      data,
       opPage: {
         class: "address",
         header: true,
@@ -103,6 +115,20 @@ export default {
 };
 </script>
 <style lang="less" scoped>
+.list {
+  position: absolute;
+  bottom: -40px;
+  width: 100%;
+  li {
+    &:first-child {
+      border-radius: 10px 10px 0 0;
+    }
+    background: white;
+    padding: 7px 0;
+    text-align: center;
+    border-bottom: 1px solid gray;
+  }
+}
 .transitionRouter-enter-active,
 .transitionRouter-leave-active {
   transition: all 0.3s;

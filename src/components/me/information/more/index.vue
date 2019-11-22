@@ -31,7 +31,7 @@ export default {
   },
 
   computed: {
-    ...mapState('store_me_information_modules', ['moreHeader'])
+    ...mapState('store_me_information_more_modules', ['meInformationMoreHeader'])
   },
   methods: {
     ...mapMutations({
@@ -39,7 +39,7 @@ export default {
     }),
     init () {
       let initPageConfig = {
-        header: this.moreHeader,
+        header: this.meInformationMoreHeader,
       }
       this.setInitPageConfig(initPageConfig)
     }

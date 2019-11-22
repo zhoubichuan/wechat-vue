@@ -23,7 +23,7 @@ export default {
     };
   },
   computed: {
-    ...mapState('store_me_information_modules', ['codeHeader'])
+    ...mapState('store_me_information_code_modules', ['meInformationCodeHeader'])
   },
   methods: {
     ...mapMutations({
@@ -31,7 +31,7 @@ export default {
     }),
     init () {
       let initPageConfig = {
-        header: this.codeHeader,
+        header: this.meInformationCodeHeader,
       }
       this.setInitPageConfig(initPageConfig)
     }

@@ -26,6 +26,10 @@ import store_me_collection_modules from "@/components/me/collection/store_me_col
 import store_me_emoji_modules from "@/components/me/emoji/store_me_emoji_modules";
 import store_me_information_modules from "@/components/me/information/store_me_information_modules";
 import store_me_information_address_modules from "@/components/me/information/address/store_me_information_address_modules";
+import store_me_information_code_modules from "@/components/me/information/code/store_me_information_code_modules";
+import store_me_information_more_modules from "@/components/me/information/more/store_me_information_more_modules";
+import store_me_information_name_modules from "@/components/me/information/name/store_me_information_name_modules";
+import store_me_information_photo_modules from "@/components/me/information/photo/store_me_information_photo_modules";
 import store_me_moneyBag_modules from "@/components/me/moneyBag/store_me_moneyBag_modules";
 import store_me_setting_modules from "@/components/me/setting/store_me_setting_modules";
 
@@ -58,6 +62,10 @@ export default {
   store_me_emoji_modules,
   store_me_information_modules,
   store_me_information_address_modules,
+  store_me_information_code_modules,
+  store_me_information_more_modules,
+  store_me_information_name_modules,
+  store_me_information_photo_modules,
   store_me_moneyBag_modules,
   store_me_setting_modules
 };

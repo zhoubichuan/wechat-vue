@@ -43,17 +43,18 @@ export default {
       getTencentPayService: 'get_tencentPayService',
       getThirdPartyPayService: 'get_thirdPartyPayService'
     }),
+    async getAllData () {
+      let tencentPayService = await this.getTencentPayService({ axios: this.axios })
+      this.tencentPayService = tencentPayService.data
+      let thirdPartyPayService = await this.getThirdPartyPayService({ axios: this.axios })
+      this.thirdPartyPayService = thirdPartyPayService.data
+    },
     init () {
       let initPageConfig = {
         header: this.moneyBagHeader,
       }
       this.setInitPageConfig(initPageConfig)
-      this.getTencentPayService({ axios: this.axios }).then(res => {
-        this.tencentPayService = res.data
-      })
-      this.getThirdPartyPayService({ axios: this.axios }).then(res => {
-        this.thirdPartyPayService = res.data
-      })
+      this.getAllData()
     }
   },
   created () {
