@@ -27,7 +27,7 @@ import CommonPage from "@/public_components/CommonPage";
 import Bus from "@/public_components/Bus.js";
 import Header from "@/public_components/Header";
 import Footer from "@/public_components/Footer";
-import { mapState, mapMutations } from 'vuex'
+import { mapState, mapMutations, mapActions } from 'vuex'
 export default {
   components: {
     Header,
@@ -64,9 +64,10 @@ export default {
     ...mapMutations({
       setInitPageConfig: 'INIT_PAGE_CONFIG'
     }),
-    goBack () {
-      window.history.go(-1);
-    },
+    ...mapActions({
+      goBack: 'goBack'
+    }),
+
     handleSearch () {
       let initPageConfig = {
         isShowHeader: false,
