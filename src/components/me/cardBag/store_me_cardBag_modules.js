@@ -10,14 +10,11 @@ export default {
     }
   },
   actions: {
-    get_cardBagList({
-      commit
-    }, {
-      axios,
-      ...data
+    get_cardBagList(state, {
+      axios
     }) {
       return new Promise((resolve, reject) => {
-        axios.get('api/me/pay/cardBagList').then(
+        axios.get('api/me/carBag/cardBagList').then(
           res => {
             resolve(res)
           },

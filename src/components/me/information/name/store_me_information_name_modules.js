@@ -8,5 +8,21 @@ export default {
         text: '完成'
       }
     }
+  },
+  mutations: {
+    handleHeaderRight(state, val) {
+      if (val.show) {
+        this.state.optionsList = {
+          show: true,
+          data: state.data
+        }
+      } else {
+        this.state.optionsList = {
+          show: false,
+          data: ''
+        }
+      }
+
+    }
   }
 }

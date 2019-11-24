@@ -7,11 +7,8 @@ export default {
     }
   },
   actions: {
-    get_moreExcitingExpression({
-      commit
-    }, {
-      axios,
-      ...data
+    get_moreExcitingExpression(state, {
+      axios
     }) {
       return new Promise((resolve, reject) => {
         axios.get('api/me/emoji/moreExcitingExpression').then(
@@ -24,11 +21,8 @@ export default {
         )
       })
     },
-    get_recommendedExpression({
-      commit
-    }, {
-      axios,
-      ...data
+    get_recommendedExpression(state, {
+      axios
     }) {
       return new Promise((resolve, reject) => {
         axios.get('api/me/emoji/recommendedExpression').then(

@@ -31,14 +31,6 @@ import { mapState, mapMutations } from 'vuex'
 export default {
   data () {
     return {
-      opPage: {
-        class: "find",
-        header: true,
-        headContent: {
-          left: "<",
-          middle: "收藏"
-        }
-      },
       collection: [
         "图片与视屏",
         "链接",

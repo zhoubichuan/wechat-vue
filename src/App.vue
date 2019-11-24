@@ -1,17 +1,20 @@
 <template>
   <div id="app">
     <Header v-show="isShowHeader"
-            @handleLeft="goBack()" />
+            @handleLeft="handleLeft()"
+            @handleRight="handleRight()" />
     <CommonPage v-show="isShowCommonPage"
                 :op="opPage">
       <Search v-show="isShowSearch"
               @handleSearch="handleSearch" />
       <!-- <transition name="transitionRouter" mode="out-in"> -->
-      <router-view />
+      <router-view ref='common' />
       <!-- </transition> -->
     </CommonPage>
-    <ul class="list">
-      <li v-for="(item,index) in data"
+    <ul v-show="optionsList.show"
+        class="list"
+        @click="cancleShow">
+      <li v-for="(item,index) in optionsList.data"
           :key='index'>{{item.text}}</li>
     </ul>
     <Footer v-show="isShowFooter" />
@@ -37,15 +40,7 @@ export default {
     CommonPage
   },
   data () {
-    const data = [
-      { text: '拍照' },
-      { text: '从手机相册选择' },
-      { text: '查看上一张头像' },
-      { text: '保存图片' },
-      { text: '取消' },
-    ]
     return {
-      data,
       opPage: {
         class: "address",
         header: true,
@@ -53,21 +48,39 @@ export default {
     };
   },
   computed: {
-    ...mapState(['isShowHeader', 'isShowFooter', 'isShowSearch', 'isShowCommonPage', 'isShowSearchDialog'])
+    ...mapState(['isShowHeader', 'isShowFooter', 'isShowSearch', 'isShowCommonPage', 'isShowSearchDialog', 'optionsList'])
   },
   created () {
     Bus.$on("scroll", val => {
       this.stopScroll = val;
     });
   },
+
   methods: {
     ...mapMutations({
       setInitPageConfig: 'INIT_PAGE_CONFIG'
     }),
-    ...mapActions({
-      goBack: 'goBack'
-    }),
-
+    handleLeft () {
+      if (this.$refs.common.handleHeaderLeft) {
+        this.$refs.common.handleHeaderLeft
+      } else {
+        window.history.go(-1);
+      }
+    },
+    handleRight () {
+      const data = {
+        show: true
+      }
+      this.$refs.common.handleHeaderRight(data)
+    },
+    cancleShow (e) {
+      if (e.target.nodeName === 'LI' && e.target.innerHTML === '取消') {
+        const data = {
+          show: false
+        }
+        this.$refs.common.handleHeaderRight(data)
+      }
+    },
     handleSearch () {
       let initPageConfig = {
         isShowHeader: false,
@@ -127,7 +140,10 @@ export default {
     background: white;
     padding: 7px 0;
     text-align: center;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid lavender;
+    &:last-child {
+      border-bottom: none;
+    }
   }
 }
 .transitionRouter-enter-active,

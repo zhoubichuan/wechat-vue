@@ -7,11 +7,8 @@ export default {
     },
   },
   actions: {
-    get_weChatMomentAlbum({
-      commit
-    }, {
-      axios,
-      ...data
+    get_weChatMomentAlbum(state, {
+      axios
     }) {
       return new Promise((resolve, reject) => {
         axios.get('api/me/album/weChatMomentAlbum').then(res => {

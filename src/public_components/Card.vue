@@ -1,8 +1,8 @@
 <template>
   <div class="card">
-    <h3>{{op.title}}</h3>
+    <h3>{{data.title}}</h3>
     <ul>
-      <li v-for="(item,index) in op.content"
+      <li v-for="(item,index) in data.content"
           :key="index">
         <img :src="require(`../assets/image/me/didi.png`)"
              alt>
@@ -13,9 +13,7 @@
 </template>
 <script>
 export default {
-  props: {
-    op: Object
-  }
+  props: ['data']
 };
 </script>
 <style lang="less" scoped>

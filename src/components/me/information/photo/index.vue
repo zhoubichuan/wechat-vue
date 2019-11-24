@@ -24,6 +24,9 @@ export default {
     ...mapMutations({
       setInitPageConfig: 'INIT_PAGE_CONFIG'
     }),
+    ...mapMutations('store_me_information_photo_modules', {
+      handleHeaderRight: 'handleHeaderRight'
+    }),
     init () {
       let initPageConfig = {
         header: this.meInformationPhotoHeader,

@@ -12,8 +12,8 @@
           </li>
         </ul>
       </div>
-      <Card :op="tencentPayService" />
-      <Card :op="thirdPartyPayService" />
+      <Card :data="tencentPayService" />
+      <Card :data="thirdPartyPayService" />
     </div>
   </div>
 </template>
@@ -63,81 +63,6 @@ export default {
 };
 </script>
 <style lang='less' scoped>
-.pay {
-  padding: 0 5px;
-  left: 0;
-  background-color: #efeff4;
-  z-index: 1000;
-  .banner {
-    padding-bottom: 5px;
-    ul {
-      background-color: #3b9e1e;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-around;
-      border-radius: 5px;
-      padding: 30px 0;
-      li {
-        .image {
-          width: 30px;
-        }
-        .text {
-          color: white;
-          margin-top: 5px;
-        }
-      }
-    }
-  }
-  .middle {
-    border-radius: 8px;
-    background-color: white;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    h3 {
-      padding: 10px 5px;
-    }
-    ul {
-      display: flex;
-      flex-direction: row;
-      justify-content: flex-start;
-      align-items: flex-start;
-      flex-wrap: wrap;
-      li {
-        height: 100px;
-        width: 33.33%;
-        border: 1px solid #f2f2f2;
-        box-sizing: border-box;
-        p {
-          text-align: center;
-        }
-      }
-    }
-  }
-  .bottom {
-    border-radius: 8px;
-    background-color: white;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    h3 {
-      padding: 10px 5px;
-    }
-    ul {
-      display: flex;
-      flex-direction: row;
-      justify-content: flex-start;
-      align-items: flex-start;
-      flex-wrap: wrap;
-      li {
-        height: 100px;
-        width: 33.33%;
-        border: 1px solid gray;
-        box-sizing: border-box;
-        p {
-          text-align: center;
-        }
-      }
-    }
-  }
-}
+@import "index.less";
 </style>
 

@@ -72,6 +72,7 @@ export default {
     init () {
       let initPageConfig = {
         header: this.emojiHeader,
+        isShowSearch: true,
       }
       this.setInitPageConfig(initPageConfig)
       this.getMoreExcitingExpression({ axios: this.axios }).then(res => {
@@ -88,31 +89,6 @@ export default {
 };
 </script>
 <style lang='less' scoped>
-.emoji {
-  position: absolute;
-  top: 40px;
-  width: 100%;
-  left: 0;
-  background-color: white;
-  z-index: 1000;
-  border-radius: 8px;
-  h3 {
-    padding: 10px 5px;
-  }
-  ul {
-    li {
-      background-color: white;
-      border-bottom: 1px solid #f2f2f2;
-      height: 30px;
-      &:nth-of-type(5) {
-        border-bottom: none;
-        margin-bottom: 10px;
-      }
-      button {
-        float: right;
-      }
-    }
-  }
-}
+@import "index.less";
 </style>
 
