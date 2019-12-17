@@ -9,7 +9,9 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "generateAnalyzFile": "webpack --profile --json > stats.json",
+    "analyz": "cross-env NODE_ENV=production npm_config_report=true npm run build"
   },
   "dependencies": {
     "@babel/core": "^7.4.3",
