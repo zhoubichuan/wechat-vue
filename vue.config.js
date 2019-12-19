@@ -3,6 +3,7 @@ module.exports = {
   productionSourceMap: false,
   publicPath: "./",
   devServer: {
+    hot: true,
     before(app) {
       app.get("/api/address/friendList", (req, res) => {
         res.json(require("./mock/address/friendList.json"));
