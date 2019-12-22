@@ -3,6 +3,7 @@ const path = require("path");
 const utils = require("./utils");
 const config = require("../config");
 const vueLoaderConfig = require("./vue-loader.conf");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 function resolve(dir) {
   return path.join(__dirname, "..", dir);
@@ -42,6 +43,19 @@ module.exports = {
   module: {
     rules: [
       ...(config.dev.useEslint ? [createLintingRule()] : []),
+      {
+        test:/.js$/,
+        loader:'eslint-loader',
+        enforce:'pre',
+        inlcude:[path.resolve(__dirname,'src')],
+        options:{fix:true}
+      },
+      {
+        test:/\.css$/,
+        use:[MiniCssExtractPlugin.loader,'css-loader','postcss-loader'],
+        include:path.join(__dirname,'./src'),
+        exclude:/node_modules/
+      },
       {
         test: /\.vue$/,
         loader: "vue-loader",
