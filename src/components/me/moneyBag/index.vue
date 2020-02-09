@@ -6,7 +6,7 @@
           <li v-for="(item,index) in money"
               :key="index">
             <img class="image"
-                 :src="require(`@/assets/image/me/didi.png`)"
+                 :src="require(`@/assets/image/${item.ico}.svg`)"
                  alt>
             <p class="text">{{item.title}}</p>
           </li>
@@ -27,7 +27,7 @@ export default {
   },
   data () {
     return {
-      money: [{ img: "", title: "收付款" }, { img: "", title: "钱包" }],
+      money: [{ ico: "scan-code", title: "收付款" }, { ico: "money-bag", title: "钱包" }],
       tencentPayService: '',
       thirdPartyPayService: ''
     };

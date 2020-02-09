@@ -4,7 +4,7 @@
     <ul>
       <li v-for="(item,index) in data.content"
           :key="index">
-        <img :src="require(`../assets/image/me/didi.png`)"
+        <img :src="require(`@/assets/image/${item.ico}.svg`)"
              alt>
         <p class="title">{{item.title}}</p>
       </li>
