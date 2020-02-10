@@ -4,7 +4,7 @@
       <li>
         <div>
           <p>周必川</p>
-          <p>xxxx</p>
+          <p>火星省水星市地球村一号公寓</p>
         </div>
         <div>
           <img src=""
@@ -53,5 +53,11 @@ export default {
 };
 </script>
 <style lang='less' scoped>
+ul{
+  background:white;
+  li{
+  padding: 6px 15px;
+}
+}
 </style>
 
