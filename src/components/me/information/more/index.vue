@@ -22,9 +22,9 @@ export default {
       },
       dataOp: {
         data: [
-          { title: "性别", image: "", tips:'男', link: "sex" },
-          { title: "地区", image: "", tips:'广东 深圳',link: "location" },
-          { title: "个性签名", image: "",tips:'未填写', link: "self" },
+          { title: "性别", image: "", tips:'男', link: "meInformationMoreSex" },
+          { title: "地区", image: "", tips:'广东 深圳',link: "meInformationMoreLocation" },
+          { title: "个性签名", image: "",tips:'未填写', link: "meInformationMoreSingel" },
         ]
       }
     };

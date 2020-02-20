@@ -155,6 +155,21 @@ export default new Router({
       component: () => import("@/components/me/information/more")
     },
     {
+      path: "/meInformationMoreSex",
+      name: "meInformationMoreSex",
+      component: () => import("@/components/me/information/more/sex")
+    },
+    {
+      path: "/meInformationMoreLocation",
+      name: "meInformationMoreLocation",
+      component: () => import("@/components/me/information/more/location")
+    },
+    {
+      path: "/meInformationMoreSingel",
+      name: "meInformationMoreSingel",
+      component: () => import("@/components/me/information/more/singel")
+    },
+    {
       path: "/meInformationName",
       name: "meInformationName",
       component: () => import("@/components/me/information/name")
