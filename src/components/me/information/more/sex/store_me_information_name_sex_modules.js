@@ -3,7 +3,7 @@ export default {
   state: {
     meInformationNameHeader: {
       left:{text:'取消'} ,
-      middle: '设置名字',
+      middle: '设置性别',
       right: {
         disabled:true,
         type:'button',

@@ -1,7 +1,6 @@
 <template>
   <div>
     <div class="information">
-      {{$log(meInformationNameHeader.right.disabled)}}
       <input type="text" 
              v-model="myName">
     </div>
@@ -18,7 +17,7 @@ export default {
     };
   },
   computed: {
-    ...mapState('store_me_information_name_modules', ['meInformationNameHeader','name']),
+    ...mapState('store_me_information_name_singel_modules', ['meInformationNameHeader','name']),
     myName:{
         get () {
             return this.name
@@ -33,7 +32,7 @@ export default {
     ...mapMutations({
       setInitPageConfig: 'INIT_PAGE_CONFIG'
     }),
-    ...mapMutations('store_me_information_name_modules', {
+    ...mapMutations('store_me_information_name_singel_modules', {
       handleHeaderRight: 'handleHeaderRight',
       changeName: 'changeName',
     }),

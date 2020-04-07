@@ -18,7 +18,7 @@ export default {
     };
   },
   computed: {
-    ...mapState('store_me_information_name_modules', ['meInformationNameHeader','name']),
+    ...mapState('store_me_information_name_location_modules', ['meInformationNameHeader','name']),
     myName:{
         get () {
             return this.name
@@ -33,7 +33,7 @@ export default {
     ...mapMutations({
       setInitPageConfig: 'INIT_PAGE_CONFIG'
     }),
-    ...mapMutations('store_me_information_name_modules', {
+    ...mapMutations('store_me_information_name_location_modules', {
       handleHeaderRight: 'handleHeaderRight',
       changeName: 'changeName',
     }),

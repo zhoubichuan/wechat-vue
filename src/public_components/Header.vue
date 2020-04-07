@@ -2,18 +2,26 @@
   <div class="header-component">
     <div class="header">
       <div @click="$listeners.handleLeft()">
-        <img :src="require(`@/assets/image/header/back.svg`)"
-             class="back"
-             v-if="header.left">
+        <p v-if="header.left&&header.left.text"
+            class="more" >{{(header.left&&header.left.text)||''}}</p>
+        <img v-if="header.left" :src="require(`@/assets/image/header/back.svg`)"
+             class="back">
+        
       </div>
       <p class="title">{{header.middle}}</p>
-      <img v-if="header.right&&header.right.ico"
+      <div>
+        <img v-if="header.right&&header.right.ico"
            class="image"
            :src="require(`@/assets/image/header/${header.right.ico}.svg`)"
            alt>
-      <p v-else
-         class="more"
-         @click="$listeners.handleRight()">{{(header.right&&header.right.text)||''}}</p>
+        <button v-if="header.right&&header.right.type&&header.right.type === 'button'"
+          :disabled='header.right.disabled'
+          class="more"
+          @click="$listeners.handleRight()">{{(header.right&&header.right.text)||''}}</button>
+        <p v-else
+            class="more"
+            @click="$listeners.handleRight()">{{(header.right&&header.right.text)||''}}</p>
+      </div>
     </div>
     <PopFloor v-if="header.popFloor"
               v-show="popFloor" />

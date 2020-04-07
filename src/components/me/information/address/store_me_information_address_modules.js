@@ -3,7 +3,7 @@ export default {
   state: {
     meInformationAddressHeader: {
       left: '<',
-      middle: '个人信息'
+      middle: '我的地址'
     }
   }
 }

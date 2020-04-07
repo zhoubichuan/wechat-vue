@@ -14,7 +14,7 @@ export default {
   actions: {
     get_tencentPayService({ commit }, { axios, ...data }) {
       return new Promise((resolve, reject) => {
-        axios.get('api/me/pay/tencentPayService').then(
+        axios.get('api/me/pay/tencentPayService').then( 
           res => {
             resolve(res)
           },
