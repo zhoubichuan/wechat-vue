@@ -6,13 +6,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "dev": "vue-cli-service serve",
-    "dev1": "cross-env NODE-ENV=development node build/webpack.dev.conf.js",
     "build": "vue-cli-service build",
-    "build1": "cross-env NODE_ENV=production webpack --config build/webpack.prod.config.js",
-    "build --qa": "cross-env NODE_ENV=testing node build/build.js",
-    "build --prod": "cross-env NODE_ENV=production node build/build.js",
     "lint": "vue-cli-service lint",
-    "predeploy": "npm run build",
     "generateAnalyzFile": "webpack --profile --json > stats.json",
     "analyz": "cross-env NODE_ENV=production npm_config_report=true npm run build",
     "deploy": "bash deploy.sh",
