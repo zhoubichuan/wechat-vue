@@ -55,6 +55,6 @@ module.exports = {
       app.get("/api/me/pay/thirdPartyPayService", (req, res) => {
         res.json(require("./mock/me/thirdPartyPayService.json"));
       });
-    }
-  }
+    },
+  },
 };

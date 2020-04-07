@@ -13,9 +13,10 @@
     "build --prod": "cross-env NODE_ENV=production node build/build.js",
     "lint": "vue-cli-service lint",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
     "generateAnalyzFile": "webpack --profile --json > stats.json",
-    "analyz": "cross-env NODE_ENV=production npm_config_report=true npm run build"
+    "analyz": "cross-env NODE_ENV=production npm_config_report=true npm run build",
+    "deploy": "bash deploy.sh",
+    "gh-pages": "bash deploy_gh-pages.sh"
   },
   "dependencies": {
     "@babel/core": "^7.4.3",
