@@ -11,7 +11,7 @@ export default {
       axios
     }) {
       return new Promise((resolve, reject) => {
-        axios.get('api/me/album/weChatMomentAlbum').then(res => {
+        this.$axios.get('api/me/album/weChatMomentAlbum').then(res => {
           resolve(res)
         }, rej => {
           reject(rej)

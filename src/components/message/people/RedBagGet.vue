@@ -1,12 +1,16 @@
 <template>
-	<div id="modal" v-show="show">
+  <div id="modal"
+       v-show="show">
     <div v-show="!detail">
-      <div class="mask" @click="close"></div>
-        <div class="get-bag">
-          <span class="delete" @click="close">x</span>
-          <div>
+      <div class="mask"
+           @click="close"></div>
+      <div class="get-bag">
+        <span class="delete"
+              @click="close">x</span>
+        <div>
           <header class="person-information">
-            <img class="photo" :src="message.pho"/>
+            <img class="photo"
+                 :src="message.pho" />
             <p>{{message.name}}</p>
             <p>给你发一个红包</p>
           </header>
@@ -15,30 +19,33 @@
               <p class="r-money">该红包已超过24小时。如已领取，可在“我的红包”中查看</p>
             </slot>
             <slot>
-              <p name="tips" class="r-tips" @click="detail=true">查看领取详情></p>
+              <p name="tips"
+                 class="r-tips"
+                 @click="detail=true">查看领取详情></p>
             </slot>
           </section>
-          </div>
         </div>
       </div>
-     <RedBagRecord class="detail" v-if="detail" @update:s="detail=false"/>
     </div>
+    <RedBagRecord class="detail"
+                  v-if="detail"
+                  @update:s="detail=false" />
+  </div>
 </template>
 
 <script type="text/javascript">
-import Bus from "@/public_components/Bus.js";
 import RedBagRecord from "./RedBagRecord";
 export default {
   props: ["show", "message"],
-  data() {
+  data () {
     return {
       redBagDate: "",
       detail: false
     };
   },
 
-  created() {
-    Bus.$on("redBagDate", val => {
+  created () {
+    this.$Bus.$on("redBagDate", val => {
       this.redBagDate = val;
     });
   },
@@ -46,7 +53,7 @@ export default {
     RedBagRecord
   },
   methods: {
-    close() {
+    close () {
       this.$emit("close");
       this.$store.state.pageStopScroll = false;
     }

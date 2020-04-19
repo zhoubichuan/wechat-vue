@@ -3,15 +3,19 @@
     <slot name="redBag">
       <div class="input-tips">{{redBagNumberTips.length ? redBagNumberTips : redBagAmountTips}}</div>
       <ul class="message">
-        <Money/>
-        <People/>
+        <Money />
+        <People />
         <li class="tips">
-          <input maxlength="100" type="text" placeholder="恭喜发财，大吉大利" v-model="tips">
+          <input maxlength="100"
+                 type="text"
+                 placeholder="恭喜发财，大吉大利"
+                 v-model="tips">
         </li>
       </ul>
       <div class="submit">
         <p>{{showRedBagAmount}}</p>
-        <a href="#" @click="sendRedBag">塞钱进红包</a>
+        <a href="#"
+           @click="sendRedBag">塞钱进红包</a>
       </div>
     </slot>
   </section>
@@ -20,23 +24,22 @@
 <script type="text/javascript">
 import Money from "./Money";
 import People from "./People";
-import Bus from "@/public_components/Bus.js";
 export default {
-  data() {
+  data () {
     return {
       tips: ""
     };
   },
   computed: {
-    redBagAmountTips() {
+    redBagAmountTips () {
       return this.$store.state.redBagAmount > 20000
         ? "单次支付总额不可超过20000元"
         : "";
     },
-    redBagNumberTips() {
+    redBagNumberTips () {
       return this.$store.state.redBagNumber > 100 ? "一次最多发100个红包" : "";
     },
-    showRedBagAmount() {
+    showRedBagAmount () {
       return (
         "￥" +
         (this.$store.state.redBagAmount
@@ -51,7 +54,7 @@ export default {
     People
   },
   methods: {
-    sendRedBag() {
+    sendRedBag () {
       let amount = this.$store.state.redBagAmount;
       let number = this.$store.state.redBagNumber;
       if (this.$store.state.redBagTyep == "commonRedBag") {
@@ -100,7 +103,7 @@ export default {
         }
       }
     },
-    cancelSendRedBag() {
+    cancelSendRedBag () {
       this.$store.state.pageShow = false;
       this.$store.state.redBagAmount = "";
       this.$store.state.redBagNumber = "";

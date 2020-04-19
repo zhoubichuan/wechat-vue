@@ -27,7 +27,6 @@
 import Search from "@/public_components/Search";
 import SearchDialog from "@/public_components/SearchDialog";
 import CommonPage from "@/public_components/CommonPage";
-import Bus from "@/public_components/Bus.js";
 import Header from "@/public_components/Header";
 import Footer from "@/public_components/Footer";
 import { mapState, mapMutations, mapActions } from 'vuex'
@@ -51,7 +50,7 @@ export default {
     ...mapState(['isShowHeader', 'isShowFooter', 'isShowSearch', 'isShowCommonPage', 'isShowSearchDialog', 'optionsList'])
   },
   created () {
-    Bus.$on("scroll", val => {
+    this.$Bus.$on("scroll", val => {
       this.stopScroll = val;
     });
   },

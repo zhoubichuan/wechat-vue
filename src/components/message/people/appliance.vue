@@ -3,13 +3,19 @@
     <div class="application">
       <div class="send">
         <i class="voiceInformation"></i>
-        <input type="text" @keyup.13="sendMessage" v-model="sendDate">
+        <input type="text"
+               @keyup.13="sendMessage"
+               v-model="sendDate">
         <i class="emjoy"></i>
-        <i class="moreBtn" @click="moreBtn"></i>
+        <i class="moreBtn"
+           @click="moreBtn"></i>
       </div>
-      <div class="function" v-show="this.$store.state.applianceShow">
+      <div class="function"
+           v-show="this.$store.state.applianceShow">
         <ul>
-          <li v-for="(item,index) in application" :key="index" @click="appShow(item)">
+          <li v-for="(item,index) in application"
+              :key="index"
+              @click="appShow(item)">
             <i :class="'ico'+item.com"></i>
             <span>{{item.title}}</span>
           </li>
@@ -19,21 +25,19 @@
   </div>
 </template>
 <script>
-import Bus from "@/public_components/Bus.js";
-import axios from "axios";
 export default {
-  data() {
+  data () {
     return {
       sendDate: "",
       redBagShow: false,
       application: []
     };
   },
-  created() {
-    Bus.$on("scroll", val => {
+  created () {
+    this.$Bus.$on("scroll", val => {
       this.stopScroll = val;
     });
-    axios.get("/api/application").then(res => {
+    this.$axios.get("/api/application").then(res => {
       if (res.data.code == 200) {
         this.application = res.data.data;
       }
@@ -41,14 +45,14 @@ export default {
   },
   components: {},
   methods: {
-    moreBtn() {
+    moreBtn () {
       this.$store.state.applianceShow = !this.$store.state.applianceShow;
     },
-    appShow(val) {
+    appShow (val) {
       this.$store.state.pageShow = val.com == 5 ? true : false;
       this.$store.state.pageStopScroll = true;
     },
-    sendMessage() {
+    sendMessage () {
       Bus.$emit("sendMessage", this.sendDate);
       this.sendDate = "";
     }

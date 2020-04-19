@@ -6,7 +6,6 @@
 <script>
 
 import information from "@/components/message/people/information";
-import axios from "axios";
 import { mapState, mapMutations } from "vuex";
 
 export default {
@@ -33,7 +32,7 @@ export default {
   },
   created () {
     this.init()
-    axios.get("/api/information").then(res => {
+    this.$axios.get("/api/information").then(res => {
       this.opInformation = res.data.message;
     });
   }

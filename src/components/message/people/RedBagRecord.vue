@@ -3,16 +3,19 @@
     <div class="red-bag-record-component">
       <section class="red-bag-record">
         <div class="top">
-          <img class="photo" :src="message.pho">
+          <img class="photo"
+               :src="message.pho">
           <p>{{message.name}}</p>
           <p>给你发一个红包</p>
         </div>
         <slot>
           <p>{{message.sum}}个红包</p>
           <ul class="record">
-            <li v-for="(item,index) in message.redBag" :key="index">
+            <li v-for="(item,index) in message.redBag"
+                :key="index">
               <div class="left">
-                <img :src="item.photo" alt>
+                <img :src="item.photo"
+                     alt>
                 <div class="record-content">
                   <p>{{item.name}}</p>
                   <p>{{item.time}}</p>
@@ -30,21 +33,19 @@
 </template>
 
 <script>
-import Bus from "@/public_components/Bus.js";
-import axios from "axios";
 export default {
-  data() {
+  data () {
     return {
       message: ""
     };
   },
-  created() {
-    axios.get("http://localhost:3000/api/record").then(res => {
+  created () {
+    this.$axios.get("http://localhost:3000/api/record").then(res => {
       this.message = res.data.record;
     });
   },
   methods: {
-    hideRedBag() {
+    hideRedBag () {
       Bus.$emit("hide", true);
       this.$emit("update:s", false);
     }

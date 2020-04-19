@@ -11,7 +11,7 @@ export default {
       axios
     }) {
       return new Promise((resolve, reject) => {
-        axios.get('api/me/emoji/moreExcitingExpression').then(
+        this.$axios.get('api/me/emoji/moreExcitingExpression').then(
           res => {
             resolve(res)
           },
@@ -25,7 +25,7 @@ export default {
       axios
     }) {
       return new Promise((resolve, reject) => {
-        axios.get('api/me/emoji/recommendedExpression').then(
+        this.$axios.get('api/me/emoji/recommendedExpression').then(
           res => {
             resolve(res)
           },

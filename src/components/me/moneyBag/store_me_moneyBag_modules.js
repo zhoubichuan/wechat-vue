@@ -12,9 +12,14 @@ export default {
   getters: {},
   mutations: {},
   actions: {
-    get_tencentPayService({ commit }, { axios, ...data }) {
+    get_tencentPayService({
+      commit
+    }, {
+      axios,
+      ...data
+    }) {
       return new Promise((resolve, reject) => {
-        axios.get('api/me/pay/tencentPayService').then( 
+        this.$axios.get('api/me/pay/tencentPayService').then(
           res => {
             resolve(res)
           },
@@ -24,9 +29,14 @@ export default {
         )
       })
     },
-    get_thirdPartyPayService({ commit }, { axios, ...data }) {
+    get_thirdPartyPayService({
+      commit
+    }, {
+      axios,
+      ...data
+    }) {
       return new Promise((resolve, reject) => {
-        axios.get('api/me/pay/thirdPartyPayService').then(
+        this.$axios.get('api/me/pay/thirdPartyPayService').then(
           res => {
             resolve(res)
           },

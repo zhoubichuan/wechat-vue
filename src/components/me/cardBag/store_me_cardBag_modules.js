@@ -14,7 +14,7 @@ export default {
       axios
     }) {
       return new Promise((resolve, reject) => {
-        axios.get('api/me/carBag/cardBagList').then(
+        this.$axios.get('api/me/carBag/cardBagList').then(
           res => {
             resolve(res)
           },

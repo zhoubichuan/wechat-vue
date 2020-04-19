@@ -2,8 +2,8 @@ export default {
   namespaced: true,
   state: {
     meInformationAddressHeader: {
-      left: '<',
-      middle: '我的地址'
+      left: "<",
+      middle: "我的地址"
     }
   }
 }

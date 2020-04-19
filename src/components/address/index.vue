@@ -8,7 +8,6 @@
 
 import ClassList from "@/public_components/ClassList";
 import NameList from "@/public_components/NameList";
-import axios from "axios";
 import { mapState, mapMutations } from 'vuex'
 
 export default {
@@ -22,7 +21,7 @@ export default {
     };
   },
   beforeCreate () {
-    axios.get("/api/address/friendList").then(res => {
+    this.$axios.get("/api/address/friendList").then(res => {
       if (res.data.code == 200) {
         this.nameList = res.data.data;
       }

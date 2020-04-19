@@ -51,7 +51,6 @@
 <script type="text/javascript">
 import RedBagGet from "@/components/message/people/RedBagGet";
 import RedBagSend from "@/components/message/people/RedBagSend";
-import Bus from "@/public_components/Bus.js";
 import appliance from "@/components/message/people/appliance.vue";
 
 export default {
@@ -77,10 +76,10 @@ export default {
   computed: {},
   created () {
     this.information2 = JSON.parse(JSON.stringify(this.$props.op));
-    Bus.$on("hide", val => {
+    this.$Bus.$on("hide", val => {
       this.isShow = !val;
     });
-    Bus.$on("redBagDate", val => {
+    this.$Bus.$on("redBagDate", val => {
       this.information2.data.push({
         pho: "../logo.png",
         name: "我自己1",
@@ -89,7 +88,7 @@ export default {
         redBag: val
       });
     });
-    Bus.$on("sendMessage", val => {
+    this.$Bus.$on("sendMessage", val => {
       this.information2.data.push({
         pho: "../logo.png",
         name: "我自己2",

@@ -21,7 +21,6 @@
   </div>
 </template>
 <script>
-import axios from "axios";
 export default {
   data () {
     return {
@@ -29,7 +28,7 @@ export default {
     };
   },
   created () {
-    axios.get("/api/message").then(res => {
+    this.$axios.get("/api/message").then(res => {
       if (res.data.code == 200) {
         this.messageData = res.data.message;
       }
