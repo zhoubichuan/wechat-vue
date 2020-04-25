@@ -1,7 +1,6 @@
 {
   "code": 200,
-  "message": [
-    {
+  "message": [{
       "photo": "p2",
       "title": "诸葛亮",
       "tips": "我从未见过有如此厚颜无耻之人",

@@ -2,7 +2,7 @@
   <div class="people">
     <ul>
       <li @click="handleClick"
-          v-for="(item,key) in messageData"
+          v-for="(item,key) in peopleList"
           :key="key">
         <router-link :to="'/messagePeople:'+item.title">
           <div class="left">
@@ -24,20 +24,26 @@
 export default {
   data () {
     return {
-      messageData: ""
+      peopleList: ""
     };
   },
   created () {
-    this.$axios.get("/api/message").then(res => {
+    let url = this.$requestUrl.message.peopleList
+    this.$axios.get(url).then(res => {
       if (res.data.code == 200) {
-        this.messageData = res.data.message;
+        this.peopleList = res.data.message;
       }
     });
   },
   methods: {
     handleClick (e) {
       this.informationIsShow = !this.informationIsShow;
-      this.titleData = e.target.innerText;
+      let url = this.$requestUrl.message.peopleDetail
+      this.$axios.get(url).then(res => {
+        if (res.data.code == 200) {
+          this.peopleList = res.data.message;
+        }
+      });
     }
   }
 };

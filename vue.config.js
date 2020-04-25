@@ -14,8 +14,11 @@ module.exports = {
       app.get("/api/information", (req, res) => {
         res.json(require("./mock/information.json"));
       });
-      app.get("/api/message", (req, res) => {
-        res.json(require("./mock/message.json"));
+      app.get("/api/message/peopleList", (req, res) => {
+        res.json(require("./mock/message/peopleList.json"));
+      });
+      app.get("/api/message/peopleDetail", (req, res) => {
+        res.json(require("./mock/message/peopleDetail.json"));
       });
       app.get("/api/record", (req, res) => {
         res.json(require("./mock/record.json"));

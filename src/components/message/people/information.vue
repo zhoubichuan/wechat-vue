@@ -75,7 +75,7 @@ export default {
   },
   computed: {},
   created () {
-    this.information2 = JSON.parse(JSON.stringify(this.$props.op));
+    this.information2 = this.$_.cloneDeep(this.$props.op)
     this.$Bus.$on("hide", val => {
       this.isShow = !val;
     });

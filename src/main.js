@@ -9,14 +9,20 @@ import i18n from "./i18n"
 import _ from "lodash"
 import moment from "moment"
 import Bus from "./Bus"
+// import filter from "./filter"
 
 Vue.prototype.$log = window.console.log
-Vue.prototype.requestUrl = requestUrl
+Vue.prototype.$requestUrl = requestUrl
 Vue.prototype.$axios = axios
 Vue.config.productionTip = false
 Vue.prototype.$_ = _
 Vue.prototype.$moment = moment
 Vue.prototype.$Bus = Bus
+Vue.config.devtools = true
+
+// Object.keys(filter).forEach(item => {
+//   Vue.filter(item, filter[item])
+// })
 
 new Vue({
   el: "#app",
