@@ -47,8 +47,8 @@ module.exports = {
       app.get("/api/address/friendList", (req, res) => {
         res.json(require("./mock/address/friendList.json"));
       });
-      app.get("/api/application:id", (req, res) => {
-        res.json(require("./mock/application.json"));
+      app.get("/api/message/application:id", (req, res) => {
+        res.json(require("./mock/message/application.json"));
       });
       app.get("/api/information", (req, res) => {
         res.json(require("./mock/information.json"));
@@ -57,10 +57,11 @@ module.exports = {
         res.json(require("./mock/message/peopleList.json"));
       });
       app.get("/api/message/peopleDetail", (req, res) => {
-        res.json(require("./mock/message/peopleDetail.json"));
+        let result = require("./mock/message/peopleDetail.json")
+        res.json(result);
       });
-      app.get("/api/record", (req, res) => {
-        res.json(require("./mock/record.json"));
+      app.get("/api/message/redBagReceiveRecord", (req, res) => { //红包领取记录
+        res.json(require("./mock/message/redBagReceiveRecord.json"));
       });
 
       app.get("/api/me/selfinformation", (req, res) => {

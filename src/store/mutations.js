@@ -47,4 +47,7 @@ export default {
     initPageConfig.isShowSearch !== undefined && (state.isShowSearch = initPageConfig.isShowSearch)
     initPageConfig.isShowSearchDialog !== undefined && (state.isShowSearchDialog = initPageConfig.isShowSearchDialog)
   },
+  [types.SCROLL_PAGE](state, scroll) {
+    state.scroll = scroll || true
+  }
 };

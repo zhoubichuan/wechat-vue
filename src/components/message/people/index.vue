@@ -32,9 +32,9 @@ export default {
   },
   created () {
     this.init()
-    this.$axios.get("/api/information").then(res => {
-      this.opInformation = res.data.message;
-    });
+    // this.$axios.get("/api/information").then(res => {
+    //   this.opInformation = res.data.message;
+    // });
   }
 };
 </script>

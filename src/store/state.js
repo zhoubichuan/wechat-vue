@@ -12,5 +12,6 @@ export default {
   pageShow: false,
   applianceShow: false,
   pageStopScroll: false,
-  optionsList: {}
+  optionsList: {},
+  scroll: true, //页面是否滚动
 };

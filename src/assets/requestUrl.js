@@ -6,6 +6,8 @@ export default {
     peopleDetail: rect + "api/message/peopleDetail",
     sport: rect + "api/message/sport",
     talk: rect + "api/message/talk",
+    // application: rect + "/api/message/application:id",
+    redBagReceiveRecord: rect + "api/message/redBagReceiveRecord", //红包领取记录
   },
   address: {
     newFriend: rect + "api/address/newFriend",

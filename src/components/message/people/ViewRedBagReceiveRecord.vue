@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="red-bag-record-component">
+    <div class="receive-record">
       <section class="red-bag-record">
         <div class="top">
           <img class="photo"
@@ -40,7 +40,7 @@ export default {
     };
   },
   created () {
-    this.$axios.get("http://localhost:3000/api/record").then(res => {
+    this.$axios.get(this.$requestUrl.message.redBagReceiveRecord).then(res => {
       this.message = res.data.record;
     });
   },

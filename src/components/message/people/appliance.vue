@@ -1,22 +1,32 @@
 <template>
-  <div class="application-component">
+  <div class="message-application">
     <div class="application">
       <div class="send">
-        <i class="voiceInformation"></i>
+        <img class="voiceInformation"
+             src="@/assets/image/语音.svg"
+             alt=""
+             srcset="">
         <input type="text"
                @keyup.13="sendMessage"
                v-model="sendDate">
-        <i class="emjoy"></i>
-        <i class="moreBtn"
-           @click="moreBtn"></i>
+        <img class="emjoy"
+             src="@/assets/image/表情.svg"
+             alt=""
+             srcset="">
+        <img class="moreBtn"
+             src="@/assets/image/more.svg"
+             alt=""
+             srcset=""
+             @click="moreBtn">
       </div>
       <div class="function"
            v-show="this.$store.state.applianceShow">
         <ul>
-          <li v-for="(item,index) in application"
+          <li v-for="(item,index) in appConfigData"
               :key="index"
               @click="appShow(item)">
-            <i :class="'ico'+item.com"></i>
+            <img :src="require(`@/assets/image/${item.img}.svg`)"
+                 alt="">
             <span>{{item.title}}</span>
           </li>
         </ul>
@@ -30,18 +40,63 @@ export default {
     return {
       sendDate: "",
       redBagShow: false,
-      application: []
+      appConfigData: [
+        {
+          "title": "照片",
+          "img": "照片"
+        },
+        {
+          "title": "拍摄",
+          "img": "拍摄"
+        },
+        {
+          "title": "语音通话",
+          "img": "语音通话"
+        },
+        {
+          "title": "位置",
+          "img": "位置"
+        },
+        {
+          "title": "红包",
+          "img": "红包"
+        },
+        {
+          "title": "语音输入",
+          "img": "语音输入"
+        },
+        {
+          "title": "收藏",
+          "img": "收藏"
+        },
+        {
+          "title": "群工具",
+          "img": "群工具"
+        },
+        {
+          "title": "个人名片",
+          "img": "个人名片"
+        },
+        {
+          "title": "文件",
+          "img": "文件"
+        },
+        {
+          "title": "卡券",
+          "img": "卡券"
+        }
+      ]
     };
   },
   created () {
     this.$Bus.$on("scroll", val => {
       this.stopScroll = val;
     });
-    this.$axios.get("/api/application").then(res => {
-      if (res.data.code == 200) {
-        this.application = res.data.data;
-      }
-    });
+    // this.$axios.get("/api/message/application:id").then(res => {
+    //   if (res.data.code == 200) {
+    //     this.application = res.data.data;
+    //   }
+    // });
   },
   components: {},
   methods: {
@@ -84,20 +139,12 @@ export default {
     }
     .emjoy {
       width: 24px;
-      height: 24px;
-      background: url(./ico.png) -263px -8px;
-      margin-left: 10px;
     }
     .moreBtn {
       width: 24px;
-      height: 24px;
-      background: url(./ico.png) -290px -8px;
-      margin-left: 10px;
     }
     .voiceInformation {
       width: 24px;
-      height: 24px;
-      background: url(./ico.png) -7px -8px;
     }
   }
   .function {
@@ -108,37 +155,10 @@ export default {
       flex-wrap: wrap;
       li {
         width: 25%;
-        i {
-          width: 48px;
-          height: 48px;
-          margin: 0 auto;
-          display: block;
-          margin-top: 10px;
-          background: url(./ico.png) -27px -53px;
-        }
-        .ico1 {
-          background-position-x: -27px;
-        }
-        i.ico2 {
-          background-position-x: -100px;
-        }
-        i.ico3 {
-          background-position-x: -172px;
-        }
-        i.ico4 {
-          background-position-x: -246px;
-        }
-        i.ico5 {
-          background-position: -27px -131px;
-        }
-        i.ico6 {
-          background-position: -100px -131px;
-        }
-        i.ico7 {
-          background-position: -172px -131px;
-        }
-        i.ico8 {
-          background-position: -246px -131px;
+        padding: 10px 0;
+        text-align: center;
+        img {
+          width: 30px;
         }
         span {
           display: block;

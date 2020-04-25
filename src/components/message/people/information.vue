@@ -21,7 +21,7 @@
               <p v-show="!item.redBag.redBag">{{item.message}}</p>
               <div v-show="item.redBag.redBag"
                    class="red-bag"
-                   @click="stopScroll(item)">
+                   @click="viewReadBag(item)">
                 <div class="bag">
                   <span class="ico"></span>
                   <div class="text">
@@ -79,7 +79,9 @@ export default {
   },
   created () {
     this.init()
-    this.information2 = this.$_.cloneDeep(this.$props.op)
+    this.$axios.get("/api/message/peopleDetail").then(res => {
+      this.information2 = res.data;
+    });
     this.$Bus.$on("hide", val => {
       this.isShow = !val;
     });
@@ -104,7 +106,8 @@ export default {
   },
   methods: {
     ...mapMutations({
-      setInitPageConfig: 'INIT_PAGE_CONFIG'
+      setInitPageConfig: 'INIT_PAGE_CONFIG',
+      scrollPage: 'SCROLL_PAGE',
     }),
     init () {
       let initPageConfig = {
@@ -112,7 +115,7 @@ export default {
           left: "<",
           middle: decodeURI(location.hash.split(':')[1]),
           right: {
-            ico: "more"
+            text: '...'
           }
         }
       }
@@ -124,10 +127,10 @@ export default {
     fn () {
       this.isShow = false;
     },
-    stopScroll (val) {
+    viewReadBag (val) {
       this.isShow = true;
       this.message = val;
-      this.$store.state.pageStopScroll = true;
+      this.scrollPage(false)
     }
   }
 };

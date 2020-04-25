@@ -27,15 +27,19 @@
         </div>
       </div>
     </div>
-    <RedBagRecord class="detail"
-                  v-if="detail"
-                  @update:s="detail=false" />
+    <ViewRedBagReceiveRecord class="detail"
+                             v-if="detail"
+                             @update:s="detail=false" />
   </div>
 </template>
 
 <script type="text/javascript">
-import RedBagRecord from "./RedBagRecord";
+import ViewRedBagReceiveRecord from "./ViewRedBagReceiveRecord";
 export default {
+  name: 'ViewRedBagReceiveRecord',
+  components: {
+    ViewRedBagReceiveRecord
+  },
   props: ["show", "message"],
   data () {
     return {
@@ -49,9 +53,7 @@ export default {
       this.redBagDate = val;
     });
   },
-  components: {
-    RedBagRecord
-  },
+
   methods: {
     close () {
       this.$emit("close");
