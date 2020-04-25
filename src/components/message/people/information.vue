@@ -7,7 +7,7 @@
                  :message="message">
         <p slot="r-money"
            class="r-money"
-           v-if="message.money">{{message.redBag.receiveRedBag}}元</p>
+           v-if="message.money">{{message.redBag.receiveRedBag | money}}</p>
       </RedBagGet>
       <div>
         <ul class="information2">
@@ -52,6 +52,7 @@
 import RedBagGet from "@/components/message/people/RedBagGet";
 import RedBagSend from "@/components/message/people/RedBagSend";
 import appliance from "@/components/message/people/appliance.vue";
+import { mapState, mapMutations } from "vuex";
 
 export default {
   props: {
@@ -73,8 +74,11 @@ export default {
     RedBagSend,
     appliance
   },
-  computed: {},
+  computed: {
+    ...mapState('store_message_people_modules', ['informationData', 'messagePeopleHeader'])
+  },
   created () {
+    this.init()
     this.information2 = this.$_.cloneDeep(this.$props.op)
     this.$Bus.$on("hide", val => {
       this.isShow = !val;
@@ -99,6 +103,21 @@ export default {
     });
   },
   methods: {
+    ...mapMutations({
+      setInitPageConfig: 'INIT_PAGE_CONFIG'
+    }),
+    init () {
+      let initPageConfig = {
+        header: {
+          left: "<",
+          middle: decodeURI(location.hash.split(':')[1]),
+          right: {
+            ico: "more"
+          }
+        }
+      }
+      this.setInitPageConfig(initPageConfig)
+    },
     goBack () {
       this.$router.history.go(0);
     },

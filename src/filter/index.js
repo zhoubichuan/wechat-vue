@@ -1,8 +1,6 @@
-let filter {
-  money(val) {
-    return val + '元'
+let filter = {
+  money: function (value) {
+    return value + "元"
   }
-
 }
-
 export default filter

@@ -22,7 +22,7 @@
                 </div>
               </div>
               <div class="right">
-                <span>{{item.money}}元</span>
+                <span>{{item.money | money}}</span>
               </div>
             </li>
           </ul>
