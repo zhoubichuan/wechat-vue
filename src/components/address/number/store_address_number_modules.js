@@ -2,7 +2,7 @@ export default {
   namespaced: true,
   state: {
     addressNumberHeader: {
-      left: '<',
+      left: "<",
       middle: "公众号",
       right: {
         text: "+"

@@ -2,27 +2,27 @@ export default {
   namespaced: true,
   state: {
     meInformationPhotoHeader: {
-      left: '<',
-      middle: '个人头像',
+      left: "<",
+      middle: "个人头像",
       right: {
-        text: '...'
+        text: "..."
       }
     },
     data: [{
-        text: '拍照'
-      },
-      {
-        text: '从手机相册选择'
-      },
-      {
-        text: '查看上一张头像'
-      },
-      {
-        text: '保存图片'
-      },
-      {
-        text: '取消'
-      },
+      text: "拍照"
+    },
+    {
+      text: "从手机相册选择"
+    },
+    {
+      text: "查看上一张头像"
+    },
+    {
+      text: "保存图片"
+    },
+    {
+      text: "取消"
+    },
     ]
   },
   mutations: {
@@ -35,7 +35,7 @@ export default {
       } else {
         this.state.optionsList = {
           show: false,
-          data: ''
+          data: ""
         }
       }
 

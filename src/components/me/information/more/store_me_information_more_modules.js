@@ -2,10 +2,10 @@ export default {
   namespaced: true,
   state: {
     meInformationMoreHeader: {
-      left: '<',
-      middle: '',
+      left: "<",
+      middle: "",
       right: {
-        text: ''
+        text: ""
       }
     }
   }

@@ -2,12 +2,12 @@ export default {
   namespaced: true,
   state: {
     meInformationNameHeader: {
-      left:{text:'取消'} ,
-      middle: '设置地区',
+      left:{text:"取消"} ,
+      middle: "设置地区",
       right: {
         disabled:true,
-        type:'button',
-        text: '完成'
+        type:"button",
+        text: "完成"
       }
     },
     name: "",

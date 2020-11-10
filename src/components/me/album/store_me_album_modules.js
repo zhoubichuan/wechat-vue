@@ -2,8 +2,8 @@ export default {
   namespaced: true,
   state: {
     meAlbumHeader: {
-      left: '<',
-      middle: '朋友圈相册|视频动态'
+      left: "<",
+      middle: "朋友圈相册|视频动态"
     },
   },
   actions: {
@@ -11,7 +11,7 @@ export default {
       axios
     }) {
       return new Promise((resolve, reject) => {
-        this.$axios.get('api/me/album/weChatMomentAlbum').then(res => {
+        this.$axios.get("api/me/album/weChatMomentAlbum").then(res => {
           resolve(res)
         }, rej => {
           reject(rej)

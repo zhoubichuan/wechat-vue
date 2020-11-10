@@ -2,10 +2,10 @@ export default {
   namespaced: true,
   state: {
     collectionHeader: {
-      left: '<',
-      middle: '收藏',
+      left: "<",
+      middle: "收藏",
       right: {
-        text: '+'
+        text: "+"
       }
     }
   }

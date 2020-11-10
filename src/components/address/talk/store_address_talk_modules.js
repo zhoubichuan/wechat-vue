@@ -2,7 +2,7 @@ export default {
   namespaced: true,
   state: {
     addressTalkHeader: {
-      left: '<',
+      left: "<",
       middle: "群聊",
     }
   }
