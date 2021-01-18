@@ -10,7 +10,7 @@ Vue 版微信：[]()
 
 后台管理系统：[]()
 
-默认账号：xuzijia 默认密码：xuzijia
+默认账号：zhoubichuan 默认密码：zhoubichuan
 
 ## 项目主要内容
 
