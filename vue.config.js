@@ -8,7 +8,7 @@ module.exports = {
   runtimeCompiler: true,
   productionSourceMap: false,
   publicPath: "./", //基本路径
-  outputDir: "dis", //构建时的输出目录
+  outputDir: "wechat-vue", //构建时的输出目录
   assetsDir: "static", //放置静态资源的目录
   indexPath: "index.html", //html的输出路径
   filenameHashing: true, //文件名哈希

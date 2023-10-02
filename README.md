@@ -2,7 +2,7 @@
 
 ---
 
-## 项目预览地址 https://zhoubichuan.github.io/Project-Vue-weChat/
+## 项目预览地址 https://zhoubichuan.github.io/wechat-vue/
 
 Vue 版微信：[]()
 

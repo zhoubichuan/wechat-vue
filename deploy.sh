@@ -15,14 +15,14 @@ git push origin master
 npm run build
 
 # 3.进入打包目录
-cd dist
+cd wechat-vue
 
 # 4.发布到gh-pages分支
 git init
 git checkout --orphan gh-pages
 git add .
 git commit -m 'gh-pages'
-git remote add origin https://github.com/zhoubichuan/Project-Vue-weChat.git
+git remote add origin https://github.com/zhoubichuan/wechat-vue.git
 git push -f origin gh-pages
 
 # 5.返回初始目录

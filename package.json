@@ -1,7 +1,7 @@
 {
   "name": "chat",
   "version": "0.1.0",
-  "hommepage": "https://zhoubichuan.github.io/Project-Vue-weChat/",
+  "hommepage": "https://zhoubichuan.github.io/wechat-vue/",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -40,6 +40,7 @@
     "autoprefixer": "^9.7.3",
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "cross-env": "^6.0.3",
     "eslint": "^5.16.0",
