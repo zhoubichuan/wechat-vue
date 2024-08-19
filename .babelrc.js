@@ -9,7 +9,7 @@ module.exports = {
     "stage-2"
   ],
   "presets": [
-    ["es2015", {
+    ["@babel/preset-env", {
       "modules": false
     }]
   ],

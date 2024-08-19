@@ -8,7 +8,7 @@ import axios from "./axios"
 import i18n from "./i18n"
 import _ from "lodash"
 import moment from "moment"
-import Bus from "./bus"
+import Bus from "./utils/bus"
 import filter from "./filter"
 
 Vue.prototype.$log = window.console.log
