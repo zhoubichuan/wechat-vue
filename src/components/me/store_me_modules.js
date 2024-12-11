@@ -3,8 +3,8 @@ export default {
   state: {
     application: [{
       ico: "photo",
-      title: "会跑的鸡腿",
-      content: "微信号：zbc159x",
+      title: "asdfasdfasd",
+      content: "微信号：sdwasfsd",
       link: "meInformation"
     },
     {

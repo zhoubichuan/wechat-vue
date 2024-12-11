@@ -19,7 +19,7 @@ export default {
         title: "名字",
         image: "",
         link: "meInformationName",
-        tips: "会跑的鸡腿"
+        tips: "asdfasdfasd"
       },
       {
         title: "微信号",

@@ -15,16 +15,17 @@ export default {
     ClassList,
     NameList
   },
-  data () {
+  data() {
     return {
       nameList: "",
     };
   },
-  beforeCreate () {
+  beforeCreate() {
     this.$axios.get("/api/address/friendList").then(res => {
-      if (res.data.code == 200) {
-        this.nameList = res.data.data;
-      }
+      // if (res.data.code == 200) {
+      //   this.nameList = res.data.data;
+      // }
+      this.nameList = res.data.Ok.data;
     });
   },
   computed: {
@@ -34,7 +35,7 @@ export default {
     ...mapMutations({
       setInitPageConfig: 'INIT_PAGE_CONFIG'
     }),
-    init () {
+    init() {
       let initPageConfig = {
         header: this.addressHeader,
         isShowSearch: true,
@@ -42,11 +43,11 @@ export default {
       }
       this.setInitPageConfig(initPageConfig)
     },
-    popShow () {
+    popShow() {
       this.opPage.popshow = true;
     }
   },
-  created () {
+  created() {
     this.init()
   }
 };
@@ -57,10 +58,12 @@ export default {
   background-color: #efeff4;
   height: calc(100vh - 50px);
 }
+
 .transitionRouter-enter-active,
 .transitionRouter-leave-active {
   transition: all 0.4s;
 }
+
 .transitionRouter-enter,
 .transitionRouter-leave {
   transform: translate3d(100%, 0, 0);

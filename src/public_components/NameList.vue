@@ -2,19 +2,14 @@
   <div class="top">
     <ul>
       <template v-for="(item) in pySegSort.segs">
-        <li class="no-people"
-            v-if="item.initial"
-            :key="item.id">
-          <span>{{item.initial}}</span>
+        <li class="no-people" v-if="item.initial" :key="item.id">
+          <span>{{ item.initial }}</span>
         </li>
         <template>
-          <li class="people"
-              v-for="(item2) in item.data"
-              :key="item2.id">
-            <router-link :to="'/addressPeople:'+item2.name">
-              <img :src="require(`@/assets/image/message/p1.svg`)"
-                   alt />
-              {{item2.name}}
+          <li class="people" v-for="(item2) in item.data" :key="item2.id">
+            <router-link :to="'/addressPeople:' + item2.name">
+              <img :src="require(`@/assets/image/message/p1.svg`)" alt />
+              {{ item2.name }}
             </router-link>
           </li>
         </template>
@@ -27,7 +22,7 @@
 export default {
   props: ["nameList"],
   computed: {
-    pySegSort () {
+    pySegSort() {
       if (this.nameList.length == 0) return;
       if (!String.prototype.localeCompare) return null;
       var letters = "*ABCDEFGHJKLMNOPQRSTWXYZ".split("");
@@ -93,19 +88,23 @@ export default {
       padding: 10px 15px;
       background-color: #ffffff;
       border-bottom: 1px solid #f2f2f2;
+
       a {
         display: block;
+
         img {
           width: 30px;
           height: 30px;
           display: inline-block;
         }
+
         p {
           display: inline-block;
           margin-left: 20px;
         }
       }
     }
+
     .no-people {
       background: #f2f2f2;
       padding: 4px 15px;
@@ -113,4 +112,3 @@ export default {
   }
 }
 </style>
-

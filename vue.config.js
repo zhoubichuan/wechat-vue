@@ -35,18 +35,19 @@ module.exports = {
       errors: true,
       warnings: false
     },
-    // proxy: { //当您有一个单独的API后端开发服务器，并且想要在同一个域上发送API请求时，则代理这些 url 。看例子好理解
-    //   '/proxy': {
-    //     target: 'http://your_api_server.com',
-    //     changeOrigin: true,
-    //     pathRewrite: { //重写路径。匹配 /proxy ，然后变为''
-    //       '^/proxy': ''
-    //     }
-    //   },
+    proxy: { //当您有一个单独的API后端开发服务器，并且想要在同一个域上发送API请求时，则代理这些 url 。看例子好理解
+      "/api": {
+        target: "http://127.0.0.1:8000",
+        changeOrigin: true,
+        pathRewrite: { //重写路径。匹配 /proxy ，然后变为''
+          "^/api": "/api"
+        }
+      },
+    },
     before(app) {
-      app.get("/api/address/friendList", (req, res) => {
-        res.json(require("./mock/address/friendList.json"));
-      });
+      // app.get("/api/address/friendList", (req, res) => {
+      //   res.json(require("./mock/address/friendList.json"));
+      // });
       app.get("/api/message/application:id", (req, res) => {
         res.json(require("./mock/message/application.json"));
       });
