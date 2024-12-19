@@ -14,7 +14,7 @@
     "gh-pages": "bash deploy_gh-pages.sh"
   },
   "dependencies": {
-    "axios": "0.18.0",
+    "axios": "0.28.0",
     "babel": "6.23.0",
     "babel-loader": "8.0.5",
     "cache-loader": "2.0.1",
